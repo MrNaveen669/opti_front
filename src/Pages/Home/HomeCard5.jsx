@@ -2,9 +2,19 @@ import React from "react";
 import { Box, Text, Image, Grid } from "@chakra-ui/react";
 import ReactPlayer from "react-player";
 import offer1 from "../../assets/offer1.png";
+import { Link } from "react-router-dom"; 
+import { useNavigate } from "react-router-dom";
 
 
 export const HomeCard5 = () => {
+  const navigate = useNavigate();
+  // Function to handle navigation with filters
+  const handleNavigation = (filterParams) => {
+    // Construct the query string from filter parameters
+    const queryString = new URLSearchParams(filterParams).toString();
+    navigate(`/sampleproduct?${queryString}`);
+  };
+
   return (
     <Box w="85%" m="auto">
       <Text fontSize="30px" pb="7" fontWeight="500" textAlign="center">
@@ -20,15 +30,19 @@ export const HomeCard5 = () => {
         }}
       >
         <Box>
+          <Link to="/sampleproduct">
           <Image
             src={offer1}
             alt="img"
             p="2"
+            
           />
+          </Link>
           <Image
             src="/assets/ZERO POWER GLASSES.png"
             alt="img"
             p="2"
+            onClick={() => handleNavigation({ category: "Computer Glasses"})}
           />
         </Box>
         <Box>
@@ -36,16 +50,19 @@ export const HomeCard5 = () => {
             src="/assets/SUNGLASSES.png"
             alt="img"
             p="2"
+            onClick={() => handleNavigation({ category: "Sunglasses"})}
           />
           <Image
             src="/assets/Computer glasses.png"
             alt="img"
             p="2"
+            onClick={() => handleNavigation({ category: "Computer Glasses"})}
           />
           <Image
             src="/assets/powersun.png"
             alt="img"
             p="2"
+            onClick={() => handleNavigation({ category: "Sunglasses"})}
           />
         </Box>
       </Grid>

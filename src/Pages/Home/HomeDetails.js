@@ -56,7 +56,7 @@ export const HomeDetails2 = [
     img: "https://static1.lenskart.com/media/desktop/img/Sep21/clipon.jpg",
     caption: "Slide 2"
   },
-  {
+  { 
     name: "Air Flex",
     img: "https://static1.lenskart.com/media/desktop/img/Sep21/airflex.jpg",
     caption: "Slide 3"

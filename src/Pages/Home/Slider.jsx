@@ -83,6 +83,7 @@ const Slider = ({ type }) => {
                 _hover={{ bg: "#000202" }}
                 m="auto"
                 fontSize="17px"
+                // onClick={() => handleNavigation({ category: "Eye Glasses" })}
               >
                 Explore
               </Button>

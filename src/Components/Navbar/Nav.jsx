@@ -200,7 +200,7 @@ function Nav() {
                       Manage Notification
                     </Box>
                   </Link>
-                  <Link>
+                  <Link to="/contactus">
                     <Box
                       borderBottom="1px solid white"
                       fontSize="15px"
@@ -258,7 +258,7 @@ function Nav() {
                         </AccordionButton>
                       </h2>
                       <AccordionPanel pb={5}>
-                        <Link to="/products">
+                      <Link to="/sampleproduct">
                           <Box>
                             <Text pb="2">EYEGLASSES</Text>
                             <Text pb="2">COMPUTER GLASSES</Text>
@@ -283,7 +283,7 @@ function Nav() {
                         </AccordionButton>
                       </h2>
                       <AccordionPanel pb={4}>
-                        <Link to="/products">
+                      <Link to="/sampleproduct">
                           <Box>
                             <Text pb="2">EYEGLASSES</Text>
                             <Text pb="2">COMPUTER GLASSES</Text>
@@ -298,8 +298,8 @@ function Nav() {
                 <Heading mt="15%" color="black" fontSize="15px" mb="5%">
                   Our Services
                 </Heading>
-                <Box display="flex" flexDirection="column" fontSize="16px">
-                  <Link>
+                {/* <Box display="flex" flexDirection="column" fontSize="16px">
+                  {/* <Link>
                     <Box
                       borderBottom="0.1px solid gray"
                       p="5% 0%"
@@ -309,8 +309,8 @@ function Nav() {
                     >
                       Free Home Trail
                     </Box>
-                  </Link>
-                  <Link>
+                  </Link> */}
+                  {/* <Link>
                     <Box
                       borderBottom="0.1px solid gray"
                       p="5% 0%"
@@ -320,8 +320,8 @@ function Nav() {
                     >
                       Home Eye check-up
                     </Box>
-                  </Link>
-                  <Link>
+                  </Link> */}
+                  {/* <Link>
                     <Box
                       borderBottom="0.1px solid gray"
                       p="5% 0%"
@@ -331,11 +331,9 @@ function Nav() {
                     >
                       Store Locator
                     </Box>
-                  </Link>
-                </Box>
-                <Heading mt="15%" color="black" mb="5%" fontSize="15px">
-                  HIGHLIGHTS
-                </Heading>
+                  </Link> */}
+               {/* </Box> */} 
+                
                 <Box display="flex" flexDirection="column" fontSize="16px">
                   <Link>
                     <Box

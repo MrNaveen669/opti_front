@@ -10,6 +10,8 @@ import HomeCard7 from "./HomeCard7";
 import HomeCard8 from "./HomeCard8";
 import Navbar from "../../Components/Navbar/Navbar";
 import Footer from "../../Components/Footer/Footer";
+import { Link } from "react-router-dom"; // ✅ make sure to import Link
+import { useNavigate } from "react-router-dom";
 
 
 import {
@@ -35,6 +37,15 @@ import offer2 from "../../assets/offer2.gif"
 import Luxury from "../../assets/Luxury.png"
 import kidwear from "../../assets/kidwear.png"
 const Home = () => {
+  const navigate = useNavigate();
+
+  // Function to handle navigation with filters
+  const handleNavigation = (filterParams) => {
+    // Construct the query string from filter parameters
+    const queryString = new URLSearchParams(filterParams).toString();
+    navigate(`/sampleproduct?${queryString}`);
+  };
+
   return (
     <Box>
       <Navbar />
@@ -50,18 +61,21 @@ const Home = () => {
       <br />
       <br />
       <br />
+      <Link to="/sampleproduct">
       <HomeCard4
         text="BUY 1 GET 1 FREE"
-        src={get1}
-      />
+        src={get1}/>
+      </Link>
+      
       <br />
       <br />
       <br />
       <br />
+      <Link to="/sampleproduct">
       <HomeCard4
         text="As Seen On"
         src={Luxury}
-      />
+      /></Link>
       <br />
       <br />
       <br />
@@ -84,10 +98,14 @@ const Home = () => {
       <br />
       <br />
       <br />
+      <Link to="" onClick={() => handleNavigation({ gender: 'Kids' })} >
       <HomeCard4a
-        text="Kids Eyewear"
+        text="Kids Eyewear" 
         src={kidwear}
-      />
+        // onClick={() => handleNavigation({ category: "Eye Glasses", gender: 'Kids' })}
+        />
+        </Link>
+      
       <br />
       <br />
       <br />
@@ -119,46 +137,7 @@ const Home = () => {
         text=""
         src="/assets/offer4.png"
       />
-      {/* <br />
-      <br />
-      <br />
-      <br />
-      <HomeCard6 type={HomeDetails6} heading="EYEGLASSES" />
-      <br />
-      <br />
-      <br />
-      <br />
-      <HomeCard6 type={HomeDetails7} heading="SUNGLASSES" /> */}
-      {/* <br />
-      <br />
-      <br />
-      <br /> */}
-      {/* <HomeCard4b
-        text=""
-        // src="https://static1.lenskart.com/media/desktop/img/Aug21/25-Aug/LK-AIR-Banner.jpg"
-      /> */}
-      {/* <br />
-      <br />
-      <br />
-      <br />
-      <HomeCard6 type={HomeDetails6} heading="EYEGLASSES" /> */}
-      {/* <br />
-      <br />
-      <br />
-      <br /> */}
-      {/* <HomeCard4b
-        text=""
-        src="https://static1.lenskart.com/media/desktop/img/Aug21/25-Aug/LK-Readers-Banner.jpg"
-      /> */}
-      {/* <br />
-      <br />
-      <br />
-      <br /> */}
-      {/* <HomeCard6 type={HomeDetails10} heading="EYEGLASSES" />
-      <br />
-      <br />
-      <br />
-      <br /> */}
+      
       <HomeCard4b
         text=""
         src="https://www.dropbox.com/scl/fi/dw6oe0q1a47z8505zyjev/IMG_2317.JPG?rlkey=l2box51va8er9qyogf02bfyxc&st=xe3ym9q8&dl=0"

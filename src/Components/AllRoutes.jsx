@@ -18,6 +18,8 @@ import TermsAndConditions from "../Pages/StaticPages/TermsAndConditions";
 import CancellationsAndRefunds from "../Pages/StaticPages/CancellationsAndRefunds";
 import PrivacyPolicy from "../Pages/StaticPages/PrivacyPolicy";
 import ContactUs from "../Pages/StaticPages/ContactUs";
+import ShippingPolicy from "../Pages/StaticPages/ShippingPolicy";
+
 
 
 import EditProduct from "../Pages/Admin/EditProduct";
@@ -121,6 +123,7 @@ const AllRoutes = () => {
       <Route path="/cancellations-and-refunds" element={<CancellationsAndRefunds />} />
       <Route path="/privacy-policy" element={<PrivacyPolicy />} />
       <Route path="/contact-us" element={<ContactUs />} />
+      <Route path="/shipping-policy" element={<ShippingPolicy />} />
 
     </Routes>
   );

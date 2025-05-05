@@ -1,6 +1,7 @@
 import React from "react";
 import { Box, Text, Image, Flex, Center, Grid } from "@chakra-ui/react";
 import { AiFillFacebook, AiOutlineInstagram, AiFillYoutube } from "react-icons/ai"; // ✅ Added YouTube, removed TfiTwitter
+import { Link } from "react-router-dom"; // ✅ make sure to import Link
 
 export const FooterCard1 = ({ type, heading }) => {
   return (
@@ -60,7 +61,7 @@ export const FooterCard = () => {
       <Grid
         templateColumns={{
           base: "repeat(1,1fr)",
-          md: "repeat(3,1fr)",
+          md: "repeat(4, 1fr)", // updated to 4 columns
           lg: "repeat(3,1fr)",
           xl: "repeat(3,1fr)",
           "2xl": "repeat(3,1fr)"
@@ -73,9 +74,16 @@ export const FooterCard = () => {
         gap="10%"
         pb={{ lg: "2%", sm: "4%", base: "10%" }}
       >
-        <Text fontSize="14px">T&C</Text>
-        <Text fontSize="14px">Privacy</Text>
-        <Text fontSize="14px">Disclaimer</Text>
+        <Link to="/terms-and-conditions">
+          <Text fontSize="14px">T&C</Text>
+        </Link>
+        <Link to="/privacy-policy">
+          <Text fontSize="14px">Privacy</Text>
+        </Link>
+        <Link to="/cancellations-and-refunds">
+          <Text fontSize="14px">C&R</Text>
+        </Link>
+        
       </Grid>
       <Grid
         templateColumns={{
