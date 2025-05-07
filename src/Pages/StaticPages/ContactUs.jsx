@@ -14,7 +14,7 @@ const ContactUs = () => {
         <VStack spacing={4} align="start">
           <HStack>
             <Icon as={PhoneIcon} color="teal.500" />
-            <Text fontSize="lg"><strong>Phone:</strong> 9981463336</Text>
+            <Text fontSize="lg"><strong>Phone:</strong>+91 9981463336</Text>
           </HStack>
           <HStack>
             <Icon as={EmailIcon} color="teal.500" />
@@ -23,7 +23,7 @@ const ContactUs = () => {
           <HStack align="flex-start">
             <Icon as={MdLocationOn} color="teal.500" mt={1} />
             <Text fontSize="lg">
-              <strong>Location:</strong> In Front of New Vivekanand Park,<br /> Budha Para, Raipur (C.G.)
+              <strong>Location:</strong> In Front of New Vivekanand Park, <br />Budha Para Raipur (C.G.), India.
             </Text>
           </HStack>
         </VStack>
