@@ -62,7 +62,7 @@ const ShippingPolicy = () => {
                             <Text as="span" ml="2"><strong>Phone:</strong> +91 9981463336</Text><br />
 
                             <Icon as={EmailIcon} color="teal.500" />
-                            <Text as="span" ml="2"><strong>Email:</strong> clearvisionoptical.r@gmail.com</Text>
+                            <Text as="span" ml="2"><strong>Email:</strong> helloopticlair@gmail.com</Text>
 
                         </Text>
                     </HStack>
