@@ -34,7 +34,7 @@ export const Location = [
     labels: "Contact US : 9981463336",
   },
   {
-    labels: "Gmail : clearvisionoptical.r@gmail.com",
+    labels: "Gmail : helloopticlair@gmail.com",
   },
   
 ];
