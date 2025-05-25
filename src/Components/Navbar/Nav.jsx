@@ -4,7 +4,7 @@ import Signup from "../../Pages/Signup/Signup";
 import { AuthContext } from "../../ContextApi/AuthContext";
 import { Link, Navigate } from "react-router-dom";
 import { HamburgerIcon } from "@chakra-ui/icons";
-import LogoImage from "../../assets/logo.png";
+import LogoImage from "../../assets/logo5.png";
 import {
   DrawerCloseButton,
   Button,
