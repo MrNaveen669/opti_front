@@ -18,7 +18,7 @@ const ContactUs = () => {
           </HStack>
           <HStack>
             <Icon as={EmailIcon} color="teal.500" />
-            <Text fontSize="lg"><strong>Email:</strong> clearvisionoptical.r@gmail.com</Text>
+            <Text fontSize="lg"><strong>Email:</strong> helloopticlair@gmail.com</Text>
           </HStack>
           <HStack align="flex-start">
             <Icon as={MdLocationOn} color="teal.500" mt={1} />
