@@ -1,0 +1,88 @@
+.product_listing {
+  width: 80%;
+  border: 1px solid red;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 20px 100px;
+}
+
+.navImg1 {
+  text-align: center;
+  justify-content: center;
+  margin: auto;
+  padding-top: 30px;
+  text-align: center;
+}
+
+.navImg2 {
+  text-align: center;
+  justify-content: center;
+  margin: auto;
+  padding-top: 30px;
+  text-align: center;
+}
+
+.input {
+  outline: 1px solid gray;
+  width: 90%;
+  padding: 8px;
+  margin: 14px;
+  text-align: left;
+  margin-left: 22px;
+  font-size: medium;
+  border-radius: 5px;
+  background-color: white;
+  border: none;
+}
+
+.input:hover {
+  outline: 2px solid black;
+}
+
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;      /* full screen height */
+  width: 100%;
+  background-color: #fff; /* white background */
+  padding-top: 20px;
+} 
+
+
+/* Loader animation */
+.loader {
+  width: fit-content;
+  font-size: 40px;
+  font-family: system-ui, sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #0000;
+  -webkit-text-stroke: 1px #000;
+  background:
+    radial-gradient(0.71em at 50% 1em, #000 99%, #0000 101%) calc(50% - 1em) 1em / 2em 200% repeat-x text,
+    radial-gradient(0.71em at 50% -0.5em, #0000 99%, #000 101%) 50% 1.5em / 2em 200% repeat-x text;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: 
+    l10-0 0.8s linear infinite alternate,
+    l10-1 4s linear infinite;
+}
+
+.loader:before {
+  content: "Opticlair";
+}
+
+@keyframes l10-0 {
+  to {
+    background-position-x: 50%, calc(50% + 1em);
+  }
+}
+
+@keyframes l10-1 {
+  to {
+    background-position-y: -0.5em, 0;
+  }
+}
+

@@ -1,0 +1,42 @@
+{
+  "contactLensMenu": {
+    "brands": [
+      {
+        "name": "Aqualens",
+        "image": "https://static1.lenskart.com/media/desktop/img/aqualens-brand.jpg",
+        "filterParams": { "category": "Contact Lens", "brand": "Aqualens" }
+      },
+      {
+        "name": "Bausch & Lomb",
+        "image": "https://static1.lenskart.com/media/desktop/img/bausch-lomb-brand.jpg",
+        "filterParams": { "category": "Contact Lens", "brand": "Bausch & Lomb" }
+      }
+    ],
+    "power": [
+      {
+        "name": "[-] SPH Power (CYL <0.5)",
+        "displayName": "[-] SPH Power (CYL <0.5)",
+        "image": "https://static1.lenskart.com/media/desktop/img/minus-power-lens.jpg",
+        "filterParams": { "category": "Contact Lens", "power": "[-] SPH Power (CYL <0.5)" }
+      },
+      {
+        "name": "[+] SPH Power (CYL <0.5)",
+        "displayName": "[+] SPH Power (CYL <0.5)",
+        "image": "https://static1.lenskart.com/media/desktop/img/plus-power-lens.jpg",
+        "filterParams": { "category": "Contact Lens", "power": "[+] SPH Power (CYL <0.5)" }
+      }
+    ],
+    "color": [
+      {
+        "name": "Aquacolor Premium",
+        "image": "https://static1.lenskart.com/media/desktop/img/aquacolor-premium.jpg",
+        "filterParams": { "category": "Contact Lens", "color": "Aquacolor Premium" }
+      },
+      {
+        "name": "Aquacolor",
+        "image": "https://static1.lenskart.com/media/desktop/img/aquacolor-basic.jpg",
+        "filterParams": { "category": "Contact Lens", "color": "Aquacolor" }
+      }
+    ]
+  }
+}
