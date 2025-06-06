@@ -1,0 +1,42 @@
+{
+  "contactLensMenu": {
+    "brands": [
+      {
+        "name": "Aqualens",
+        "image": "https://res.cloudinary.com/dhbayskwh/image/upload/v1749192616/soflens_fdb4jb.jpg",
+        "filterParams": { "category": "Contact Lens", "brand": "Aqualens" }
+      },
+      {
+        "name": "Bausch & Lomb",
+        "image": "https://res.cloudinary.com/dhbayskwh/image/upload/v1749193154/bausch-and-lomb_f2fpbc.jpg",
+        "filterParams": { "category": "Contact Lens", "brand": "Bausch & Lomb" }
+      }
+    ],
+    "power": [
+      {
+        "name": "[-] SPH Power (CYL <0.5)",
+        "displayName": "[-] SPH Power (CYL <0.5)",
+        "image": "https://res.cloudinary.com/dhbayskwh/image/upload/v1749192916/plus-sph_baq92q.jpg",
+        "filterParams": { "category": "Contact Lens", "power": "[-] SPH Power (CYL <0.5)" }
+      },
+      {
+        "name": "[+] SPH Power (CYL <0.5)",
+        "displayName": "[+] SPH Power (CYL <0.5)",
+        "image": "https://res.cloudinary.com/dhbayskwh/image/upload/v1749192916/plus-sph_baq92q.jpg",
+        "filterParams": { "category": "Contact Lens", "power": "[+] SPH Power (CYL <0.5)" }
+      }
+    ],
+    "color": [
+      {
+        "name": "Aquacolor Premium",
+        "image": "https://res.cloudinary.com/dhbayskwh/image/upload/v1749192601/99x53Reviss_synh8i.png",
+        "filterParams": { "category": "Contact Lens", "color": "Aquacolor Premium" }
+      },
+      {
+        "name": "Aquacolor",
+        "image": "https://res.cloudinary.com/dhbayskwh/image/upload/v1749193000/aqua1234_hxnk0j.jpg",
+        "filterParams": { "category": "Contact Lens", "color": "Aquacolor" }
+      }
+    ]
+  }
+}
