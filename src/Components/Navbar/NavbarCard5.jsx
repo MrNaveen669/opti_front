@@ -39,8 +39,8 @@ function NavbarCard5() {
           <Box>
             <Grid gridTemplateColumns="repeat(5, 1fr)" w="100%">
               <Flex direction="column" justifyContent="space-evenly" mt="20">
-                <Flex 
-                  gap="5" 
+                <Flex
+                  gap="5"
                   fontSize="15px"
                   onClick={() => handleNavigation({ category: "Eye Glasses", gender: "Male" })}
                 >
@@ -59,7 +59,7 @@ function NavbarCard5() {
                   </Box>
                 </Flex>
 
-                <Flex 
+                <Flex
                   gap="5"
                   onClick={() => handleNavigation({ category: "Eye Glasses", gender: "Female" })}
                 >
@@ -78,7 +78,7 @@ function NavbarCard5() {
                   </Box>
                 </Flex>
 
-                <Flex 
+                <Flex
                   gap="5"
                   onClick={() => handleNavigation({ category: "Eye Glasses", gender: "Kids" })}
                 >
@@ -107,8 +107,8 @@ function NavbarCard5() {
                 >
                   SELECT CATEGORY
                 </Box>
-                <Box 
-                  fontSize="md" 
+                <Box
+                  fontSize="md"
                   _hover={{ bg: "blackAlpha.200" }}
                   onClick={() => handleNavigation({ category: "Eye Glasses", subCategory: "Full Frame" })}
                 >
@@ -117,8 +117,8 @@ function NavbarCard5() {
                     Starting From ₹ <span>1199</span>
                   </p>
                 </Box>
-                <Box 
-                  fontSize="md" 
+                <Box
+                  fontSize="md"
                   _hover={{ bg: "blackAlpha.200" }}
                   onClick={() => handleNavigation({ category: "Eye Glasses", subCategory: "Premium" })}
                 >
@@ -127,9 +127,9 @@ function NavbarCard5() {
                     Starting From ₹ <span>3000</span>
                   </p>
                 </Box>
-                <Box 
-                  fontSize="md" 
-                  _hover={{ bg: "blackAlpha.200" }} 
+                <Box
+                  fontSize="md"
+                  _hover={{ bg: "blackAlpha.200" }}
                   p="2"
                   onClick={() => handleNavigation({ category: "Computer Glasses" })}
                 >
@@ -150,13 +150,13 @@ function NavbarCard5() {
                   Frame Type
                 </Box>
                 <Flex direction="column" fontSize="md" gap="2">
-                  <Box 
+                  <Box
                     _hover={{ fontWeight: "bold" }}
                     onClick={() => handleNavigation({ category: "Eye Glasses", frameMaterial: "Rectangle" })}
                   >
                     Rectangle Frames
                   </Box>
-                  <Box 
+                  <Box
                     _hover={{ fontWeight: "bold" }}
                     onClick={() => handleNavigation({ category: "Eye Glasses", frameMaterial: "Wayfarer" })}
                   >
@@ -196,7 +196,7 @@ function NavbarCard5() {
                 justifyContent="space-evenly"
                 mt="20"
               >
-                <Flex 
+                <Flex
                   gap="5"
                   onClick={() => handleNavigation({ category: "Computer Glasses", gender: "Male" })}
                 >
@@ -215,7 +215,7 @@ function NavbarCard5() {
                   </Box>
                 </Flex>
 
-                <Flex 
+                <Flex
                   gap="5"
                   onClick={() => handleNavigation({ category: "Computer Glasses", gender: "Female" })}
                 >
@@ -234,7 +234,7 @@ function NavbarCard5() {
                   </Box>
                 </Flex>
 
-                <Flex 
+                <Flex
                   gap="5"
                   onClick={() => handleNavigation({ category: "Computer Glasses", gender: "Kids" })}
                 >
@@ -264,8 +264,8 @@ function NavbarCard5() {
                   SELECT CATEGORY
                 </Box>
 
-                <Box 
-                  _hover={{ bg: "blackAlpha.200" }} 
+                <Box
+                  _hover={{ bg: "blackAlpha.200" }}
                   fontSize="md"
                   onClick={() => handleNavigation({ category: "Computer Glasses", subCategory: "Blu 0 Computer Glasses" })}
                 >
@@ -274,8 +274,8 @@ function NavbarCard5() {
                     Starting From ₹ <span>1299</span>
                   </p>
                 </Box>
-                <Box 
-                  _hover={{ bg: "blackAlpha.200" }} 
+                <Box
+                  _hover={{ bg: "blackAlpha.200" }}
                   fontSize="md"
                   onClick={() => handleNavigation({ category: "Computer Glasses", subCategory: "Premium Range" })}
                 >
@@ -341,150 +341,6 @@ function NavbarCard5() {
                       <Text>{brand.name}</Text>
                     </Flex>
                   ))}
-                  <Flex
-                    align="center"
-                    gap="3"
-                    _hover={{ bg: "blackAlpha.200", fontWeight: "bold" }}
-                    p="2"
-                    cursor="pointer"
-                    onClick={() => handleNavigation({ category: "Contact Lens", brand: "Soflens" })}
-                  >
-                    <Image
-                      src="https://static5.lenskart.com/media/catalog/product/pro/1/thumbnail/628x301/9df78eab33525d08d6e5fb8d27136e95//s/o/soflens-daily-disposable-contact-lenses-30-lenses-box_g_2938.jpg"
-                      alt="Soflens"
-                      boxSize="40px"
-                      objectFit="contain"
-                    />
-                    <Text>Soflens</Text>
-                  </Flex>
-                  <Flex
-                    align="center"
-                    gap="3"
-                    _hover={{ bg: "blackAlpha.200", fontWeight: "bold" }}
-                    p="2"
-                    cursor="pointer"
-                    onClick={() => handleNavigation({ category: "Contact Lens", brand: "Johnson & Johnson" })}
-                  >
-                    <Image
-                      src="https://static5.lenskart.com/media/catalog/product/pro/1/thumbnail/628x301/9df78eab33525d08d6e5fb8d27136e95//j/o/johnson-johnson-acuvue-oasys-1-day-contact-lenses-30-lenses-box_g_1049.jpg"
-                      alt="Johnson & Johnson"
-                      boxSize="40px"
-                      objectFit="contain"
-                    />
-                    <Text>Johnson & Johnson</Text>
-                  </Flex>
-                  <Flex
-                    align="center"
-                    gap="3"
-                    _hover={{ bg: "blackAlpha.200", fontWeight: "bold" }}
-                    p="2"
-                    cursor="pointer"
-                    onClick={() => handleNavigation({ category: "Contact Lens", brand: "Alcon" })}
-                  >
-                    <Image
-                      src="https://static5.lenskart.com/media/catalog/product/pro/1/thumbnail/628x301/9df78eab33525d08d6e5fb8d27136e95//a/l/alcon-dailies-aquacomfort-plus-contact-lenses-30-lenses-box_g_7030.jpg"
-                      alt="Alcon"
-                      boxSize="40px"
-                      objectFit="contain"
-                    />
-                    <Text>Alcon</Text>
-                  </Flex>
-                  <Flex
-                    align="center"
-                    gap="3"
-                    _hover={{ bg: "blackAlpha.200", fontWeight: "bold" }}
-                    p="2"
-                    cursor="pointer"
-                    onClick={() => handleNavigation({ category: "Contact Lens", brand: "Optix" })}
-                  >
-                    <Image
-                      src="https://static5.lenskart.com/media/catalog/product/pro/1/thumbnail/628x301/9df78eab33525d08d6e5fb8d27136e95//a/l/alcon-dailies-aquacomfort-plus-contact-lenses-30-lenses-box_g_7030.jpg"
-                      alt="Optix"
-                      boxSize="40px"
-                      objectFit="contain"
-                    />
-                    <Text>Optix</Text>
-                  </Flex>
-                  <Flex
-                    align="center"
-                    gap="3"
-                    _hover={{ bg: "blackAlpha.200", fontWeight: "bold" }}
-                    p="2"
-                    cursor="pointer"
-                    onClick={() => handleNavigation({ category: "Contact Lens", brand: "Purevision" })}
-                  >
-                    <Image
-                      src="https://static5.lenskart.com/media/catalog/product/pro/1/thumbnail/628x301/9df78eab33525d08d6e5fb8d27136e95//a/l/alcon-dailies-aquacomfort-plus-contact-lenses-30-lenses-box_g_7030.jpg"
-                      alt="Purevision"
-                      boxSize="40px"
-                      objectFit="contain"
-                    />
-                    <Text>Purevision</Text>
-                  </Flex>
-                  <Flex
-                    align="center"
-                    gap="3"
-                    _hover={{ bg: "blackAlpha.200", fontWeight: "bold" }}
-                    p="2"
-                    cursor="pointer"
-                    onClick={() => handleNavigation({ category: "Contact Lens", brand: "Freshlook" })}
-                  >
-                    <Image
-                      src="https://static5.lenskart.com/media/catalog/product/pro/1/thumbnail/628x301/9df78eab33525d08d6e5fb8d27136e95//a/l/alcon-dailies-aquacomfort-plus-contact-lenses-30-lenses-box_g_7030.jpg"
-                      alt="Freshlook"
-                      boxSize="40px"
-                      objectFit="contain"
-                    />
-                    <Text>Freshlook</Text>
-                  </Flex>
-                  <Flex
-                    align="center"
-                    gap="3"
-                    _hover={{ bg: "blackAlpha.200", fontWeight: "bold" }}
-                    p="2"
-                    cursor="pointer"
-                    onClick={() => handleNavigation({ category: "Contact Lens", brand: "Dailies" })}
-                  >
-                    <Image
-                      src="https://static5.lenskart.com/media/catalog/product/pro/1/thumbnail/628x301/9df78eab33525d08d6e5fb8d27136e95//a/l/alcon-dailies-aquacomfort-plus-contact-lenses-30-lenses-box_g_7030.jpg"
-                      alt="Dailies"
-                      boxSize="40px"
-                      objectFit="contain"
-                    />
-                    <Text>Dailies</Text>
-                  </Flex>
-                  <Flex
-                    align="center"
-                    gap="3"
-                    _hover={{ bg: "blackAlpha.200", fontWeight: "bold" }}
-                    p="2"
-                    cursor="pointer"
-                    onClick={() => handleNavigation({ category: "Contact Lens", brand: "Acuvue" })}
-                  >
-                    <Image
-                      src="https://static5.lenskart.com/media/catalog/product/pro/1/thumbnail/628x301/9df78eab33525d08d6e5fb8d27136e95//a/l/alcon-dailies-aquacomfort-plus-contact-lenses-30-lenses-box_g_7030.jpg"
-                      alt="Acuvue"
-                      boxSize="40px"
-                      objectFit="contain"
-                    />
-                    <Text>Acuvue</Text>
-                  </Flex>
-                  <Flex
-                    align="center"
-                    gap="3"
-                    _hover={{ bg: "blackAlpha.200", fontWeight: "bold" }}
-                    p="2"
-                    cursor="pointer"
-                    onClick={() => handleNavigation({ category: "Contact Lens", brand: "Focus" })}
-                  >
-                    <Image
-                      src="https://static5.lenskart.com/media/catalog/product/pro/1/thumbnail/628x301/9df78eab33525d08d6e5fb8d27136e95//a/l/alcon-dailies-aquacomfort-plus-contact-lenses-30-lenses-box_g_7030.jpg"
-                      alt="Focus"
-                      boxSize="40px"
-                      objectFit="contain"
-                    />
-                    <Text>Focus</Text>
-                  </Flex>
                 </Flex>
               </Flex>
 
@@ -518,38 +374,6 @@ function NavbarCard5() {
                       <Text>{powerItem.displayName}</Text>
                     </Flex>
                   ))}
-                  <Flex
-                    align="center"
-                    gap="3"
-                    _hover={{ bg: "blackAlpha.200", fontWeight: "bold" }}
-                    p="2"
-                    cursor="pointer"
-                    onClick={() => handleNavigation({ category: "Contact Lens", power: "CYL Power (CYL >0.75)" })}
-                  >
-                    <Image
-                      src="https://static5.lenskart.com/media/uploads/power-icon-cyl.png"
-                      alt="CYL Power"
-                      boxSize="30px"
-                      objectFit="contain"
-                    />
-                    <Text>CYL Power (CYL &gt;0.75)</Text>
-                  </Flex>
-                  <Flex
-                    align="center"
-                    gap="3"
-                    _hover={{ bg: "blackAlpha.200", fontWeight: "bold" }}
-                    p="2"
-                    cursor="pointer"
-                    onClick={() => handleNavigation({ category: "Contact Lens", power: "Toric Power" })}
-                  >
-                    <Image
-                      src="https://static5.lenskart.com/media/uploads/power-icon-toric.png"
-                      alt="Toric Power"
-                      boxSize="30px"
-                      objectFit="contain"
-                    />
-                    <Text>Toric Power</Text>
-                  </Flex>
                 </Flex>
               </Flex>
 
@@ -584,74 +408,6 @@ function NavbarCard5() {
                       <Text>{colorItem.name}</Text>
                     </Flex>
                   ))}
-                  <Flex
-                    align="center"
-                    gap="3"
-                    _hover={{ bg: "blackAlpha.200", fontWeight: "bold" }}
-                    p="2"
-                    cursor="pointer"
-                    onClick={() => handleNavigation({ category: "Contact Lens", color: "Freshlook" })}
-                  >
-                    <Image
-                      src="https://static5.lenskart.com/media/uploads/freshlook-eye.jpg"
-                      alt="Freshlook"
-                      boxSize="35px"
-                      borderRadius="50%"
-                      objectFit="cover"
-                    />
-                    <Text>Freshlook</Text>
-                  </Flex>
-                  <Flex
-                    align="center"
-                    gap="3"
-                    _hover={{ bg: "blackAlpha.200", fontWeight: "bold" }}
-                    p="2"
-                    cursor="pointer"
-                    onClick={() => handleNavigation({ category: "Contact Lens", color: "Clalen" })}
-                  >
-                    <Image
-                      src="https://static5.lenskart.com/media/uploads/clalen-eye.jpg"
-                      alt="Clalen"
-                      boxSize="35px"
-                      borderRadius="50%"
-                      objectFit="cover"
-                    />
-                    <Text>Clalen</Text>
-                  </Flex>
-                  <Flex
-                    align="center"
-                    gap="3"
-                    _hover={{ bg: "blackAlpha.200", fontWeight: "bold" }}
-                    p="2"
-                    cursor="pointer"
-                    onClick={() => handleNavigation({ category: "Contact Lens", color: "Color with no Power" })}
-                  >
-                    <Image
-                      src="https://static5.lenskart.com/media/uploads/color-no-power-eye.jpg"
-                      alt="Color with no Power"
-                      boxSize="35px"
-                      borderRadius="50%"
-                      objectFit="cover"
-                    />
-                    <Text>Color with no Power</Text>
-                  </Flex>
-                  <Flex
-                    align="center"
-                    gap="3"
-                    _hover={{ bg: "blackAlpha.200", fontWeight: "bold" }}
-                    p="2"
-                    cursor="pointer"
-                    onClick={() => handleNavigation({ category: "Contact Lens", color: "Color with no Power" })}
-                  >
-                    <Image
-                      src="https://static5.lenskart.com/media/uploads/color-no-power-eye.jpg"
-                      alt="Color with no Power"
-                      boxSize="35px"
-                      borderRadius="50%"
-                      objectFit="cover"
-                    />
-                    <Text>Color without CLY Power</Text>
-                  </Flex>
                 </Flex>
               </Flex>
             </Grid>
@@ -684,9 +440,9 @@ function NavbarCard5() {
               justifyContent="center"
               p="5"
             >
-              <Box 
-                bg="whiteAlpha.900" 
-                h="250px" 
+              <Box
+                bg="whiteAlpha.900"
+                h="250px"
                 w="240px"
                 onClick={() => handleNavigation({ category: "Eye Glasses", gender: "Kids" })}
               >
@@ -699,9 +455,9 @@ function NavbarCard5() {
                   Eye Glasses
                 </Box>
               </Box>
-              <Box 
-                bg="whiteAlpha.900" 
-                h="250px" 
+              <Box
+                bg="whiteAlpha.900"
+                h="250px"
                 w="240px"
                 onClick={() => handleNavigation({ category: "Computer Glasses", gender: "Kids" })}
               >
@@ -714,9 +470,9 @@ function NavbarCard5() {
                   Zero Power Computer Glasses
                 </Box>
               </Box>
-              <Box 
-                bg="whiteAlpha.900" 
-                h="250px" 
+              <Box
+                bg="whiteAlpha.900"
+                h="250px"
                 w="240px"
                 onClick={() => handleNavigation({ category: "Sunglasses", gender: "Kids" })}
               >
@@ -756,7 +512,7 @@ function NavbarCard5() {
           <Box>
             <Grid gridTemplateColumns="repeat(6, 1fr)">
               <Flex direction="column" justifyContent="space-evenly">
-                <Flex 
+                <Flex
                   gap="5"
                   onClick={() => handleNavigation({ category: "Sunglasses", gender: "Male" })}
                 >
@@ -775,8 +531,8 @@ function NavbarCard5() {
                   </Box>
                 </Flex>
 
-                <Flex 
-                  gap="5" 
+                <Flex
+                  gap="5"
                   mt="-40%"
                   onClick={() => handleNavigation({ category: "Sunglasses", gender: "Female" })}
                 >
@@ -805,8 +561,8 @@ function NavbarCard5() {
                 >
                   SELECT CATEGORY
                 </Box>
-                <Box 
-                  _hover={{ bg: "blackAlpha.200" }} 
+                <Box
+                  _hover={{ bg: "blackAlpha.200" }}
                   fontSize="md"
                   onClick={() => handleNavigation({ category: "Sunglasses", subCategory: "Aviator" })}
                 >
@@ -815,9 +571,9 @@ function NavbarCard5() {
                     Starting From ₹ <span>1299</span>
                   </p>
                 </Box>
-                <Box 
-                  _hover={{ bg: "blackAlpha.200" }} 
-                  fontSize="md" 
+                <Box
+                  _hover={{ bg: "blackAlpha.200" }}
+                  fontSize="md"
                   p="2"
                   onClick={() => handleNavigation({ category: "Sunglasses", subCategory: "Sports" })}
                 >
@@ -838,13 +594,13 @@ function NavbarCard5() {
                   Our Top Picks
                 </Box>
                 <Flex direction="column" fontSize="md" gap="2">
-                  <Box 
+                  <Box
                     _hover={{ fontWeight: "bold" }}
                     onClick={() => handleNavigation({ category: "Sunglasses", sort: "newest" })}
                   >
                     New Arrivals
                   </Box>
-                  <Box 
+                  <Box
                     _hover={{ fontWeight: "bold" }}
                     onClick={() => handleNavigation({ category: "Sunglasses", sort: "popular" })}
                   >
@@ -856,6 +612,18 @@ function NavbarCard5() {
           </Box>
         </MenuList>
       </Menu>
+      <Box
+        as="button"
+        bg="#fbf9f7"
+        fontSize="15px"
+        fontWeight="600"
+        _hover={{
+          borderBottom: "4px solid teal"
+        }}
+        onClick={() => navigate('/sampleproduct')}
+      >
+        EXPLORE ALL
+      </Box>
     </Flex>
   );
 }
