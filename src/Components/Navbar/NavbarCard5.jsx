@@ -15,6 +15,18 @@ function NavbarCard5() {
   // Get contact lens menu data
   const { contactLensMenu } = lensData;
 
+  // Function to split brands into chunks for multiple columns
+  const chunkArray = (array, chunkSize) => {
+    const chunks = [];
+    for (let i = 0; i < array.length; i += chunkSize) {
+      chunks.push(array.slice(i, i + chunkSize));
+    }
+    return chunks;
+  };
+
+  // Split brands into columns (4 brands per column)
+  const brandColumns = chunkArray(contactLensMenu.brands, 4);
+
   return (
     <Flex bg="#fbf9f7" cursor="pointer" gap="6">
       <Menu>
@@ -304,108 +316,124 @@ function NavbarCard5() {
 
         <MenuList
           color="blackAlpha.900"
-          h="450px"
+          h="600px" // Increased height significantly
           bg="whiteAlpha.800"
           w="100%"
-          p="5"
+          p="6"
+          maxH="80vh" // Ensure it doesn't exceed viewport height
+          overflowY="auto" // Add scroll if needed
         >
           <Box>
-            <Grid gridTemplateColumns="repeat(3, 1fr)" w="100%" gap="4">
-              {/* BRANDS Column */}
-              <Flex direction="column" gap="6">
-                <Box
-                  fontSize="md"
-                  fontWeight="bold"
-                  borderBottom="1px solid black"
-                  p="1"
-                >
-                  BRANDS
-                </Box>
-                <Flex direction="column" fontSize="md" gap="3">
-                  {contactLensMenu.brands.map((brand, index) => (
-                    <Flex
-                      key={index}
-                      align="center"
-                      gap="3"
-                      _hover={{ bg: "blackAlpha.200", fontWeight: "bold" }}
+            <Grid gridTemplateColumns="repeat(4, 1fr)" w="100%" gap="6"> {/* Changed to 4 columns */}
+              
+              {/* BRANDS Column(s) - Now split into multiple columns if needed */}
+              {brandColumns.map((brandColumn, columnIndex) => (
+                <Flex key={columnIndex} direction="column" gap="4">
+                  {columnIndex === 0 && (
+                    <Box
+                      fontSize="lg" // Increased font size
+                      fontWeight="bold"
+                      borderBottom="2px solid black"
                       p="2"
-                      cursor="pointer"
-                      onClick={() => handleNavigation(brand.filterParams)}
+                      mb="2"
                     >
-                      <Image
-                        src={brand.image}
-                        alt={brand.name}
-                        boxSize="40px"
-                        objectFit="contain"
-                      />
-                      <Text>{brand.name}</Text>
-                    </Flex>
-                  ))}
+                      BRANDS
+                    </Box>
+                  )}
+                  <Flex direction="column" fontSize="md" gap="4"> {/* Increased gap */}
+                    {brandColumn.map((brand, index) => (
+                      <Flex
+                        key={index}
+                        align="center"
+                        gap="4" // Increased gap
+                        _hover={{ bg: "blackAlpha.200", fontWeight: "bold" }}
+                        p="3" // Increased padding
+                        cursor="pointer"
+                        borderRadius="md"
+                        onClick={() => handleNavigation(brand.filterParams)}
+                      >
+                        <Image
+                          src={brand.image}
+                          alt={brand.name}
+                          boxSize="50px" // Increased from 40px
+                          objectFit="contain"
+                          flexShrink={0}
+                        />
+                        <Text fontSize="md" fontWeight="500">{brand.name}</Text> {/* Increased text size */}
+                      </Flex>
+                    ))}
+                  </Flex>
                 </Flex>
-              </Flex>
+              ))}
 
               {/* POWER Column */}
-              <Flex direction="column" gap="6">
+              <Flex direction="column" gap="4">
                 <Box
-                  fontSize="md"
+                  fontSize="lg" // Increased font size
                   fontWeight="bold"
-                  borderBottom="1px solid black"
-                  p="1"
+                  borderBottom="2px solid black"
+                  p="2"
+                  mb="2"
                 >
                   POWER
                 </Box>
-                <Flex direction="column" fontSize="md" gap="3">
+                <Flex direction="column" fontSize="md" gap="4"> {/* Increased gap */}
                   {contactLensMenu.power.map((powerItem, index) => (
                     <Flex
                       key={index}
                       align="center"
-                      gap="3"
+                      gap="4" // Increased gap
                       _hover={{ bg: "blackAlpha.200", fontWeight: "bold" }}
-                      p="2"
+                      p="3" // Increased padding
                       cursor="pointer"
+                      borderRadius="md"
                       onClick={() => handleNavigation(powerItem.filterParams)}
                     >
                       <Image
                         src={powerItem.image}
                         alt={powerItem.name}
-                        boxSize="30px"
+                        boxSize="45px" // Increased from 30px
                         objectFit="contain"
+                        flexShrink={0}
                       />
-                      <Text>{powerItem.displayName}</Text>
+                      <Text fontSize="md" fontWeight="500">{powerItem.displayName}</Text> {/* Increased text size */}
                     </Flex>
                   ))}
                 </Flex>
               </Flex>
 
               {/* COLOR Column */}
-              <Flex direction="column" gap="6">
+              <Flex direction="column" gap="4">
                 <Box
-                  fontSize="md"
+                  fontSize="lg" // Increased font size
                   fontWeight="bold"
-                  borderBottom="1px solid black"
-                  p="1"
+                  borderBottom="2px solid black"
+                  p="2"
+                  mb="2"
                 >
                   COLOR
                 </Box>
-                <Flex direction="column" fontSize="md" gap="3">
+                <Flex direction="column" fontSize="md" gap="4"> {/* Increased gap */}
                   {contactLensMenu.color.map((colorItem, index) => (
                     <Flex
                       key={index}
                       align="center"
-                      gap="3"
+                      gap="4" // Increased gap
                       _hover={{ bg: "blackAlpha.200", fontWeight: "bold" }}
-                      p="2"
+                      p="3" // Increased padding
                       cursor="pointer"
+                      borderRadius="md"
                       onClick={() => handleNavigation(colorItem.filterParams)}
                     >
                       <Image
                         src={colorItem.image}
                         alt={colorItem.name}
-                        boxSize="35px"
+                        boxSize="45px" // Increased from 35px
                         borderRadius="50%"
                         objectFit="cover"
+                        flexShrink={0}
                       />
-                      <Text>{colorItem.name}</Text>
+                      <Text fontSize="md" fontWeight="500">{colorItem.name}</Text> {/* Increased text size */}
                     </Flex>
                   ))}
                 </Flex>

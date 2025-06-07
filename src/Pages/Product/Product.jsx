@@ -416,28 +416,18 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { 
-  Box, 
-  Text, 
-  Spinner, 
-  Flex, 
-  Heading, 
-  Select, 
-  FormControl,
-  FormLabel,
-  Stack,
-  Checkbox,
-  RangeSlider,
-  RangeSliderTrack,
-  RangeSliderFilledTrack,
-  RangeSliderThumb,
-  Button,
-  Grid,
-  Badge
+  Box, Grid, Heading, Text, Button, Select, Checkbox, 
+  Stack, FormControl, FormLabel, RangeSlider, 
+  RangeSliderTrack, RangeSliderFilledTrack, RangeSliderThumb,
+  Flex, Badge, Spinner, IconButton, Icon 
 } from "@chakra-ui/react";
+
 import ProductCard from "./ProductCard";
 import Navbar from "../../Components/Navbar/Navbar";
 import Footer from "../../Components/Footer/Footer";
 import { PRODUCT_ALL_URL } from "../../config/api"; 
+import { ChevronDownIcon, ChevronUpIcon, CloseIcon } from "@chakra-ui/icons";
+import { useNavigate } from "react-router-dom";
 
 // Helper function to standardize category names
 const standardizeCategory = (category) => {
@@ -482,10 +472,14 @@ const standardizeCategory = (category) => {
 
 const Product = () => {
   const location = useLocation();
+  const navigate = useNavigate(); // Add this import
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  
+  // Add filter visibility state
+  const [showFilters, setShowFilters] = useState(false);
   
   // Updated filter states to include Contact Lens specific filters
   const [filters, setFilters] = useState({
@@ -717,28 +711,55 @@ const Product = () => {
     }
   }, [products, filters]);
 
+  // Updated handleFilterChange to update URL and close mobile filters
   const handleFilterChange = (field, value) => {
     console.log(`Filter change: ${field} = ${value}`); // Debug log
+    
+    let newFilters = { ...filters };
     
     if (field === "category") {
       value = standardizeCategory(value);
       // Clear Contact Lens specific filters when category changes
-      setFilters(prev => ({ 
-        ...prev, 
+      newFilters = { 
+        ...newFilters, 
         [field]: value,
         brand: "",
         power: "",
         color: "",
         gender: "",
         frameMaterial: ""
-      }));
+      };
     } else {
-      setFilters(prev => ({ ...prev, [field]: value }));
+      newFilters = { ...newFilters, [field]: value };
+    }
+    
+    setFilters(newFilters);
+    
+    // Update URL with new filters (excluding empty values)
+    const searchParams = new URLSearchParams();
+    Object.entries(newFilters).forEach(([key, val]) => {
+      if (val && key !== 'sort' && key !== 'priceRange') {
+        searchParams.set(key, val);
+      }
+    });
+    
+    // Add sort if it's not default
+    if (newFilters.sort !== 'recommended') {
+      searchParams.set('sort', newFilters.sort);
+    }
+    
+    // Update URL without page reload
+    const newSearch = searchParams.toString();
+    navigate(`${location.pathname}${newSearch ? `?${newSearch}` : ''}`, { replace: true });
+    
+    // Close mobile filters on selection (on mobile devices)
+    if (window.innerWidth <= 768) {
+      setShowFilters(false);
     }
   };
 
   const clearFilters = () => {
-    setFilters({
+    const clearedFilters = {
       category: "",
       subCategory: "",
       gender: "",
@@ -748,7 +769,12 @@ const Product = () => {
       color: "",
       priceRange: [0, 10000],
       sort: "recommended"
-    });
+    };
+    
+    setFilters(clearedFilters);
+    
+    // Clear URL params
+    navigate(location.pathname, { replace: true });
   };
 
   // Get active filter count
@@ -757,6 +783,11 @@ const Product = () => {
     key !== 'priceRange' && 
     filters[key]
   ).length;
+
+  // Toggle filters visibility
+  const toggleFilters = () => {
+    setShowFilters(!showFilters);
+  };
 
   return (
     <Box>
@@ -779,231 +810,277 @@ const Product = () => {
         ) : error ? (
           <Text color="red.500" textAlign="center">{error}</Text>
         ) : (
-          <Grid templateColumns={{ base: "1fr", lg: "250px 1fr" }} gap={6}>
-            {/* Filters sidebar */}
-            <Box borderRight="1px" borderColor="gray.200" p={4}>
-              <Flex justify="space-between" align="center" mb={4}>
-                <Heading size="md">Filters</Heading>
-                {activeFilterCount > 0 && (
-                  <Button size="sm" onClick={clearFilters} colorScheme="red" variant="outline">
-                    Clear All ({activeFilterCount})
-                  </Button>
-                )}
-              </Flex>
-              
-              <Stack spacing={4}>
-                {/* Category filter */}
-                <FormControl>
-                  <FormLabel fontWeight="bold">Category</FormLabel>
-                  <Select 
-                    value={filters.category} 
-                    onChange={(e) => handleFilterChange("category", e.target.value)}
-                    placeholder="All Categories"
-                  >
-                    {filterOptions.categories.map(category => (
-                      <option key={category} value={category}>{category}</option>
-                    ))}
-                  </Select>
-                </FormControl>
+          <>
+            {/* Mobile Filter Toggle Button */}
+            <Box display={{ base: "block", lg: "none" }} mb={4}>
+              <Button
+                onClick={toggleFilters}
+                colorScheme="blue"
+                variant="outline"
+                width="100%"
+                leftIcon={<Icon as={showFilters ? ChevronUpIcon : ChevronDownIcon} />}
+              >
+                Filters {activeFilterCount > 0 && `(${activeFilterCount})`}
+              </Button>
+            </Box>
+
+            <Grid 
+              templateColumns={{ base: "1fr", lg: "250px 1fr" }} 
+              gap={6}
+            >
+              {/* Filters sidebar - Collapsible on mobile */}
+              <Box 
+                borderRight={{ base: "none", lg: "1px" }}
+                borderColor="gray.200" 
+                p={4}
+                display={{ 
+                  base: showFilters ? "block" : "none", 
+                  lg: "block" 
+                }}
+                position={{ base: "relative", lg: "static" }}
+                bg={{ base: "white", lg: "transparent" }}
+                boxShadow={{ base: showFilters ? "md" : "none", lg: "none" }}
+                borderRadius={{ base: "md", lg: "none" }}
+                mb={{ base: showFilters ? 4 : 0, lg: 0 }}
+              >
+                <Flex justify="space-between" align="center" mb={4}>
+                  <Heading size="md">Filters</Heading>
+                  <Flex gap={2}>
+                    {activeFilterCount > 0 && (
+                      <Button 
+                        size="sm" 
+                        onClick={clearFilters} 
+                        colorScheme="red" 
+                        variant="outline"
+                      >
+                        Clear All ({activeFilterCount})
+                      </Button>
+                    )}
+                    {/* Close button for mobile */}
+                    <IconButton
+                      display={{ base: "flex", lg: "none" }}
+                      icon={<CloseIcon />}
+                      size="sm"
+                      onClick={() => setShowFilters(false)}
+                      aria-label="Close filters"
+                    />
+                  </Flex>
+                </Flex>
                 
-                {/* Contact Lens specific filters */}
-                {isContactLensCategory() ? (
-                  <>
-                    {/* Brand filter for Contact Lens */}
-                    <FormControl>
-                      <FormLabel fontWeight="bold">Brand</FormLabel>
-                      <Select 
-                        value={filters.brand} 
-                        onChange={(e) => handleFilterChange("brand", e.target.value)}
-                        placeholder="All Brands"
-                      >
-                        {filterOptions.brands.map(brand => (
-                          <option key={brand} value={brand}>{brand}</option>
-                        ))}
-                      </Select>
-                    </FormControl>
-                    
-                    {/* Power filter for Contact Lens */}
-                    <FormControl>
-                      <FormLabel fontWeight="bold">Power</FormLabel>
-                      <Select 
-                        value={filters.power} 
-                        onChange={(e) => handleFilterChange("power", e.target.value)}
-                        placeholder="All Powers"
-                      >
-                        {filterOptions.powers.map(power => (
-                          <option key={power} value={power}>{power}</option>
-                        ))}
-                      </Select>
-                    </FormControl>
-                    
-                    {/* Color filter for Contact Lens */}
-                    <FormControl>
-                      <FormLabel fontWeight="bold">Color</FormLabel>
-                      <Select 
-                        value={filters.color} 
-                        onChange={(e) => handleFilterChange("color", e.target.value)}
-                        placeholder="All Colors"
-                      >
-                        {filterOptions.colors.map(color => (
-                          <option key={color} value={color}>{color}</option>
-                        ))}
-                      </Select>
-                    </FormControl>
-                  </>
-                ) : (
-                  <>
-                    {/* Sub-category filter for non-Contact Lens */}
-                    {filters.category && (
+                <Stack spacing={4}>
+                  {/* Category filter */}
+                  <FormControl>
+                    <FormLabel fontWeight="bold">Category</FormLabel>
+                    <Select 
+                      value={filters.category} 
+                      onChange={(e) => handleFilterChange("category", e.target.value)}
+                      placeholder="All Categories"
+                    >
+                      {filterOptions.categories.map(category => (
+                        <option key={category} value={category}>{category}</option>
+                      ))}
+                    </Select>
+                  </FormControl>
+                  
+                  {/* Contact Lens specific filters */}
+                  {isContactLensCategory() ? (
+                    <>
+                      {/* Brand filter for Contact Lens */}
                       <FormControl>
-                        <FormLabel fontWeight="bold">Sub-Category</FormLabel>
+                        <FormLabel fontWeight="bold">Brand</FormLabel>
                         <Select 
-                          value={filters.subCategory} 
-                          onChange={(e) => handleFilterChange("subCategory", e.target.value)}
-                          placeholder="All Sub-Categories"
+                          value={filters.brand} 
+                          onChange={(e) => handleFilterChange("brand", e.target.value)}
+                          placeholder="All Brands"
                         >
-                          {filterOptions.subCategories
-                            .filter(subCat => {
-                              // Find products that match both the selected category and this subCategory
-                              return products.some(product => 
-                                standardizeCategory(product.category) === standardizeCategory(filters.category) && 
-                                product.subCategory === subCat
-                              );
-                            })
-                            .map(subCat => (
-                              <option key={subCat} value={subCat}>{subCat}</option>
-                            ))
-                          }
+                          {filterOptions.brands.map(brand => (
+                            <option key={brand} value={brand}>{brand}</option>
+                          ))}
                         </Select>
                       </FormControl>
-                    )}
-                    
-                    {/* Gender filter for non-Contact Lens */}
-                    <FormControl>
-                      <FormLabel fontWeight="bold">Gender</FormLabel>
-                      <Stack>
-                        {filterOptions.genders.map(gender => (
-                          <Checkbox 
-                            key={gender}
-                            isChecked={filters.gender === gender}
-                            onChange={() => handleFilterChange("gender", filters.gender === gender ? "" : gender)}
-                          >
-                            {gender}
-                          </Checkbox>
-                        ))}
-                      </Stack>
-                    </FormControl>
-                    
-                    {/* Frame Material filter for non-Contact Lens */}
-                    {filterOptions.frameMaterials.length > 0 && (
+                      
+                      {/* Power filter for Contact Lens */}
                       <FormControl>
-                        <FormLabel fontWeight="bold">Frame Material</FormLabel>
+                        <FormLabel fontWeight="bold">Power</FormLabel>
+                        <Select 
+                          value={filters.power} 
+                          onChange={(e) => handleFilterChange("power", e.target.value)}
+                          placeholder="All Powers"
+                        >
+                          {filterOptions.powers.map(power => (
+                            <option key={power} value={power}>{power}</option>
+                          ))}
+                        </Select>
+                      </FormControl>
+                      
+                      {/* Color filter for Contact Lens */}
+                      <FormControl>
+                        <FormLabel fontWeight="bold">Color</FormLabel>
+                        <Select 
+                          value={filters.color} 
+                          onChange={(e) => handleFilterChange("color", e.target.value)}
+                          placeholder="All Colors"
+                        >
+                          {filterOptions.colors.map(color => (
+                            <option key={color} value={color}>{color}</option>
+                          ))}
+                        </Select>
+                      </FormControl>
+                    </>
+                  ) : (
+                    <>
+                      {/* Sub-category filter for non-Contact Lens */}
+                      {filters.category && (
+                        <FormControl>
+                          <FormLabel fontWeight="bold">Sub-Category</FormLabel>
+                          <Select 
+                            value={filters.subCategory} 
+                            onChange={(e) => handleFilterChange("subCategory", e.target.value)}
+                            placeholder="All Sub-Categories"
+                          >
+                            {filterOptions.subCategories
+                              .filter(subCat => {
+                                // Find products that match both the selected category and this subCategory
+                                return products.some(product => 
+                                  standardizeCategory(product.category) === standardizeCategory(filters.category) && 
+                                  product.subCategory === subCat
+                                );
+                              })
+                              .map(subCat => (
+                                <option key={subCat} value={subCat}>{subCat}</option>
+                              ))
+                            }
+                          </Select>
+                        </FormControl>
+                      )}
+                      
+                      {/* Gender filter for non-Contact Lens */}
+                      <FormControl>
+                        <FormLabel fontWeight="bold">Gender</FormLabel>
                         <Stack>
-                          {filterOptions.frameMaterials.map(material => (
+                          {filterOptions.genders.map(gender => (
                             <Checkbox 
-                              key={material}
-                              isChecked={filters.frameMaterial === material}
-                              onChange={() => handleFilterChange("frameMaterial", filters.frameMaterial === material ? "" : material)}
+                              key={gender}
+                              isChecked={filters.gender === gender}
+                              onChange={() => handleFilterChange("gender", filters.gender === gender ? "" : gender)}
                             >
-                              {material}
+                              {gender}
                             </Checkbox>
                           ))}
                         </Stack>
                       </FormControl>
-                    )}
-                  </>
+                      
+                      {/* Frame Material filter for non-Contact Lens */}
+                      {filterOptions.frameMaterials.length > 0 && (
+                        <FormControl>
+                          <FormLabel fontWeight="bold">Frame Material</FormLabel>
+                          <Stack>
+                            {filterOptions.frameMaterials.map(material => (
+                              <Checkbox 
+                                key={material}
+                                isChecked={filters.frameMaterial === material}
+                                onChange={() => handleFilterChange("frameMaterial", filters.frameMaterial === material ? "" : material)}
+                              >
+                                {material}
+                              </Checkbox>
+                            ))}
+                          </Stack>
+                        </FormControl>
+                      )}
+                    </>
+                  )}
+                  
+                  {/* Price Range filter */}
+                  <FormControl>
+                    <FormLabel fontWeight="bold">Price Range</FormLabel>
+                    <RangeSlider
+                      aria-label={['min', 'max']}
+                      min={0}
+                      max={10000}
+                      step={100}
+                      value={filters.priceRange}
+                      onChange={(val) => handleFilterChange("priceRange", val)}
+                    >
+                      <RangeSliderTrack>
+                        <RangeSliderFilledTrack />
+                      </RangeSliderTrack>
+                      <RangeSliderThumb index={0} />
+                      <RangeSliderThumb index={1} />
+                    </RangeSlider>
+                    <Flex justify="space-between">
+                      <Text>₹{filters.priceRange[0]}</Text>
+                      <Text>₹{filters.priceRange[1]}</Text>
+                    </Flex>
+                  </FormControl>
+                </Stack>
+              </Box>
+              
+              {/* Product display area */}
+              <Box>
+                <Flex justify="space-between" align="center" mb={4} flexWrap="wrap" gap={2}>
+                  <Text>{filteredProducts.length} Products</Text>
+                  <FormControl maxW="200px">
+                    <Select 
+                      value={filters.sort}
+                      onChange={(e) => handleFilterChange("sort", e.target.value)}
+                    >
+                      <option value="recommended">Recommended</option>
+                      <option value="priceLowToHigh">Price: Low to High</option>
+                      <option value="priceHighToLow">Price: High to Low</option>
+                      <option value="newest">Newest First</option>
+                      <option value="popular">Most Popular</option>
+                    </Select>
+                  </FormControl>
+                </Flex>
+                
+                {/* Active filters display */}
+                {activeFilterCount > 0 && (
+                  <Flex gap={2} mb={4} flexWrap="wrap">
+                    {Object.entries(filters).map(([key, value]) => {
+                      if (value && key !== 'sort' && key !== 'priceRange') {
+                        return (
+                          <Badge 
+                            key={key} 
+                            colorScheme="teal" 
+                            borderRadius="full" 
+                            px={3} 
+                            py={1}
+                            display="flex"
+                            alignItems="center"
+                          >
+                            {key}: {value}
+                            <Box 
+                              ml={2} 
+                              cursor="pointer"
+                              onClick={() => handleFilterChange(key, "")}
+                              fontWeight="bold"
+                            >
+                              ×
+                            </Box>
+                          </Badge>
+                        );
+                      }
+                      return null;
+                    })}
+                  </Flex>
                 )}
                 
-                {/* Price Range filter */}
-                <FormControl>
-                  <FormLabel fontWeight="bold">Price Range</FormLabel>
-                  <RangeSlider
-                    aria-label={['min', 'max']}
-                    min={0}
-                    max={10000}
-                    step={100}
-                    value={filters.priceRange}
-                    onChange={(val) => handleFilterChange("priceRange", val)}
-                  >
-                    <RangeSliderTrack>
-                      <RangeSliderFilledTrack />
-                    </RangeSliderTrack>
-                    <RangeSliderThumb index={0} />
-                    <RangeSliderThumb index={1} />
-                  </RangeSlider>
-                  <Flex justify="space-between">
-                    <Text>₹{filters.priceRange[0]}</Text>
-                    <Text>₹{filters.priceRange[1]}</Text>
-                  </Flex>
-                </FormControl>
-              </Stack>
-            </Box>
-            
-            {/* Product display area */}
-            <Box>
-              <Flex justify="space-between" align="center" mb={4}>
-                <Text>{filteredProducts.length} Products</Text>
-                <FormControl maxW="200px">
-                  <Select 
-                    value={filters.sort}
-                    onChange={(e) => handleFilterChange("sort", e.target.value)}
-                  >
-                    <option value="recommended">Recommended</option>
-                    <option value="priceLowToHigh">Price: Low to High</option>
-                    <option value="priceHighToLow">Price: High to Low</option>
-                    <option value="newest">Newest First</option>
-                    <option value="popular">Most Popular</option>
-                  </Select>
-                </FormControl>
-              </Flex>
-              
-              {/* Active filters display */}
-              {activeFilterCount > 0 && (
-                <Flex gap={2} mb={4} flexWrap="wrap">
-                  {Object.entries(filters).map(([key, value]) => {
-                    if (value && key !== 'sort' && key !== 'priceRange') {
-                      return (
-                        <Badge 
-                          key={key} 
-                          colorScheme="teal" 
-                          borderRadius="full" 
-                          px={3} 
-                          py={1}
-                          display="flex"
-                          alignItems="center"
-                        >
-                          {key}: {value}
-                          <Box 
-                            ml={2} 
-                            cursor="pointer"
-                            onClick={() => handleFilterChange(key, "")}
-                            fontWeight="bold"
-                          >
-                            ×
-                          </Box>
-                        </Badge>
-                      );
-                    }
-                    return null;
-                  })}
-                </Flex>
-              )}
-              
-              {filteredProducts.length > 0 ? (
-                <ProductCard products={filteredProducts} />
-              ) : (
-                <Box textAlign="center" mt="40px">
-                  <Text fontSize="18px" color="gray.500" mb={4}>
-                    No products match your current filters
-                  </Text>
-                  {/* Debug information */}
-                  <Text fontSize="sm" color="gray.400">
-                    Debug: Category={filters.category}, Brand={filters.brand}, Power={filters.power}, Color={filters.color}
-                  </Text>
-                </Box>
-              )}
-            </Box>
-          </Grid>
+                {filteredProducts.length > 0 ? (
+                  <ProductCard products={filteredProducts} />
+                ) : (
+                  <Box textAlign="center" mt="40px">
+                    <Text fontSize="18px" color="gray.500" mb={4}>
+                      No products match your current filters
+                    </Text>
+                    {/* Debug information */}
+                    <Text fontSize="sm" color="gray.400">
+                      Debug: Category={filters.category}, Brand={filters.brand}, Power={filters.power}, Color={filters.color}
+                    </Text>
+                  </Box>
+                )}
+              </Box>
+            </Grid>
+          </>
         )}
       </Box>
       <Footer />

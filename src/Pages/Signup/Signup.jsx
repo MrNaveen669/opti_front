@@ -22,7 +22,12 @@ import {
 } from "@chakra-ui/react";
 import { USERS_URL, REGISTER_URL } from "../../config/api";
 
-const Signup = () => {
+const Signup = ({ 
+  isOpen: externalIsOpen, 
+  onOpen: externalOnOpen, 
+  onClose: externalOnClose,
+  onOpenLogin // New prop to handle opening login modal
+}) => {
   const init = {
     first_name: "",
     last_name: "",
@@ -41,7 +46,13 @@ const Signup = () => {
   const [show, setShow] = useState(false);
   const [Auth, setAuth] = useState();
   const [exist, setExist] = useState(false);
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  
+  // Use internal state for modal if props are not provided
+  const internalModal = useDisclosure();
+  const { isOpen = externalIsOpen || internalModal.isOpen, 
+          onOpen = externalOnOpen || internalModal.onOpen, 
+          onClose = externalOnClose || internalModal.onClose } = {};
+  
   var flag = false;
 
   const Required = (props) => {
@@ -156,11 +167,23 @@ const Signup = () => {
     getData(userData);
   };
 
+  const handleSignIn = () => {
+    onClose(); // Close signup modal
+    if (onOpenLogin) {
+      onOpenLogin(); // Open login modal
+    }
+  };
+
+  // If this is a standalone usage, show the button to open the modal
+  const renderSignupButton = externalIsOpen === undefined ? (
+    <Center onClick={onOpen} fontWeight={"400"} fontSize="15px" w="60px">
+      Sign Up
+    </Center>
+  ) : null;
+
   return (
     <div>
-      <Center onClick={onOpen} fontWeight={"400"} fontSize="15px" w="60px">
-        Sign Up
-      </Center>
+      {renderSignupButton}
 
       <Modal isOpen={isOpen} onClose={onClose} isCentered size="md">
         <ModalOverlay />
@@ -375,7 +398,12 @@ const Signup = () => {
 
               <Center mt={"14px"} fontSize="15px" gap="2">
                 Have an account?{" "}
-                <Center fontWeight={"500"} textDecoration="underline">
+                <Center 
+                  fontWeight={"500"} 
+                  textDecoration="underline"
+                  cursor="pointer"
+                  onClick={handleSignIn}
+                >
                   Sign In
                 </Center>
               </Center>
