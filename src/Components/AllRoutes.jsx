@@ -17,6 +17,8 @@ import ProductPost from "../Pages/Admin/ProductPost";
 import Enquiry from "../Pages/Enquiry/Enquiry";
 import EditProduct from "../Pages/Admin/EditProduct";
 import Lenses from "../Pages/Lenses/Lenses";
+import AppointmentBooking from "../Pages/Booking/AppointmentBooking";
+import NotFound from "../Pages/NotFound";
 
 const AllRoutes = () => {
   const location = useLocation();
@@ -27,6 +29,7 @@ const AllRoutes = () => {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
+      <Route path="*" element={<NotFound />} />
       <Route path="/sampleproduct" element={<Product />} />
       <Route path="/sampleproduct/:id" element={<ProductDetails />} />
       <Route path ="/lenses" element={<Lenses />} />
@@ -121,6 +124,8 @@ const AllRoutes = () => {
           </Privateroutes>
         }
       />
+    <Route path="/book-appointment" element={<AppointmentBooking />} />
+
     </Routes>
   );
 };

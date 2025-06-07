@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import {
@@ -11,409 +12,10 @@ import Footer from "../../Components/Footer/Footer";
 import { useDispatch } from 'react-redux';
 import axios from 'axios';
 import { addToCart } from "../../redux/CartPage/action";
-import {  CART_URL } from "../../config/api";// Adjust the import path as necessary
+import {  CART_URL } from "../../config/api";
 // Import your lens data
 import lensData from '../../data/opticlairLensData.json';
-
-// const Lenses = () => {
-//     const navigate = useNavigate();
-//     const location = useLocation();
-//     const toast = useToast();
-//     const dispatch = useDispatch();
-    
-//     const { product } = location.state || {};
-//     const [selectedLens, setSelectedLens] = useState('');
-//     const [selectedPower, setSelectedPower] = useState('zero');
-    
-//     // Load lens data
-//     const { lensTypes, powerOptions, brandInfo } = lensData;
-    
-//     // Filter only budget-friendly lenses for the main display
-//     const budgetLenses = lensTypes.filter(lens => lens.category === 'budget');
-
-//     const handleLensSelect = (lensId) => {
-//         setSelectedLens(lensId);
-//     };
-
-//     const handleAddToCart = async () => {
-//         if (!selectedLens) {
-//             toast({
-//                 title: "Please select a lens type",
-//                 status: "warning",
-//                 duration: 3000,
-//                 isClosable: true,
-//             });
-//             return;
-//         }
-
-//         const user = JSON.parse(localStorage.getItem("user")) || {};
-//         if (!user._id) {
-//             toast({
-//                 title: "Please sign in first",
-//                 description: "You need to be logged in to add items to cart",
-//                 status: "warning",
-//                 duration: 3000,
-//                 isClosable: true,
-//             });
-//             return;
-//         }
-
-//         const selectedLensData = lensTypes.find(lens => lens.id === selectedLens);
-//         const selectedPowerData = powerOptions.find(power => power.value === selectedPower);
-        
-//         const totalLensPrice = selectedLensData.price + selectedPowerData.price;
-//         const totalPrice = (product?.price || 0) + totalLensPrice;
-
-//         // Create cart item with lens details
-//         const cartItem = {
-//             userId: user._id,
-//             imageTsrc: product.image,
-//             productRefLink: product.name || `Product ${product._id}`,
-//             rating: product.rating || "0",
-//             colors: product.colors || "",
-//             price: totalPrice.toString(),
-//             mPrice: product.mPrice || totalPrice.toString(),
-//             name: `${product.name} (with ${selectedLensData.name})`,
-//             shape: product.shape || "",
-//             gender: product.gender || "",
-//             style: product.style || "",
-//             dimension: product.dimension || "",
-//             productType: product.category || "",
-//             productId: product._id,
-//             userRated: "0",
-//             quantity: 1,
-//             withLens: true,
-//             lensDetails: {
-//                 lensId: selectedLensData.id,
-//                 lensName: selectedLensData.name,
-//                 lensPrice: selectedLensData.price,
-//                 powerType: selectedPower,
-//                 powerLabel: selectedPowerData.label,
-//                 powerPrice: selectedPowerData.price,
-//                 totalLensPrice: totalLensPrice,
-//                 features: selectedLensData.features || []
-//             },
-//             isContactLens: false
-//         };
-
-//         try {
-//             const response = await axios.post(CART_URL, cartItem);
-            
-//             if (response.status === 201 || response.status === 200) {
-//                 dispatch(addToCart({ 
-//                     ...cartItem, 
-//                     _id: response.data._id
-//                 }));
-                
-//                 toast({
-//                     title: "Added to Cart!",
-//                     description: `${product?.name || 'Frame'} with ${selectedLensData.name} - ₹${totalPrice}`,
-//                     status: "success",
-//                     duration: 4000,
-//                     isClosable: true,
-//                 });
-
-//                 navigate('/cart');
-//             }
-//         } catch (error) {
-//             if (error.response && error.response.status === 400) {
-//                 const errorMsg = error.response.data.msg || "Error adding to cart";
-//                 toast({
-//                     title: errorMsg,
-//                     description: error.response.data.details || "Please try again",
-//                     status: "info",
-//                     duration: 3000,
-//                     isClosable: true,
-//                 });
-//             } else {
-//                 console.error("Error adding to cart:", error);
-//                 toast({
-//                     title: "Failed to add product to cart",
-//                     description: "There was an error adding this product to your cart",
-//                     status: "error",
-//                     duration: 3000,
-//                     isClosable: true,
-//                 });
-//             }
-//         }
-//     };
-
-//     const selectedLensData = lensTypes.find(lens => lens.id === selectedLens);
-//     const selectedPowerData = powerOptions.find(power => power.value === selectedPower);
-//     const totalLensPrice = selectedLensData ? selectedLensData.price + selectedPowerData.price : 0;
-
-//     // Feature check component
-//     const FeatureCheck = ({ hasFeature, label }) => (
-//         <HStack justify="space-between" w="full" py={1}>
-//             <Text fontSize="sm" color="gray.700">{label}</Text>
-//             <Icon 
-//                 as={hasFeature ? CheckIcon : CloseIcon} 
-//                 color={hasFeature ? "green.500" : "red.500"}
-//                 boxSize={4}
-//             />
-//         </HStack>
-//     );
-
-//     return (
-//         <>
-//             <Navbar />
-//             <Container maxW="1200px" py={8}>
-//                 {/* Header Section */}
-//                 <VStack spacing={6} mb={8}>
-//                     <HStack spacing={4} align="center">
-//                         <Image 
-//                             src="/api/placeholder/120/60"
-//                             alt="OptiClair"
-//                             height="60px"
-//                             fallback={
-//                                 <Text fontSize="3xl" fontWeight="bold" color="white" bg="blue.800" px={6} py={3} borderRadius="md">
-//                                     OptiClair°
-//                                 </Text>
-//                             }
-//                         />
-//                         <Heading size="xl" color="gray.800">
-//                             Budget Friendly Lenses
-//                         </Heading>
-//                     </HStack>
-                    
-//                     {product && (
-//                         <HStack spacing={4} bg="gray.50" p={4} borderRadius="lg" w="full" maxW="500px">
-//                             <Image 
-//                                 src={product.image} 
-//                                 alt={product.name}
-//                                 boxSize="60px"
-//                                 objectFit="contain"
-//                                 borderRadius="md"
-//                             />
-//                             <VStack align="start" spacing={1}>
-//                                 <Text fontWeight="bold">{product.name}</Text>
-//                                 <Text color="gray.600">Frame Price: ₹{product.price}</Text>
-//                             </VStack>
-//                         </HStack>
-//                     )}
-//                 </VStack>
-
-//                 {/* Power Selection */}
-//                 <Box mb={8}>
-//                     <Heading size="md" mb={6} color="gray.800">Select Power Type</Heading>
-//                     <RadioGroup value={selectedPower} onChange={setSelectedPower}>
-//                         <VStack spacing={4} align="stretch">
-//                             {powerOptions.map((power) => (
-//                                 <Card key={power.value} p={4} cursor="pointer" 
-//                                     border={selectedPower === power.value ? "2px solid" : "1px solid"}
-//                                     borderColor={selectedPower === power.value ? "blue.500" : "gray.200"}
-//                                     _hover={{ borderColor: "blue.300" }}
-//                                 >
-//                                     <Radio value={power.value} size="lg">
-//                                         <HStack justify="space-between" w="full" ml={4}>
-//                                             <VStack align="start" spacing={1}>
-//                                                 <Text fontWeight="bold" fontSize="lg">{power.label}</Text>
-//                                                 <Text fontSize="sm" color="gray.600">{power.description}</Text>
-//                                             </VStack>
-//                                             {power.price > 0 && (
-//                                                 <Text fontSize="lg" fontWeight="bold" color="blue.600">
-//                                                     +₹{power.price}
-//                                                 </Text>
-//                                             )}
-//                                         </HStack>
-//                                     </Radio>
-//                                 </Card>
-//                             ))}
-//                         </VStack>
-//                     </RadioGroup>
-//                 </Box>
-
-//                 <Divider mb={8} />
-
-//                 {/* Lenses Grid */}
-//                 <Box mb={8}>
-//                     <HStack mb={6} align="center">
-//                         <Text fontSize="lg" color="blue.800" fontWeight="bold">Single Vision</Text>
-//                         <Text fontSize="lg" color="blue.800" fontWeight="bold">Lenses</Text>
-//                         <Badge colorScheme="red" variant="solid">STOCK</Badge>
-//                     </HStack>
-                    
-//                     <Text mb={4} color="blue.700" fontWeight="semibold">Exclusive Benefits Offer</Text>
-                    
-//                     <SimpleGrid columns={{ base: 1, md: 2, lg: 4 }} spacing={6}>
-//                         {budgetLenses.map((lens, index) => (
-//                             <Card 
-//                                 key={lens.id}
-//                                 cursor="pointer"
-//                                 onClick={() => handleLensSelect(lens.id)}
-//                                 border={selectedLens === lens.id ? "3px solid" : "2px solid"}
-//                                 borderColor={
-//                                     selectedLens === lens.id 
-//                                         ? "blue.500" 
-//                                         : lens.highlighted 
-//                                             ? "teal.400" 
-//                                             : "gray.200"
-//                                 }
-//                                 _hover={{ 
-//                                     transform: "translateY(-4px)",
-//                                     boxShadow: "xl"
-//                                 }}
-//                                 transition="all 0.3s ease"
-//                                 position="relative"
-//                                 bg="white"
-//                                 height="auto"
-//                             >
-//                                 {/* Header with Logo and Type */}
-//                                 <Box bg="white" p={4} textAlign="center" borderBottom="1px solid" borderColor="gray.200">
-//                                     <Text fontSize="2xl" fontWeight="bold" color="blue.800" mb={1}>
-//                                         OptiClair°
-//                                     </Text>
-//                                     <Text fontSize="lg" fontWeight="bold" color={
-//                                         lens.name.includes('Basic') ? 'blue.600' : 
-//                                         lens.name.includes('Essential') ? 'red.500' :
-//                                         lens.name.includes('Premium') ? 'red.600' : 'red.700'
-//                                     }>
-//                                         {lens.name.split(' ')[1]} {/* Basic, Essential, Premium, etc. */}
-//                                     </Text>
-//                                     <Text fontSize="sm" color="blue.600">
-//                                         Blue Protection
-//                                     </Text>
-//                                     <Text fontSize="xs" color="gray.600" mt={1}>
-//                                         {lens.index}
-//                                     </Text>
-//                                 </Box>
-
-//                                 <CardBody p={4}>
-//                                     <VStack spacing={4}>
-//                                         {/* Price */}
-//                                         <VStack spacing={1}>
-//                                             <Text fontSize="3xl" fontWeight="bold" color="teal.600">
-//                                                 ₹{lens.price}
-//                                             </Text>
-//                                             {lens.offer && (
-//                                                 <Badge colorScheme="orange" fontSize="sm">
-//                                                     {lens.offer}
-//                                                 </Badge>
-//                                             )}
-//                                         </VStack>
-
-//                                         {/* Power Range */}
-//                                         <Box textAlign="center">
-//                                             <Text fontSize="sm" fontWeight="bold" color="blue.700" mb={1}>
-//                                                 POWER RANGE
-//                                             </Text>
-//                                             <Text fontSize="lg" fontWeight="bold" color="gray.800">
-//                                                 {lens.powerRange}
-//                                             </Text>
-//                                         </Box>
-
-//                                         {/* Features List */}
-//                                         <VStack spacing={2} w="full">
-//                                             <FeatureCheck 
-//                                                 hasFeature={lens.features.includes('Anti-Glare')} 
-//                                                 label="Anti-glare" 
-//                                             />
-//                                             <FeatureCheck 
-//                                                 hasFeature={lens.features.includes('UV Protection')} 
-//                                                 label="UV 420 • Sun Protection" 
-//                                             />
-//                                             <FeatureCheck 
-//                                                 hasFeature={lens.features.includes('Scratch Resistant')} 
-//                                                 label="Scratch Resistant" 
-//                                             />
-//                                             <FeatureCheck 
-//                                                 hasFeature={lens.features.includes('Blue Light Protection')} 
-//                                                 label="Blue Light Block" 
-//                                             />
-//                                             <FeatureCheck 
-//                                                 hasFeature={lens.features.includes('Smudge Resistance')} 
-//                                                 label="Smudge Resistance" 
-//                                             />
-//                                         </VStack>
-
-//                                         {/* Single Price */}
-//                                         <Box textAlign="center" pt={2} borderTop="1px solid" borderColor="gray.200" w="full">
-//                                             <Text fontSize="sm" fontWeight="bold" color="blue.700">
-//                                                 For Sigle price
-//                                             </Text>
-//                                             <Text fontSize="lg" fontWeight="bold" color="gray.800">
-//                                                 {lens.singlePrice}/-
-//                                             </Text>
-//                                         </Box>
-//                                     </VStack>
-//                                 </CardBody>
-//                             </Card>
-//                         ))}
-//                     </SimpleGrid>
-//                 </Box>
-
-//                 {/* Summary and Checkout */}
-//                 {selectedLens && (
-//                     <Box 
-//                         position="sticky" 
-//                         bottom="0" 
-//                         bg="white" 
-//                         borderTop="2px solid" 
-//                         borderColor="gray.200"
-//                         p={6}
-//                         boxShadow="2xl"
-//                         zIndex="10"
-//                     >
-//                         <Flex 
-//                             justify="space-between" 
-//                             align="center" 
-//                             maxW="1200px" 
-//                             mx="auto"
-//                             direction={{ base: "column", md: "row" }}
-//                             gap={4}
-//                         >
-//                             <VStack align={{ base: "center", md: "start" }} spacing={2}>
-//                                 <Text fontWeight="bold" fontSize="xl" color="gray.800">
-//                                     Selected: {selectedLensData?.name}
-//                                 </Text>
-//                                 <Text fontSize="md" color="gray.600">
-//                                     {selectedLensData?.index} • {selectedPowerData?.label}
-//                                 </Text>
-//                                 <HStack spacing={4} fontSize="lg" color="gray.700">
-//                                     <Text>Frame: ₹{product?.price || 0}</Text>
-//                                     <Text>+</Text>
-//                                     <Text>Lens: ₹{totalLensPrice}</Text>
-//                                     <Text>=</Text>
-//                                     <Text fontWeight="bold" color="teal.600" fontSize="2xl">
-//                                         Total: ₹{(product?.price || 0) + totalLensPrice}
-//                                     </Text>
-//                                 </HStack>
-//                                 {selectedLensData?.offer && (
-//                                     <Badge colorScheme="green" fontSize="sm">
-//                                         🎁 {selectedLensData.offer}
-//                                     </Badge>
-//                                 )}
-//                             </VStack>
-                            
-//                             <HStack spacing={4}>
-//                                 <Button 
-//                                     variant="outline" 
-//                                     onClick={() => navigate(-1)}
-//                                     size="lg"
-//                                     colorScheme="gray"
-//                                 >
-//                                     Back
-//                                 </Button>
-//                                 <Button 
-//                                     colorScheme="teal" 
-//                                     onClick={handleAddToCart}
-//                                     size="lg"
-//                                     minW="180px"
-//                                     fontSize="lg"
-//                                 >
-//                                     Add to Cart
-//                                 </Button>
-//                             </HStack>
-//                         </Flex>
-//                     </Box>
-//                 )}
-//             </Container>
-//             <Footer />
-//         </>
-//     );
-// };
-
-// export default Lenses;
+import { useRef } from 'react';
 const Lenses = () => {
     const navigate = useNavigate();
     const location = useLocation();
@@ -423,6 +25,10 @@ const Lenses = () => {
     const { product } = location.state || {};
     const [selectedLens, setSelectedLens] = useState('');
     const [selectedCategory, setSelectedCategory] = useState('single_vision');
+    
+    // Create refs for auto-scrolling
+    const selectedSummaryRef = useRef(null);
+    const addToCartRef = useRef(null);
     
     // Load lens data
     const { lensTypes, brandInfo, categories, sectionHeaders } = lensData;
@@ -442,6 +48,16 @@ const Lenses = () => {
 
     const handleLensSelect = (lensId) => {
         setSelectedLens(lensId);
+        
+        // Auto-scroll to selected summary after a short delay
+        setTimeout(() => {
+            if (selectedSummaryRef.current) {
+                selectedSummaryRef.current.scrollIntoView({ 
+                    behavior: 'smooth', 
+                    block: 'center' 
+                });
+            }
+        }, 100);
     };
 
     const handleCategoryChange = (categoryId) => {
@@ -665,6 +281,77 @@ const Lenses = () => {
                     </Box>
                 </Box>
 
+                {/* Selected Lens Summary - Moved to Top */}
+                {selectedLensData && (
+                    <Box 
+                        ref={selectedSummaryRef}
+                        bg="blue.50" 
+                        border="2px solid" 
+                        borderColor="blue.200"
+                        borderRadius="lg" 
+                        p={6} 
+                        mb={8}
+                        position="sticky"
+                        top="20px"
+                        zIndex="10"
+                        boxShadow="lg"
+                    >
+                        <VStack spacing={4}>
+                            <HStack spacing={4} align="center" justify="center">
+                                <Icon as={CheckIcon} color="green.500" boxSize={6} />
+                                <Text fontSize="xl" fontWeight="bold" color="blue.800">
+                                    Selected: {selectedLensData.name}
+                                </Text>
+                            </HStack>
+                            
+                            <HStack spacing={8} justify="center" wrap="wrap">
+                                <VStack spacing={1}>
+                                    <Text fontSize="sm" color="gray.600">Frame Price</Text>
+                                    <Text fontSize="lg" fontWeight="bold">₹{product?.price || 0}</Text>
+                                </VStack>
+                                
+                                <Text fontSize="2xl" color="gray.400">+</Text>
+                                
+                                <VStack spacing={1}>
+                                    <Text fontSize="sm" color="gray.600">Lens Price</Text>
+                                    <Text fontSize="lg" fontWeight="bold">₹{selectedLensData.price}</Text>
+                                </VStack>
+                                
+                                <Text fontSize="2xl" color="gray.400">=</Text>
+                                
+                                <VStack spacing={1}>
+                                    <Text fontSize="sm" color="gray.600">Total Price</Text>
+                                    <Text fontSize="2xl" fontWeight="bold" color="teal.600">
+                                        ₹{(product?.price || 0) + selectedLensData.price}
+                                    </Text>
+                                </VStack>
+                            </HStack>
+                            
+                            <Text fontSize="sm" color="blue.600" textAlign="center">
+                                {selectedLensData.description}
+                            </Text>
+
+                            {/* Add to Cart Button - Moved to Summary */}
+                            <Button
+                                onClick={handleAddToCart}
+                                size="lg"
+                                colorScheme="blue"
+                                px={12}
+                                py={6}
+                                fontSize="lg"
+                                fontWeight="bold"
+                                _hover={{
+                                    transform: "translateY(-2px)",
+                                    boxShadow: "lg"
+                                }}
+                                transition="all 0.3s ease"
+                            >
+                                Add to Cart - ₹{(product?.price || 0) + selectedLensData.price}
+                            </Button>
+                        </VStack>
+                    </Box>
+                )}
+
                 {/* Lenses Grid with Sections */}
                 <Box mb={8}>
                     {currentCategory?.available ? (
@@ -825,85 +512,37 @@ const Lenses = () => {
                     )}
                 </Box>
 
-                {/* Selected Lens Summary */}
-                {selectedLensData && (
-                    <Box 
-                        bg="blue.50" 
-                        border="2px solid" 
-                        borderColor="blue.200"
-                        borderRadius="lg" 
-                        p={6} 
-                        mb={8}
-                    >
-                        <VStack spacing={4}>
-                            <HStack spacing={4} align="center" justify="center">
-                                <Icon as={CheckIcon} color="green.500" boxSize={6} />
-                                <Text fontSize="xl" fontWeight="bold" color="blue.800">
-                                    Selected: {selectedLensData.name}
-                                </Text>
-                            </HStack>
-                            
-                            <HStack spacing={8} justify="center" wrap="wrap">
-                                <VStack spacing={1}>
-                                    <Text fontSize="sm" color="gray.600">Frame Price</Text>
-                                    <Text fontSize="lg" fontWeight="bold">₹{product?.price || 0}</Text>
-                                </VStack>
-                                
-                                <Text fontSize="2xl" color="gray.400">+</Text>
-                                
-                                <VStack spacing={1}>
-                                    <Text fontSize="sm" color="gray.600">Lens Price</Text>
-                                    <Text fontSize="lg" fontWeight="bold">₹{selectedLensData.price}</Text>
-                                </VStack>
-                                
-                                <Text fontSize="2xl" color="gray.400">=</Text>
-                                
-                                <VStack spacing={1}>
-                                    <Text fontSize="sm" color="gray.600">Total Price</Text>
-                                    <Text fontSize="2xl" fontWeight="bold" color="teal.600">
-                                        ₹{(product?.price || 0) + selectedLensData.price}
-                                    </Text>
-                                </VStack>
-                            </HStack>
-                            
-                            <Text fontSize="sm" color="blue.600" textAlign="center">
-                                {selectedLensData.description}
-                            </Text>
-                        </VStack>
-                    </Box>
-                )}
-
-                {/* Add to Cart Button */}
-                <Box textAlign="center">
-                    <Button
-                        onClick={handleAddToCart}
-                        size="lg"
-                        colorScheme="blue"
-                        isDisabled={!selectedLens || !currentCategory?.available}
-                        px={12}
-                        py={6}
-                        fontSize="lg"
-                        fontWeight="bold"
-                        _hover={{
-                            transform: "translateY(-2px)",
-                            boxShadow: "lg"
-                        }}
-                        transition="all 0.3s ease"
-                    >
-                        {selectedLens && currentCategory?.available
-                            ? `Add to Cart - ₹${(product?.price || 0) + (selectedLensData?.price || 0)}`
-                            : currentCategory?.available 
+                {/* Bottom Add to Cart Button - Only shown when no lens is selected */}
+                {!selectedLens && (
+                    <Box textAlign="center" ref={addToCartRef}>
+                        <Button
+                            onClick={handleAddToCart}
+                            size="lg"
+                            colorScheme="blue"
+                            isDisabled={!selectedLens || !currentCategory?.available}
+                            px={12}
+                            py={6}
+                            fontSize="lg"
+                            fontWeight="bold"
+                            _hover={{
+                                transform: "translateY(-2px)",
+                                boxShadow: "lg"
+                            }}
+                            transition="all 0.3s ease"
+                        >
+                            {currentCategory?.available 
                                 ? "Select a Lens to Continue"
                                 : "Category Coming Soon"
-                        }
-                    </Button>
-                    
-                    {!selectedLens && currentCategory?.available && (
-                        <Text fontSize="sm" color="gray.500" mt={2}>
-                            Please select a lens type above to add to cart
-                        </Text>
-                    )}
-                </Box>
+                            }
+                        </Button>
+                        
+                        {currentCategory?.available && (
+                            <Text fontSize="sm" color="gray.500" mt={2}>
+                                Please select a lens type above to add to cart
+                            </Text>
+                        )}
+                    </Box>
+                )}
             </Container>
         </>
     );

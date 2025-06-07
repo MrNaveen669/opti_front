@@ -11,3 +11,4 @@ export const PRODUCT_ALL_URL = `${PRODUCT_URL}/all`;
 export const PAYMENT_URL = `${BASE_URL}/payment`; 
 export const API_BASE_URL= `${BASE_URL}/orders`
 export const WISHLIST_URL = `${BASE_URL}/wishlist`;        // For wishlist operations
+export const APPOINTMENTS_URL = `${BASE_URL}/appointments`; // For appointment operations

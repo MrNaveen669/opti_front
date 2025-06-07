@@ -397,6 +397,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 
+
 // Chakra UI
 import {
   Box, Grid, GridItem, Text, Image, Button, VStack, Flex,
@@ -405,7 +406,7 @@ import {
 } from '@chakra-ui/react';
 import { AiFillStar } from 'react-icons/ai';
 import { FaEye, FaGlasses } from 'react-icons/fa';
-
+import { UnorderedList,ListItem } from "@chakra-ui/react";
 // Internal components & context
 import Navbar from "../../Components/Navbar/Navbar";
 import Footer from "../../Components/Footer/Footer";
@@ -679,142 +680,257 @@ const handleAddToWishlist = async () => {
     return (
         <>
             <Navbar />
-            <Box p={6} maxW="1200px" m="auto">
-                <Grid templateColumns={{ base: "1fr", md: "1fr 1fr" }} gap={8} alignItems="start">
-                    {/* Product Images Section */}
-                    <GridItem>
-                        <Box 
-                            borderRadius="md" 
-                            overflow="hidden"
-                            boxShadow="md"
-                            cursor="pointer"
-                            onClick={() => openImageModal(selectedImage)}
-                            position="relative"
-                            height="400px"
-                            mb={4}
-                        >
-                            <Image 
-                                src={selectedImage || product.image} 
-                                alt={product.name} 
-                                width="100%"
-                                height="100%"
-                                objectFit="contain"
-                                fallbackSrc="https://via.placeholder.com/400"
-                                transition="transform 0.3s ease-in-out"
-                                _hover={{ transform: "scale(1.05)" }}
-                            />
-                        </Box>
-                        
-                        <Grid templateColumns="repeat(4, 1fr)" gap={2} mt={4}>
-                            {imagesToDisplay.map((img, index) => (
-                                <Box 
-                                    key={index}
-                                    borderRadius="md"
-                                    overflow="hidden"
-                                    cursor="pointer"
-                                    onClick={() => setSelectedImage(img)}
-                                    border={selectedImage === img ? "2px solid #3182CE" : "1px solid #E2E8F0"}
-                                    transition="all 0.2s"
-                                    _hover={{ boxShadow: "md" }}
-                                >
-                                    <Image 
-                                        src={img} 
-                                        alt={`Product image ${index}`} 
-                                        boxSize="80px" 
-                                        objectFit="contain" 
-                                        borderRadius="md"
-                                        fallbackSrc="https://via.placeholder.com/80"
-                                    />
-                                </Box>
-                            ))}
-                        </Grid>
-                    </GridItem>
-
-                    {/* Product Info Section */}
-                    <GridItem>
-                        <VStack align="start" spacing={4}>
-                            <Text fontSize="2xl" fontWeight="bold">{product.name}</Text>
-                            
-                            <Text fontSize="md" color="gray.700">
-                                {product.description}
-                            </Text>
-                            
-                            {product.description?.toLowerCase().includes("blue light") && (
-                                <Box bg="blue.50" p={4} borderRadius="md" width="100%">
-                                    <Text fontWeight="bold" mb={2}>Feature Highlights:</Text>
-                                    <Grid templateColumns="1fr 1fr" gap={3}>
-                                        <Flex alignItems="center">
-                                            <Box w="4px" h="4px" borderRadius="full" bg="blue.500" mr={2}></Box>
-                                            <Text fontSize="sm">Blue Light Protection</Text>
-                                        </Flex>
-                                        <Flex alignItems="center">
-                                            <Box w="4px" h="4px" borderRadius="full" bg="blue.500" mr={2}></Box>
-                                            <Text fontSize="sm">Reduced Eye Strain</Text>
-                                        </Flex>
-                                        <Flex alignItems="center">
-                                            <Box w="4px" h="4px" borderRadius="full" bg="blue.500" mr={2}></Box>
-                                            <Text fontSize="sm">UV Protection</Text>
-                                        </Flex>
-                                        <Flex alignItems="center">
-                                            <Box w="4px" h="4px" borderRadius="full" bg="blue.500" mr={2}></Box>
-                                            <Text fontSize="sm">Scratch Resistant</Text>
-                                        </Flex>
-                                    </Grid>
-                                </Box>
-                            )}
-                            
-                            <Grid templateColumns="1fr 1fr" gap={4} width="100%">
-                                <Box>
-                                    <Text fontWeight="bold" mb={1}>Category</Text>
-                                    <Text>{product.category}</Text>
-                                </Box>
-                                <Box>
-                                    <Text fontWeight="bold" mb={1}>Price</Text>
-                                    <Text fontSize="xl" color="blue.600">₹{product.price}</Text>
-                                </Box>
-                                {product.stock && (
-                                    <Box>
-                                        <Text fontWeight="bold" mb={1}>Stock</Text>
-                                        <Text>{product.stock === "Available" ? "In Stock" : "Out of Stock"}</Text>
-                                    </Box>
-                                )}
-                                {product.gender && (
-                                    <Box>
-                                        <Text fontWeight="bold" mb={1}>Gender</Text>
-                                        <Text>{product.gender}</Text>
-                                    </Box>
-                                )}
-                            </Grid>
-                            
-                            {product.frameMaterial && (
-                                <Box width="100%">
-                                    <Text fontWeight="bold" mb={1}>Frame Material</Text>
-                                    <Text>{product.frameMaterial}</Text>
-                                </Box>
-                            )}
-                            
-                            {product.lensMaterial && (
-                                <Box width="100%">
-                                    <Text fontWeight="bold" mb={1}>Lens Material</Text>
-                                    <Text>{product.lensMaterial}</Text>
-                                </Box>
-                            )}
-                            
-                            {/* Action Buttons */}
-                            <Box width="100%" mt={4}>
-                                <Grid templateColumns={{ base: "1fr", sm: "1fr 1fr" }} gap={4}>
-                                    <Button colorScheme="blue" onClick={handleAddToCart} size="lg">
-                                        Buy Now
-                                    </Button>
-                                    <Button colorScheme="pink" onClick={handleAddToWishlist} size="lg" variant="outline">
-                                        Add to Wishlist
-                                    </Button>
-                                </Grid>
-                            </Box>
-                        </VStack>
-                    </GridItem>
-                </Grid>
+           <Box p={6} maxW="1200px" m="auto">
+    <Grid templateColumns={{ base: "1fr", md: "1fr 1fr" }} gap={8} alignItems="start">
+        {/* Product Images Section */}
+        <GridItem>
+            <Box 
+                borderRadius="md" 
+                overflow="hidden"
+                boxShadow="md"
+                cursor="pointer"
+                onClick={() => openImageModal(selectedImage)}
+                position="relative"
+                height="400px"
+                mb={4}
+            >
+                <Image 
+                    src={selectedImage || product.image} 
+                    alt={product.name} 
+                    width="100%"
+                    height="100%"
+                    objectFit="contain"
+                    fallbackSrc="https://via.placeholder.com/400"
+                    transition="transform 0.3s ease-in-out"
+                    _hover={{ transform: "scale(1.05)" }}
+                />
             </Box>
+            
+            <Grid templateColumns="repeat(4, 1fr)" gap={2} mt={4}>
+                {imagesToDisplay.map((img, index) => (
+                    <Box 
+                        key={index}
+                        borderRadius="md"
+                        overflow="hidden"
+                        cursor="pointer"
+                        onClick={() => setSelectedImage(img)}
+                        border={selectedImage === img ? "2px solid #3182CE" : "1px solid #E2E8F0"}
+                        transition="all 0.2s"
+                        _hover={{ boxShadow: "md" }}
+                    >
+                        <Image 
+                            src={img} 
+                            alt={`Product image ${index}`} 
+                            boxSize="80px" 
+                            objectFit="contain" 
+                            borderRadius="md"
+                            fallbackSrc="https://via.placeholder.com/80"
+                        />
+                    </Box>
+                ))}
+            </Grid>
+        </GridItem>
+
+        {/* Product Info Section */}
+        <GridItem>
+            <VStack align="start" spacing={4}>
+                <Text fontSize="2xl" fontWeight="bold">{product.name}</Text>
+                
+                <Text fontSize="md" color="gray.700">
+                    {product.description}
+                </Text>
+                
+                {/* Special Features Section for Blue Light or Contact Lenses */}
+                {(product.description?.toLowerCase().includes("blue light") || product.category === "Contact Lenses") && (
+                    <Box bg={product.category === "Contact Lenses" ? "purple.50" : "blue.50"} p={4} borderRadius="md" width="100%">
+                        <Text fontWeight="bold" mb={2}>
+                            {product.category === "Contact Lenses" ? "Contact Lens Features:" : "Feature Highlights:"}
+                        </Text>
+                        <Grid templateColumns="1fr 1fr" gap={3}>
+                            {product.category === "Contact Lenses" ? (
+                                <>
+                                    {product.brand && (
+                                        <Flex alignItems="center">
+                                            <Box w="4px" h="4px" borderRadius="full" bg="purple.500" mr={2}></Box>
+                                            <Text fontSize="sm">Brand: {product.brand}</Text>
+                                        </Flex>
+                                    )}
+                                    {product.power && (
+                                        <Flex alignItems="center">
+                                            <Box w="4px" h="4px" borderRadius="full" bg="purple.500" mr={2}></Box>
+                                            <Text fontSize="sm">Power: {product.power}</Text>
+                                        </Flex>
+                                    )}
+                                    {product.color && (
+                                        <Flex alignItems="center">
+                                            <Box w="4px" h="4px" borderRadius="full" bg="purple.500" mr={2}></Box>
+                                            <Text fontSize="sm">Color: {product.color}</Text>
+                                        </Flex>
+                                    )}
+                                    <Flex alignItems="center">
+                                        <Box w="4px" h="4px" borderRadius="full" bg="purple.500" mr={2}></Box>
+                                        <Text fontSize="sm">Comfortable Wear</Text>
+                                    </Flex>
+                                </>
+                            ) : (
+                                <>
+                                    <Flex alignItems="center">
+                                        <Box w="4px" h="4px" borderRadius="full" bg="blue.500" mr={2}></Box>
+                                        <Text fontSize="sm">Blue Light Protection</Text>
+                                    </Flex>
+                                    <Flex alignItems="center">
+                                        <Box w="4px" h="4px" borderRadius="full" bg="blue.500" mr={2}></Box>
+                                        <Text fontSize="sm">Reduced Eye Strain</Text>
+                                    </Flex>
+                                    <Flex alignItems="center">
+                                        <Box w="4px" h="4px" borderRadius="full" bg="blue.500" mr={2}></Box>
+                                        <Text fontSize="sm">UV Protection</Text>
+                                    </Flex>
+                                    <Flex alignItems="center">
+                                        <Box w="4px" h="4px" borderRadius="full" bg="blue.500" mr={2}></Box>
+                                        <Text fontSize="sm">Scratch Resistant</Text>
+                                    </Flex>
+                                </>
+                            )}
+                        </Grid>
+                    </Box>
+                )}
+                
+                {/* Product Details Grid */}
+                <Grid templateColumns="1fr 1fr" gap={4} width="100%">
+                    <Box>
+                        <Text fontWeight="bold" mb={1}>Category</Text>
+                        <Text>{product.category}</Text>
+                    </Box>
+                    <Box>
+                        <Text fontWeight="bold" mb={1}>Price</Text>
+                        <Text fontSize="xl" color="blue.600">
+                            ₹{product.price}
+                            {product.discount && product.discount !== "0" && (
+                                <Badge ml={2} colorScheme="red" fontSize="xs">
+                                    {product.discount}% OFF
+                                </Badge>
+                            )}
+                        </Text>
+                    </Box>
+                    
+                    {/* Contact Lens Specific Fields */}
+                    {product.category === "Contact Lenses" && (
+                        <>
+                            {product.brand && (
+                                <Box>
+                                    <Text fontWeight="bold" mb={1} color="blue.600">Brand</Text>
+                                    <Text color="blue.600" fontWeight="semibold">{product.brand}</Text>
+                                </Box>
+                            )}
+                            {product.power && (
+                                <Box>
+                                    <Text fontWeight="bold" mb={1} color="green.600">Power</Text>
+                                    <Text color="green.600" fontWeight="semibold">{product.power}</Text>
+                                </Box>
+                            )}
+                            {product.color && (
+                                <Box>
+                                    <Text fontWeight="bold" mb={1} color="purple.600">Color</Text>
+                                    <Text color="purple.600" fontWeight="semibold">{product.color}</Text>
+                                </Box>
+                            )}
+                        </>
+                    )}
+                    
+                    {/* Non-Contact Lens Fields */}
+                    {product.category !== "Contact Lenses" && (
+                        <>
+                            {product.subCategory && (
+                                <Box>
+                                    <Text fontWeight="bold" mb={1}>Sub-Category</Text>
+                                    <Text>{product.subCategory}</Text>
+                                </Box>
+                            )}
+                            {product.gender && (
+                                <Box>
+                                    <Text fontWeight="bold" mb={1}>Gender</Text>
+                                    <Text>{product.gender}</Text>
+                                </Box>
+                            )}
+                        </>
+                    )}
+                    
+                    {product.stock && (
+                        <Box>
+                            <Text fontWeight="bold" mb={1}>Stock</Text>
+                            <Badge colorScheme={product.stock === "Available" ? "green" : "red"}>
+                                {product.stock === "Available" ? "In Stock" : "Out of Stock"}
+                            </Badge>
+                        </Box>
+                    )}
+                </Grid>
+                
+                {/* Material Information */}
+                {product.category !== "Contact Lenses" && (
+                    <>
+                        {product.frameMaterial && (
+                            <Box width="100%">
+                                <Text fontWeight="bold" mb={1}>Frame Material</Text>
+                                <Text>{product.frameMaterial}</Text>
+                            </Box>
+                        )}
+                        
+                        {product.lensMaterial && (
+                            <Box width="100%">
+                                <Text fontWeight="bold" mb={1}>Lens Material</Text>
+                                <Text>{product.lensMaterial}</Text>
+                            </Box>
+                        )}
+                    </>
+                )}
+                
+                {/* Available Sizes/Powers */}
+                {product.sizes && product.sizes.length > 0 && (
+                    <Box width="100%">
+                        <Text fontWeight="bold" mb={1}>
+                            {product.category === "Contact Lenses" ? "Available Powers/Variants" : "Available Sizes"}
+                        </Text>
+                        <Text>{Array.isArray(product.sizes) ? product.sizes.join(", ") : product.sizes}</Text>
+                    </Box>
+                )}
+                
+                {/* Features */}
+                {product.features && product.features.length > 0 && (
+                    <Box width="100%">
+                        <Text fontWeight="bold" mb={2}>
+                            {product.category === "Contact Lenses" ? "Features/Benefits" : "Features"}
+                        </Text>
+                        <Box bg="gray.50" p={3} borderRadius="md">
+                            <UnorderedList spacing={1}>
+                                {Array.isArray(product.features) 
+                                    ? product.features.map((feature, index) => (
+                                        <ListItem key={index} fontSize="sm">{feature}</ListItem>
+                                    ))
+                                    : product.features.split(',').map((feature, index) => (
+                                        <ListItem key={index} fontSize="sm">{feature.trim()}</ListItem>
+                                    ))
+                                }
+                            </UnorderedList>
+                        </Box>
+                    </Box>
+                )}
+                
+                {/* Action Buttons */}
+                <Box width="100%" mt={4}>
+                    <Grid templateColumns={{ base: "1fr", sm: "1fr 1fr" }} gap={4}>
+                        <Button colorScheme="blue" onClick={handleAddToCart} size="lg">
+                            Buy Now
+                        </Button>
+                        <Button colorScheme="pink" onClick={handleAddToWishlist} size="lg" variant="outline">
+                            Add to Wishlist
+                        </Button>
+                    </Grid>
+                </Box>
+            </VStack>
+        </GridItem>
+    </Grid>
+</Box>
             
             {/* Lens Selection Modal - Only shows for non-contact lens products */}
             <Modal isOpen={isLensModalOpen} onClose={onLensModalClose} size="md" isCentered>

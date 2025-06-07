@@ -50,7 +50,6 @@
 import { Link } from "react-router-dom";
 import { Box, Flex, Grid, GridItem, Text, Image } from "@chakra-ui/react";
 // import { AiFillStar } from "react-icons/ai";
-
 const ProductCard = ({ products }) => {
   return (
     <Grid templateColumns="repeat(auto-fill, minmax(300px, 1fr))" gap={6}>
@@ -111,7 +110,60 @@ const ProductCard = ({ products }) => {
                 {product.description}
               </Text>
               
-              <Text fontWeight="500">Category: <strong>{product.category}</strong></Text>
+              <Text fontWeight="500" mb={1}>Category: <strong>{product.category}</strong></Text>
+              
+              {/* Contact Lens specific fields */}
+              {product.category === "Contact Lenses" && (
+                <>
+                  {product.brand && (
+                    <Text fontWeight="500" fontSize="14px" color="blue.600" mb={1}>
+                      Brand: <strong>{product.brand}</strong>
+                    </Text>
+                  )}
+                  {product.power && (
+                    <Text fontWeight="500" fontSize="14px" color="green.600" mb={1}>
+                      Power: <strong>{product.power}</strong>
+                    </Text>
+                  )}
+                  {product.color && (
+                    <Text fontWeight="500" fontSize="14px" color="purple.600" mb={1}>
+                      Color: <strong>{product.color}</strong>
+                    </Text>
+                  )}
+                </>
+              )}
+              
+              {/* Show gender for non-contact lens products */}
+              {product.category !== "Contact Lenses" && product.gender && (
+                <Text fontWeight="500" fontSize="14px" color="gray.600" mb={1}>
+                  Gender: <strong>{product.gender}</strong>
+                </Text>
+              )}
+              
+              {/* Show sub-category for non-contact lens products */}
+              {product.category !== "Contact Lenses" && product.subCategory && (
+                <Text fontWeight="500" fontSize="14px" color="gray.600" mb={1}>
+                  Type: <strong>{product.subCategory}</strong>
+                </Text>
+              )}
+              
+              {/* Discount badge */}
+              {product.discount && product.discount !== "0" && (
+                <Box 
+                  bgColor="red.100" 
+                  color="red.600" 
+                  px={2} 
+                  py={1} 
+                  borderRadius="md" 
+                  fontSize="12px" 
+                  fontWeight="bold" 
+                  mb={2}
+                  width="fit-content"
+                >
+                  {product.discount}% OFF
+                </Box>
+              )}
+              
               <Text fontWeight="bold" fontSize="18px" mt="auto">Rs.{product.price}</Text>
             </Box>
           </Box>

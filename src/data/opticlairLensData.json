@@ -1110,8 +1110,8 @@
       "id": "bifocal_blue_protection_essential",
       "name": "OptiClair Blue Protection",
       "subtitle": "Essential",
-      "price": 4000,
-      "singlePrice": 2000,
+      "price": 2000,
+      "singlePrice": 1000,
       "index": "1.56 index",
       "description": "Essential bifocal lens with basic blue light protection",
       "features": [
@@ -1135,8 +1135,8 @@
       "id": "bifocal_blue_protection_premium",
       "name": "OptiClair Blue Protection",
       "subtitle": "Premium",
-      "price": 5000,
-      "singlePrice": 2500,
+      "price": 2500,
+      "singlePrice": 1250,
       "index": "1.56 index",
       "description": "Premium bifocal lens with enhanced blue light protection",
       "features": [
@@ -1160,8 +1160,8 @@
       "id": "bifocal_blue_protection_dual_coating",
       "name": "OptiClair Blue Protection",
       "subtitle": "Dual Coating",
-      "price": 6000,
-      "singlePrice": 3000,
+      "price": 3000,
+      "singlePrice": 1500,
       "index": "1.56 index",
       "description": "Dual coating bifocal lens with comprehensive protection",
       "features": [
@@ -1186,8 +1186,8 @@
       "id": "bifocal_photo_chromatic",
       "name": "OptiClair Photo-Chromatic",
       "subtitle": "BIFOCAL",
-      "price": 7000,
-      "singlePrice": 3500,
+      "price": 3500,
+      "singlePrice": 1750,
       "index": "1.56 thinner index",
       "description": "Photo-chromatic bifocal lens with adaptive tinting",
       "features": [
@@ -1480,7 +1480,7 @@
   ],
   "brandInfo": {
     "name": "OptiClair",
-    "logo": "/images/opticlair-logo.png",
+    "logo": "/assets/logo5.png",
     "tagline": "Choose Lens Package",
     "benefits": [
       "Buy 1 Get 1 offer on all lenses",
