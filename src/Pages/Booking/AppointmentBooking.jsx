@@ -1,5 +1,3 @@
-
-
 import React, { useState } from "react";
 import {
   Box,
@@ -11,15 +9,25 @@ import {
   useToast,
   Fade,
   Icon,
+  FormControl,
+  FormLabel,
+  InputGroup,
+  InputRightElement,
+  useBreakpointValue,
 } from "@chakra-ui/react";
-import { CheckCircleIcon } from "@chakra-ui/icons";
-import { APPOINTMENTS_URL } from "../../config/api"; // Adjust the import path as necessary
+import { CheckCircleIcon, CalendarIcon } from "@chakra-ui/icons";
 
 const AppointmentBooking = () => {
   const [form, setForm] = useState({ name: "", email: "", date: "", time: "" });
   const [successData, setSuccessData] = useState(null);
   const [showAnimation, setShowAnimation] = useState(false);
   const toast = useToast();
+
+  // Responsive values
+  const containerPadding = useBreakpointValue({ base: 4, md: 6 });
+  const containerMargin = useBreakpointValue({ base: 4, md: 10 });
+  const headingSize = useBreakpointValue({ base: "lg", md: "xl" });
+  const buttonSize = useBreakpointValue({ base: "md", md: "lg" });
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -31,36 +39,32 @@ const AppointmentBooking = () => {
     setShowAnimation(false);
 
     try {
-      const res = await fetch(`${APPOINTMENTS_URL}`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+      // Simulate API call for demo
+      const mockResponse = {
+        name: form.name,
+        email: form.email,
+        date: form.date,
+        time: form.time,
+        id: Date.now()
+      };
+
+      // Simulate network delay
+      await new Promise(resolve => setTimeout(resolve, 1000));
+
+      setSuccessData(mockResponse);
+      setForm({ name: "", email: "", date: "", time: "" });
+      setShowAnimation(true);
+
+      toast({
+        title: "Appointment booked!",
+        description: "Your appointment has been confirmed.",
+        status: "success",
+        duration: 3000,
+        isClosable: true,
       });
 
-      if (res.ok) {
-        const data = await res.json(); // assuming backend returns saved appointment
-        setSuccessData(data);
-        setForm({ name: "", email: "", date: "", time: "" });
-        setShowAnimation(true);
-
-        toast({
-          title: "Appointment booked!",
-          description: "Your appointment has been confirmed.",
-          status: "success",
-          duration: 3000,
-          isClosable: true,
-        });
-
-        // Optional: hide animation after 5 seconds
-        setTimeout(() => setShowAnimation(false), 5000);
-      } else {
-        toast({
-          title: "Failed to book appointment",
-          status: "error",
-          duration: 3000,
-          isClosable: true,
-        });
-      }
+      // Optional: hide animation after 5 seconds
+      setTimeout(() => setShowAnimation(false), 5000);
     } catch (err) {
       console.error(err);
       toast({
@@ -74,56 +78,150 @@ const AppointmentBooking = () => {
   };
 
   return (
-    <Box maxW="md" mx="auto" mt={10} p={6} borderWidth={1} borderRadius="lg">
-      <Heading mb={4}>Book an Appointment</Heading>
+    <Box 
+      maxW={{ base: "90%", sm: "400px", md: "500px" }} 
+      mx="auto" 
+      mt={containerMargin} 
+      p={containerPadding} 
+      borderWidth={1} 
+      borderRadius="lg"
+      shadow="md"
+    >
+      <Heading mb={6} size={headingSize} textAlign="center">
+        Book an Appointment
+      </Heading>
 
       <form onSubmit={handleSubmit}>
-        <Input
-          placeholder="Your Name"
-          name="name"
-          value={form.name}
-          onChange={handleChange}
-          mb={3}
-          required
-        />
-        <Input
-          placeholder="Your Email"
-          name="email"
-          type="email"
-          value={form.email}
-          onChange={handleChange}
-          mb={3}
-          required
-        />
-        <Input
-          placeholder="Date (YYYY-MM-DD)"
-          name="date"
-          type="date"
-          value={form.date}
-          onChange={handleChange}
-          mb={3}
-          required
-        />
-        <Input
-          placeholder="Time"
-          name="time"
-          type="time"
-          value={form.time}
-          onChange={handleChange}
-          mb={3}
-          required
-        />
-        <Button type="submit" colorScheme="teal" width="100%">
-          Book Appointment
-        </Button>
+        <VStack spacing={4}>
+          <FormControl isRequired>
+            <FormLabel fontSize={{ base: "sm", md: "md" }}>Full Name</FormLabel>
+            <Input
+              placeholder="Enter your full name"
+              name="name"
+              value={form.name}
+              onChange={handleChange}
+              size={buttonSize}
+              focusBorderColor="teal.500"
+            />
+          </FormControl>
+
+          <FormControl isRequired>
+            <FormLabel fontSize={{ base: "sm", md: "md" }}>Email Address</FormLabel>
+            <Input
+              placeholder="Enter your email"
+              name="email"
+              type="email"
+              value={form.email}
+              onChange={handleChange}
+              size={buttonSize}
+              focusBorderColor="teal.500"
+            />
+          </FormControl>
+
+          <FormControl isRequired>
+            <FormLabel fontSize={{ base: "sm", md: "md" }}>Appointment Date</FormLabel>
+            <InputGroup>
+              <Input
+                name="date"
+                type="date"
+                value={form.date}
+                onChange={handleChange}
+                size={buttonSize}
+                focusBorderColor="teal.500"
+                // Force native date picker on mobile
+                sx={{
+                  '::-webkit-calendar-picker-indicator': {
+                    background: 'transparent',
+                    bottom: 0,
+                    color: 'transparent',
+                    cursor: 'pointer',
+                    height: 'auto',
+                    left: 0,
+                    position: 'absolute',
+                    right: 0,
+                    top: 0,
+                    width: 'auto',
+                  }
+                }}
+              />
+              <InputRightElement 
+                pointerEvents="none"
+                height={buttonSize === "lg" ? "48px" : "40px"}
+              >
+                <CalendarIcon color="gray.400" />
+              </InputRightElement>
+            </InputGroup>
+          </FormControl>
+
+          <FormControl isRequired>
+            <FormLabel fontSize={{ base: "sm", md: "md" }}>Appointment Time</FormLabel>
+            <InputGroup>
+              <Input
+                name="time"
+                type="time"
+                value={form.time}
+                onChange={handleChange}
+                size={buttonSize}
+                focusBorderColor="teal.500"
+                // Force native time picker on mobile
+                sx={{
+                  '::-webkit-calendar-picker-indicator': {
+                    background: 'transparent',
+                    bottom: 0,
+                    color: 'transparent',
+                    cursor: 'pointer',
+                    height: 'auto',
+                    left: 0,
+                    position: 'absolute',
+                    right: 0,
+                    top: 0,
+                    width: 'auto',
+                  }
+                }}
+              />
+              <InputRightElement 
+                pointerEvents="none"
+                height={buttonSize === "lg" ? "48px" : "40px"}
+              >
+                <Icon viewBox="0 0 24 24" color="gray.400">
+                  <path
+                    fill="currentColor"
+                    d="M12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22C6.47,22 2,17.5 2,12A10,10 0 0,1 12,2M12.5,7V12.25L17,14.92L16.25,16.15L11,13V7H12.5Z"
+                  />
+                </Icon>
+              </InputRightElement>
+            </InputGroup>
+          </FormControl>
+
+          <Button 
+            type="submit" 
+            colorScheme="teal" 
+            width="100%"
+            size={buttonSize}
+            height={{ base: "48px", md: "52px" }}
+            fontSize={{ base: "md", md: "lg" }}
+            fontWeight="semibold"
+            _hover={{
+              transform: "translateY(-2px)",
+              shadow: "lg"
+            }}
+            transition="all 0.2s"
+          >
+            Book Appointment
+          </Button>
+        </VStack>
       </form>
 
-      {/* ✅ Success Animation and Info */}
+      {/* Success Animation and Info */}
       <Fade in={showAnimation}>
         {successData && (
-          <VStack mt={6} spacing={4} align="center">
+          <VStack mt={8} spacing={4} align="center">
             <Icon as={CheckCircleIcon} w={10} h={10} color="green.400" />
-            <Text fontSize="xl" fontWeight="bold">
+            <Text 
+              fontSize={{ base: "lg", md: "xl" }} 
+              fontWeight="bold"
+              textAlign="center"
+            >
               Appointment Booked Successfully!
             </Text>
             <Box
@@ -132,11 +230,22 @@ const AppointmentBooking = () => {
               borderRadius="md"
               width="100%"
               bg="gray.50"
+              shadow="sm"
             >
-              <Text><strong>Name:</strong> {successData.name}</Text>
-              <Text><strong>Email:</strong> {successData.email}</Text>
-              <Text><strong>Date:</strong> {successData.date}</Text>
-              <Text><strong>Time:</strong> {successData.time}</Text>
+              <VStack align="start" spacing={2}>
+                <Text fontSize={{ base: "sm", md: "md" }}>
+                  <Text as="span" fontWeight="bold">Name:</Text> {successData.name}
+                </Text>
+                <Text fontSize={{ base: "sm", md: "md" }}>
+                  <Text as="span" fontWeight="bold">Email:</Text> {successData.email}
+                </Text>
+                <Text fontSize={{ base: "sm", md: "md" }}>
+                  <Text as="span" fontWeight="bold">Date:</Text> {successData.date}
+                </Text>
+                <Text fontSize={{ base: "sm", md: "md" }}>
+                  <Text as="span" fontWeight="bold">Time:</Text> {successData.time}
+                </Text>
+              </VStack>
             </Box>
           </VStack>
         )}
