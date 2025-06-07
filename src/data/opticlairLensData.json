@@ -207,7 +207,9 @@
       "description": "Photo-chromatic lens with essential protection",
       "features": [
         "Anti-Reflection",
-        "UV 420 • Sun Protection"
+        "UV 420 • Sun Protection",
+        "Tint Color - GREY"
+
       ],
       "missingFeatures": [
         "Water & Dust Repellent",
@@ -235,7 +237,8 @@
         "UV 420 • Sun Protection",
         "Water & Dust Repellent",
         "Smudge Resistance",
-        "Scratch Resistance"
+        "Scratch Resistance",
+        "Tint Color - GREY/BROWN"
       ],
       "missingFeatures": [],
       "powerRange": "-4.00-2.00",
@@ -259,7 +262,8 @@
         "UV 420 • Sun Protection",
         "Water & Dust Repellent",
         "Smudge Resistance",
-        "Scratch Resistance"
+        "Scratch Resistance",
+        "Tint Color - GREY/BROWN"
       ],
       "missingFeatures": [],
       "powerRange": "-4.00-2.00",
@@ -285,7 +289,8 @@
         "Water & Dust Repellent",
         "Blue Light Block",
         "Smudge Resistance",
-        "Scratch Resistance"
+        "Scratch Resistance",
+        "Tint Color - GREY"
       ],
       "missingFeatures": [],
       "powerRange": "-6.0,-4.0-2.0,+4.0",
@@ -333,11 +338,12 @@
       "features": [
         "Anti-Reflection",
         "UV 420 • Sun Protection",
-        "Blue Light Block"
+        "Blue Light Block",
+        "Water & Dust Repellent",
+        "Smudge Resistance"
       ],
       "missingFeatures": [
-        "Water & Dust Repellent",
-        "Smudge Resistance",
+        
         "Scratch Resistance"
       ],
       "powerRange": "-6.00-2.00",
@@ -359,12 +365,11 @@
         "Anti-Reflection",
         "UV 420 • Sun Protection",
         "Water & Dust Repellent",
-        "Blue Light Block"
-      ],
-      "missingFeatures": [
+        "Blue Light Block",
         "Smudge Resistance",
         "Scratch Resistance"
       ],
+      "missingFeatures": [],
       "powerRange": "-8.00-2.00",
       "offer": "Buy 1Get 1",
       "category": "single_vision",
@@ -596,8 +601,8 @@
       "id": "kodak_color_oriented",
       "name": "KODAK Color Oriented",
       "subtitle": "International Brand",
-      "price": 7120,
-      "singlePrice": 3560,
+      "price": 3560,
+      "singlePrice": 1780,
       "index": "1.56 index HMC",
       "description": "KODAK color oriented lens with enhanced visual clarity",
       "features": [
@@ -621,8 +626,8 @@
       "id": "kodak_uv_blue",
       "name": "KODAK UV BLUE",
       "subtitle": "International Brand",
-      "price": 8300,
-      "singlePrice": 4150,
+      "price": 4150,
+      "singlePrice": 2075,
       "index": "1.56 index HMC",
       "description": "KODAK UV Blue lens with comprehensive protection",
       "features": [
@@ -646,8 +651,8 @@
       "id": "kodak_break_resistance_160",
       "name": "KODAK BREAK RESISTANCE",
       "subtitle": "International Brand",
-      "price": 9500,
-      "singlePrice": 4750,
+      "price": 4750,
+      "singlePrice": 2375,
       "index": "1.60 MR8 HMC",
       "description": "KODAK break resistance lens with superior durability",
       "features": [
@@ -671,8 +676,8 @@
       "id": "kodak_break_resistance_blue",
       "name": "KODAK BREAK RESISTANCE",
       "subtitle": "International Brand with Blue Protection",
-      "price": 10680,
-      "singlePrice": 5340,
+      "price": 5340,
+      "singlePrice": 2670,
       "index": "1.60MR8 HMC",
       "description": "KODAK break resistance lens with blue light protection",
       "features": [
@@ -695,8 +700,8 @@
       "id": "nova_thinmx_bluemax",
       "name": "NOVA THINMX BLUEMAX",
       "subtitle": "Premium International Brand",
-      "price": 5660,
-      "singlePrice": 2830,
+      "price": 2830,
+      "singlePrice": 1415,
       "index": "1.56 Index HMC",
       "description": "NOVA ThinMX BlueMax lens with advanced blue light filtering",
       "features": [
@@ -719,8 +724,8 @@
       "id": "nova_thinmx_customized",
       "name": "NOVA THINMX Customized",
       "subtitle": "Premium International Brand",
-      "price": 10400,
-      "singlePrice": 5200,
+      "price": 5200,
+      "singlePrice": 2600,
       "index": "1.56 Index HMC",
       "description": "NOVA ThinMX customized lens with premium features",
       "features": [
@@ -744,8 +749,8 @@
       "id": "nova_thinmx_bluemax_167",
       "name": "NOVA THINMX BLUEMAX",
       "subtitle": "Ultra Premium International Brand",
-      "price": 11720,
-      "singlePrice": 5860,
+      "price": 5860,
+      "singlePrice": 2930,
       "index": "1.67 HI-INDEX",
       "description": "NOVA ThinMX BlueMax high index lens for strong prescriptions",
       "features": [
@@ -768,8 +773,8 @@
       "id": "nova_thinmx_customized_167",
       "name": "NOVA THINMX Customized",
       "subtitle": "Ultra Premium International Brand",
-      "price": 20400,
-      "singlePrice": 10200,
+      "price": 10200,
+      "singlePrice": 5100,
       "index": "1.67 HI-INDEX",
       "description": "NOVA ThinMX customized high index lens with ultimate performance",
       "features": [
@@ -1107,6 +1112,111 @@
       "stockStatus": "STOCK"
     },
     {
+      "id": "progressive_6_tech_scratch",
+      "name": "Unique HD ",
+      "subtitle": "Wider Customized FreeForm",
+      "price": 17060,
+      "singlePrice": 10285,
+      "index": "1.56 index",
+      "description": "6 Technology progressive lens with classic transition technology",
+      "features": [
+        "Smooth Power Transition",
+        "Water & Dust Repellent",
+        "UV 420 • Sun Protection",
+        "Scratch Resistant",
+        "Anti-Reflection",
+        "Blue Light Block"
+      ],
+      "missingFeatures": [],
+      "powerRange": "-6.00/+6.00,-4.0 CYL",
+      "offer": "Buy 1Get 1",
+      "category": "progressive",
+      "section": "6_technology_1_lens",
+      "corridor": "Wider",
+      "tintColor": "Classic Grey-Brown",
+      "popular": false,
+      "stockStatus": "STOCK"
+    },
+    {
+      "id": "progressive_6_tech_transition",
+      "name": "Unique HD ",
+      "subtitle": "Wider Customized Photo GR/BR",
+      "price": 18680,
+      "singlePrice": 10285,
+      "index": "1.56 index",
+      "description": "6 Technology progressive lens with classic transition technology",
+      "features": [
+        "Smooth Power Transition",
+        "Water & Dust Repellent",
+        "UV 420 • Sun Protection",
+        "Scratch Resistant",
+        "Anti-Reflection"
+      ],
+      "missingFeatures": ["Blue Light Block"],
+      "powerRange": "-6.00/+6.00,-4.0 CYL",
+      "offer": "Buy 1Get 1",
+      "category": "progressive",
+      "section": "6_technology_1_lens",
+      "corridor": "Wider",
+      "tintColor": "Classic Grey-Brown",
+      "popular": false,
+      "stockStatus": "STOCK"
+    },
+    {
+      "id": "progressive_6_tech_transition",
+      "name": "Unique HD ",
+      "subtitle": "Wider Customized Break Resistance",
+      "price": 18680,
+      "singlePrice": 10285,
+      "index": "1.56 index",
+      "description": "6 Technology progressive lens with classic transition technology",
+      "features": [
+        "Smooth Power Transition",
+        "Water & Dust Repellent",
+        "UV 420 • Sun Protection",
+        "Scratch Resistant",
+        "Anti-Reflection",
+        "Blue Light Block"
+      ],
+      "missingFeatures": [],
+      "powerRange": "-6.00/+6.00,-4.0 CYL",
+      "offer": "Buy 1Get 1",
+      "category": "progressive",
+      "section": "6_technology_1_lens",
+      "corridor": "Wider",
+      "tintColor": "Classic Grey-Brown",
+      "popular": false,
+      "stockStatus": "STOCK"
+    },
+    {
+      "id": "progressive_6_tech_transition",
+      "name": "Unique HD ",
+      "subtitle": "Wider Customized Break Resistance",
+      "price": 20570,
+      "singlePrice": 10285,
+      "index": "1.56 index",
+      "description": "6 Technology progressive lens with classic transition technology",
+      "features": [
+        "Smooth Power Transition",
+        "Water & Dust Repellent",
+        "UV 420 • Sun Protection",
+        "Scratch Resistant",
+        "Anti-Reflection",
+        "GREY/BROWN"
+      ],
+      "missingFeatures": [],
+      "powerRange": "-6.00/+6.00,-4.0 CYL",
+      "offer": "Buy 1Get 1",
+      "category": "progressive",
+      "section": "6_technology_1_lens",
+      "corridor": "Wider",
+      "tintColor": "Classic Grey-Brown",
+      "popular": false,
+      "stockStatus": "STOCK"
+    },
+
+
+    {
       "id": "bifocal_blue_protection_essential",
       "name": "OptiClair Blue Protection",
       "subtitle": "Essential",
@@ -1195,10 +1305,11 @@
         "UV 420 • Sun Protection",
         "Smudge Resistant",
         "Scratch Resistant",
-        "Water Repellence"
+        "Water Repellence",
+        "GREY/BROWN"
       ],
       "missingFeatures": [
-        "Blue Light Block"
+        
       ],
       "powerRange": "(+-) 6.00 UPTO 4 CYL",
       "offer": "Buy 1Get 1",
@@ -1304,6 +1415,18 @@
     {
       "id": "4_technology_1_lens",
       "title": "4 Technology 1 Lens-Progressive XT",
+      "subtitle": "Ultimate Vision Optimization with Dynamic Reading Technology",
+      "category": "progressive",
+      "technologies": [
+        "Digital Freeform: Digital manufacturing for more accurate prescription alignment",
+        "Variable Geometry: Places the design within the blank to optimize lens thickness and create better balanced lens aesthetically",
+        "Vision First Design: Creates smoother transition and improved binocular balance",
+        "Dynamic Reading Optimization Technology: Correct oblique astigmatism in the reading zones to create a dynamic reading edge"
+      ]
+    },
+    {
+      "id": "6_technology_1_lens",
+      "title": "6 Technology 1 Lens-Progressive XT",
       "subtitle": "Ultimate Vision Optimization with Dynamic Reading Technology",
       "category": "progressive",
       "technologies": [
