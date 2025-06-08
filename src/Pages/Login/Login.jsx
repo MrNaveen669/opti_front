@@ -612,36 +612,6 @@ const Login = ({ isOpen: externalIsOpen, onOpen: externalOnOpen, onClose: extern
               </InputGroup>
               {userData.password.length >= 6 ? "" : passSignup}
 
-              <HStack>
-                <Box
-                  textDecoration={"underline"}
-                  fontFamily={" sans-serif"}
-                  color={"#333368"}
-                  fontSize="14px"
-                >
-                  Got a Referral code?
-                </Box>
-
-                <Box fontFamily={" sans-serif"} color={"#333368"}>
-                  (Optional)
-                </Box>
-              </HStack>
-
-              <HStack>
-                <Checkbox
-                  mb={"20px"}
-                  mt="20px"
-                  size="sm"
-                  fontFamily={" sans-serif"}
-                >
-                  Get Update on whatsapp
-                </Checkbox>
-                <Image
-                  src="https://static.lenskart.com/media/desktop/img/25-July-19/whatsapp.png"
-                  w={"22px"}
-                  h="22px"
-                />
-              </HStack>
               {exist === true ? (
                 <Required info="Email Id already exists" />
               ) : (

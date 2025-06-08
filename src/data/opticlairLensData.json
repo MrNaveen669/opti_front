@@ -2,16 +2,108 @@
   "lensTypes": [
     {
       "id": "basic_single",
+      "name": "Basic color Power",
+      "subtitle": "Customized",
+      "price": 1500,
+      "singlePrice": 750,
+      "index": "1.56 index",
+      "description": "Basic blue light protection with anti-glare coating",
+      "features": ["Any Color"],
+      "missingFeatures": [
+        "Anti-Reflection",
+        "Water & Dust Repellent",
+        "Smudge Resistance",
+        "UV 420 • Sun Protection",
+        "Scratch Resistance"
+      ],
+      "powerRange": "-6.00-2.00",
+      "offer": "Buy 1Get 1",
+      "category": "single_vision",
+      "section": "Opticlair_Special",
+      "popular": false,
+      "stockStatus": "STOCK"
+    },
+    {
+      "id": "basic_single",
+      "name": "Premium Color With Power",
+      "subtitle": "Customized",
+      "price": 2500,
+      "singlePrice": 1250,
+      "index": "1.56 index",
+      "description": "Basic blue light protection with anti-glare coating",
+      "features": [
+        "Any Color",
+        "UV 420 • Sun Protection",
+        "Scratch Resistance"
+      ],
+      "missingFeatures": [
+        "Anti-Reflection",
+        "Water & Dust Repellent",
+        "Smudge Resistance"
+      ],
+      "powerRange": "-6.00-2.00",
+      "offer": "Buy 1Get 1",
+      "category": "single_vision",
+      "section": "Opticlair_Special",
+      "popular": false,
+      "stockStatus": "STOCK"
+    },
+    {
+      "id": "basic_single",
+      "name": "Customized color with power",
+      "subtitle": "Customized",
+      "price": 3500,
+      "singlePrice": 1750,
+      "index": "1.56 index",
+      "description": "Basic blue light protection with anti-glare coating",
+      "features": [
+        "UV 420 • Sun Protection",
+        "Water & Dust Repellent",
+        "Smudge Resistance",
+        "Scratch Resistance",
+        "Any Color"
+      ],
+      "missingFeatures": ["Anti-Reflection"],
+      "powerRange": "-6.00-2.00",
+      "offer": "Buy 1Get 1",
+      "category": "single_vision",
+      "section": "Opticlair_Special",
+      "popular": false,
+      "stockStatus": "STOCK"
+    },
+    {
+      "id": "basic_single",
+      "name": "OptiClair Anti-Glair Customized color with power",
+      "subtitle": "Customized",
+      "price": 4500,
+      "singlePrice": 2250,
+      "index": "1.56 index",
+      "description": "Basic blue light protection with anti-glare coating",
+      "features": [
+        "Anti-Reflection",
+        "UV 420 • Sun Protection",
+        "Water & Dust Repellent",
+        "Smudge Resistance",
+        "Scratch Resistance",
+        "Any Color"
+      ],
+      "missingFeatures": [],
+      "powerRange": "-6.00-2.00",
+      "offer": "Buy 1Get 1",
+      "category": "single_vision",
+      "section": "Opticlair_Special",
+      "popular": false,
+      "stockStatus": "STOCK"
+    },
+    {
+      "id": "basic_single",
       "name": "OptiClair Basic",
       "subtitle": "Blue Protection",
       "price": 700,
       "singlePrice": 500,
       "index": "1.56 index",
       "description": "Basic blue light protection with anti-glare coating",
-      "features": [
-        "Anti-Reflection",
-        "Blue Light Block"
-      ],
+      "features": ["Anti-Reflection", "Blue Light Block"],
       "missingFeatures": [
         "UV 420 • Sun Protection",
         "Water & Dust Repellent",
@@ -209,7 +301,6 @@
         "Anti-Reflection",
         "UV 420 • Sun Protection",
         "Tint Color - GREY"
-
       ],
       "missingFeatures": [
         "Water & Dust Repellent",
@@ -342,10 +433,7 @@
         "Water & Dust Repellent",
         "Smudge Resistance"
       ],
-      "missingFeatures": [
-        
-        "Scratch Resistance"
-      ],
+      "missingFeatures": ["Scratch Resistance"],
       "powerRange": "-6.00-2.00",
       "offer": "Buy 1Get 1",
       "category": "single_vision",
@@ -612,9 +700,7 @@
         "Smudge Resistance",
         "Water Repellence"
       ],
-      "missingFeatures": [
-        "Blue Light Block"
-      ],
+      "missingFeatures": ["Blue Light Block"],
       "powerRange": "-4.00-2.00/+4.00",
       "offer": "Buy 1Get 1",
       "category": "single_vision",
@@ -662,9 +748,7 @@
         "Smudge Resistance",
         "Water Repellence"
       ],
-      "missingFeatures": [
-        "Blue Light Block"
-      ],
+      "missingFeatures": ["Blue Light Block"],
       "powerRange": "-8.0-2.0/+4.0,-2CYL",
       "offer": "Buy 1Get 1",
       "category": "single_vision",
@@ -794,7 +878,7 @@
       "stockStatus": "STOCK",
       "highlighted": true
     },
-    
+
     {
       "id": "progressive_scratch_resistance",
       "name": "OptiClair Scratch Resistance",
@@ -836,9 +920,7 @@
         "Scratch Resistant",
         "Anti-Reflection"
       ],
-      "missingFeatures": [
-        "Blue Light Block"
-      ],
+      "missingFeatures": ["Blue Light Block"],
       "powerRange": "-6.00/+6.00,-4.0 CYL",
       "offer": "Buy 1Get 1",
       "category": "progressive",
@@ -888,9 +970,7 @@
         "Scratch Resistant",
         "Anti-Reflection"
       ],
-      "missingFeatures": [
-        "Blue Light Block"
-      ],
+      "missingFeatures": ["Blue Light Block"],
       "powerRange": "-6.00/+6.00,-4.0 CYL",
       "offer": "Buy 1Get 1",
       "category": "progressive",
@@ -941,9 +1021,7 @@
         "Scratch Resistant",
         "Anti-glare"
       ],
-      "missingFeatures": [
-        "Blue Light Block"
-      ],
+      "missingFeatures": ["Blue Light Block"],
       "powerRange": "-6.00/+6.00,-4.0 CYL",
       "offer": "Buy 1Get 1",
       "category": "progressive",
@@ -993,9 +1071,110 @@
         "Scratch Resistant",
         "Anti-glare"
       ],
-      "missingFeatures": [
+      "missingFeatures": ["Blue Light Block"],
+      "powerRange": "-6.00/+6.00,-4.0 CYL",
+      "offer": "Buy 1Get 1",
+      "category": "progressive",
+      "section": "3_technology_1_lens",
+      "corridor": "Wide",
+      "tintColor": "Photo-Grey",
+      "popular": false,
+      "stockStatus": "STOCK"
+    },
+    {
+      "id": "progressive_3_tech_photo_grey",
+      "name": "NITRO Customized Corridor",
+      "subtitle": "Customized",
+      "price": 6690,
+      "singlePrice": 3345,
+      "index": "1.56 Index",
+      "description": "3 Technology progressive lens with NITRO ",
+      "features": [
+        "Smooth Power Transition",
+        "Water & Dust Repellent",
+        "UV 420 • Sun Protection",
+        "Scratch Resistant",
+        "Anti-Reflection",
         "Blue Light Block"
       ],
+      "missingFeatures": [],
+      "powerRange": "-6.00/+6.00,-4.0 CYL",
+      "offer": "Buy 1Get 1",
+      "category": "progressive",
+      "section": "3_technology_1_lens",
+      "corridor": "Wide",
+      "tintColor": "Photo-Grey",
+      "popular": false,
+      "stockStatus": "STOCK"
+    },
+    {
+      "id": "progressive_3_tech_photo_grey",
+      "name": "NITRO Wide Customized PG/BR Or BlueCut",
+      "subtitle": "Customized",
+      "price": 8690,
+      "singlePrice": 4345,
+      "index": "1.56 Index",
+      "description": "3 Technology progressive lens with NITRO ",
+      "features": [
+        "Smooth Power Transition",
+        "Water & Dust Repellent",
+        "UV 420 • Sun Protection",
+        "Scratch Resistant",
+        "Anti-Reflection"
+      ],
+      "missingFeatures": ["Blue Light Block"],
+      "powerRange": "-6.00/+6.00,-4.0 CYL",
+      "offer": "Buy 1Get 1",
+      "category": "progressive",
+      "section": "3_technology_1_lens",
+      "corridor": "Wide",
+      "tintColor": "Photo-Grey",
+      "popular": false,
+      "stockStatus": "STOCK"
+    },
+    {
+      "id": "progressive_3_tech_photo_grey",
+      "name": "Precise Wide Customized DIGITAL",
+      "subtitle": "Customized",
+      "price": 9770,
+      "singlePrice": 4885,
+      "index": "1.56 Index",
+      "description": "3 Technology progressive lens with Precise ",
+      "features": [
+        "Smooth Power Transition",
+        "Water & Dust Repellent",
+        "UV 420 • Sun Protection",
+        "Scratch Resistant",
+        "Anti-Reflection",
+        "Blue Light Block"
+      ],
+      "missingFeatures": [],
+      "powerRange": "-6.00/+6.00,-4.0 CYL",
+      "offer": "Buy 1Get 1",
+      "category": "progressive",
+      "section": "3_technology_1_lens",
+      "corridor": "Wide",
+      "tintColor": "Photo-Grey",
+      "popular": false,
+      "stockStatus": "STOCK"
+    },
+    {
+      "id": "progressive_3_tech_photo_grey",
+      "name": "Precise Wide Customized PG/BR Or BlueCut",
+      "subtitle": "Customized",
+      "price": 11660,
+      "singlePrice": 5830,
+      "index": "1.60 MR8",
+      "description": "3 Technology progressive lens with Precise ",
+      "features": [
+        "Smooth Power Transition",
+        "Water & Dust Repellent",
+        "UV 420 • Sun Protection",
+        "Scratch Resistant",
+        "Anti-Reflection",
+        "Blue Light Block"
+      ],
+      "missingFeatures": [],
       "powerRange": "-6.00/+6.00,-4.0 CYL",
       "offer": "Buy 1Get 1",
       "category": "progressive",
@@ -1020,9 +1199,7 @@
         "Scratch Resistant",
         "Anti-Reflection"
       ],
-      "missingFeatures": [
-        "Blue Light Block"
-      ],
+      "missingFeatures": ["Blue Light Block"],
       "powerRange": "-6.00/+6.00,-4.0 CYL",
       "offer": "Buy 1Get 1",
       "category": "progressive",
@@ -1072,9 +1249,7 @@
         "Scratch Resistant",
         "Anti-Reflection"
       ],
-      "missingFeatures": [
-        "Blue Light Block"
-      ],
+      "missingFeatures": ["Blue Light Block"],
       "powerRange": "-6.00/+6.00,-4.0 CYL",
       "offer": "Buy 1Get 1",
       "category": "progressive",
@@ -1084,6 +1259,7 @@
       "popular": false,
       "stockStatus": "STOCK"
     },
+
     {
       "id": "progressive_4_tech_transition",
       "name": "OptiClair Transition",
@@ -1099,9 +1275,7 @@
         "Scratch Resistant",
         "Anti-Reflection"
       ],
-      "missingFeatures": [
-        "Blue Light Block"
-      ],
+      "missingFeatures": ["Blue Light Block"],
       "powerRange": "-6.00/+6.00,-4.0 CYL",
       "offer": "Buy 1Get 1",
       "category": "progressive",
@@ -1215,7 +1389,6 @@
       "stockStatus": "STOCK"
     },
 
-
     {
       "id": "bifocal_blue_protection_essential",
       "name": "OptiClair Blue Protection",
@@ -1255,10 +1428,7 @@
         "Blue Light Block",
         "Scratch Resistant"
       ],
-      "missingFeatures": [
-        "Smudge Resistant",
-        "Water Repellence"
-      ],
+      "missingFeatures": ["Smudge Resistant", "Water Repellence"],
       "powerRange": "(+-) 6.00 UPTO 4 CYL",
       "offer": "Buy 1Get 1",
       "category": "bifocal",
@@ -1308,9 +1478,7 @@
         "Water Repellence",
         "GREY/BROWN"
       ],
-      "missingFeatures": [
-        
-      ],
+      "missingFeatures": [],
       "powerRange": "(+-) 6.00 UPTO 4 CYL",
       "offer": "Buy 1Get 1",
       "category": "bifocal",
@@ -1325,6 +1493,12 @@
       "id": "budget_friendly",
       "title": "Budget Friendly Lenses",
       "subtitle": "Affordable protection for everyday use",
+      "category": "single_vision"
+    },
+    {
+      "id": "Opticlair_Special",
+      "title": "Opticlair Special",
+      "subtitle": "Special Purpose",
       "category": "single_vision"
     },
     {
@@ -1527,7 +1701,7 @@
       "price": 600,
       "description": "For very strong refractive errors requiring high-index materials"
     },
-     {
+    {
       "value": "bifocal_low",
       "label": "Bifocal Low ADD (+1.00 to +1.50)",
       "price": 300,
@@ -1551,7 +1725,7 @@
       "price": 1000,
       "description": "Seamless transition from distance to reading"
     },
-     {
+    {
       "value": "progressive_low",
       "label": "Progressive Low ADD (+0.75 to +1.50)",
       "price": 500,
@@ -1577,20 +1751,18 @@
       "description": "For distance or reading vision correction",
       "available": true
     },
-    
+
     {
       "id": "progressive",
       "name": "Progressive",
       "description": "Seamless transition from distance to reading vision",
       "available": true
-    
     },
     {
       "id": "bifocal",
       "name": "Bifocal",
       "description": "Distinct zones for distance and reading vision",
       "available": true
-      
     },
     {
       "id": "computer",
@@ -1598,7 +1770,6 @@
       "description": "Optimized for digital screen use and blue light protection",
       "available": false,
       "comingSoon": true
-     
     }
   ],
   "brandInfo": {
