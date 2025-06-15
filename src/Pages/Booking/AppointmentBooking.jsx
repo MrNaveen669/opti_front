@@ -102,8 +102,8 @@ const AppointmentBooking = () => {
             />
           </FormControl>
 
-          <FormControl>
-            <FormLabel fontSize={{ base: "sm", md: "md" }}>Phone Number (Optional)</FormLabel>
+          <FormControl isRequired>
+            <FormLabel fontSize={{ base: "sm", md: "md" }}>Phone Number </FormLabel>
             <Input
               placeholder="Enter your phone number"
               name="phone"
