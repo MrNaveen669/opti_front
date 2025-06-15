@@ -19,6 +19,9 @@ import EditProduct from "../Pages/Admin/EditProduct";
 import Lenses from "../Pages/Lenses/Lenses";
 import AppointmentBooking from "../Pages/Booking/AppointmentBooking";
 import NotFound from "../Pages/NotFound";
+import CancellationsAndRefund from "../Pages/StaticPages/CancellationsAndRefunds";
+import TermsAndConditions from "../Pages/StaticPages/TermsAndConditions";
+import PrivacyPolicy from "../Pages/StaticPages/PrivacyPolicy";
 
 const AllRoutes = () => {
   const location = useLocation();
@@ -125,6 +128,11 @@ const AllRoutes = () => {
         }
       />
     <Route path="/book-appointment" element={<AppointmentBooking />} />
+    <Route path="/cancellations-and-refunds" element={<CancellationsAndRefund />} />
+    <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
+    <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+      
+        
 
     </Routes>
   );

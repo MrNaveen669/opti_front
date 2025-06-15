@@ -24,7 +24,7 @@
       "stockStatus": "STOCK"
     },
     {
-      "id": "basic_single",
+      "id": "opticlair_special",
       "name": "Premium Color With Power",
       "subtitle": "Customized",
       "price": 2500,
@@ -49,7 +49,7 @@
       "stockStatus": "STOCK"
     },
     {
-      "id": "basic_single",
+      "id": "opticlair_special",
       "name": "Customized color with power",
       "subtitle": "Customized",
       "price": 3500,
@@ -72,7 +72,7 @@
       "stockStatus": "STOCK"
     },
     {
-      "id": "basic_single",
+      "id": "opticlair_special",
       "name": "OptiClair Anti-Glair Customized color with power",
       "subtitle": "Customized",
       "price": 4500,
@@ -1496,7 +1496,7 @@
       "category": "single_vision"
     },
     {
-      "id": "Opticlair_Special",
+      "id": "opticlair_special",
       "title": "Opticlair Special",
       "subtitle": "Special Purpose",
       "category": "single_vision"

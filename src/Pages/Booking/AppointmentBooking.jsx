@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import axios from "axios";
+import { APPOINTMENTS_URL } from "../../config/api";
 import {
   Box,
   Button,
@@ -18,7 +20,7 @@ import {
 import { CheckCircleIcon, CalendarIcon } from "@chakra-ui/icons";
 
 const AppointmentBooking = () => {
-  const [form, setForm] = useState({ name: "", email: "", date: "", time: "" });
+  const [form, setForm] = useState({ name: "", phone: "", date: "", time: "" });
   const [successData, setSuccessData] = useState(null);
   const [showAnimation, setShowAnimation] = useState(false);
   const toast = useToast();
@@ -39,20 +41,16 @@ const AppointmentBooking = () => {
     setShowAnimation(false);
 
     try {
-      // Simulate API call for demo
-      const mockResponse = {
+      // Make API call to backend using the configured URL
+      const response = await axios.post(APPOINTMENTS_URL, {
         name: form.name,
-        email: form.email,
+        phone: form.phone,
         date: form.date,
-        time: form.time,
-        id: Date.now()
-      };
-
-      // Simulate network delay
-      await new Promise(resolve => setTimeout(resolve, 1000));
-
-      setSuccessData(mockResponse);
-      setForm({ name: "", email: "", date: "", time: "" });
+        time: form.time
+      });
+      
+      setSuccessData(response.data);
+      setForm({ name: "", phone: "", date: "", time: "" });
       setShowAnimation(true);
 
       toast({
@@ -63,13 +61,12 @@ const AppointmentBooking = () => {
         isClosable: true,
       });
 
-      // Optional: hide animation after 5 seconds
       setTimeout(() => setShowAnimation(false), 5000);
     } catch (err) {
       console.error(err);
       toast({
         title: "An error occurred",
-        description: "Please try again later.",
+        description: err.response?.data?.error || "Please try again later.",
         status: "error",
         duration: 3000,
         isClosable: true,
@@ -78,12 +75,12 @@ const AppointmentBooking = () => {
   };
 
   return (
-    <Box 
-      maxW={{ base: "90%", sm: "400px", md: "500px" }} 
-      mx="auto" 
-      mt={containerMargin} 
-      p={containerPadding} 
-      borderWidth={1} 
+    <Box
+      maxW={{ base: "90%", sm: "400px", md: "500px" }}
+      mx="auto"
+      mt={containerMargin}
+      p={containerPadding}
+      borderWidth={1}
       borderRadius="lg"
       shadow="md"
     >
@@ -105,13 +102,14 @@ const AppointmentBooking = () => {
             />
           </FormControl>
 
-          <FormControl isRequired>
-            <FormLabel fontSize={{ base: "sm", md: "md" }}>Email Address</FormLabel>
+          <FormControl>
+            <FormLabel fontSize={{ base: "sm", md: "md" }}>Phone Number (Optional)</FormLabel>
             <Input
-              placeholder="Enter your email"
-              name="email"
-              type="email"
-              value={form.email}
+              placeholder="Enter your phone number"
+              name="phone"
+              type="tel"
+              pattern="[0-9]{10}"
+              value={form.phone}
               onChange={handleChange}
               size={buttonSize}
               focusBorderColor="teal.500"
@@ -128,7 +126,6 @@ const AppointmentBooking = () => {
                 onChange={handleChange}
                 size={buttonSize}
                 focusBorderColor="teal.500"
-                // Force native date picker on mobile
                 sx={{
                   '::-webkit-calendar-picker-indicator': {
                     background: 'transparent',
@@ -144,7 +141,7 @@ const AppointmentBooking = () => {
                   }
                 }}
               />
-              <InputRightElement 
+              <InputRightElement
                 pointerEvents="none"
                 height={buttonSize === "lg" ? "48px" : "40px"}
               >
@@ -163,7 +160,6 @@ const AppointmentBooking = () => {
                 onChange={handleChange}
                 size={buttonSize}
                 focusBorderColor="teal.500"
-                // Force native time picker on mobile
                 sx={{
                   '::-webkit-calendar-picker-indicator': {
                     background: 'transparent',
@@ -179,7 +175,7 @@ const AppointmentBooking = () => {
                   }
                 }}
               />
-              <InputRightElement 
+              <InputRightElement
                 pointerEvents="none"
                 height={buttonSize === "lg" ? "48px" : "40px"}
               >
@@ -193,9 +189,9 @@ const AppointmentBooking = () => {
             </InputGroup>
           </FormControl>
 
-          <Button 
-            type="submit" 
-            colorScheme="teal" 
+          <Button
+            type="submit"
+            colorScheme="teal"
             width="100%"
             size={buttonSize}
             height={{ base: "48px", md: "52px" }}
@@ -203,7 +199,7 @@ const AppointmentBooking = () => {
             fontWeight="semibold"
             _hover={{
               transform: "translateY(-2px)",
-              shadow: "lg"
+              shadow: "lg",
             }}
             transition="all 0.2s"
           >
@@ -212,16 +208,11 @@ const AppointmentBooking = () => {
         </VStack>
       </form>
 
-      {/* Success Animation and Info */}
       <Fade in={showAnimation}>
         {successData && (
           <VStack mt={8} spacing={4} align="center">
             <Icon as={CheckCircleIcon} w={10} h={10} color="green.400" />
-            <Text 
-              fontSize={{ base: "lg", md: "xl" }} 
-              fontWeight="bold"
-              textAlign="center"
-            >
+            <Text fontSize={{ base: "lg", md: "xl" }} fontWeight="bold" textAlign="center">
               Appointment Booked Successfully!
             </Text>
             <Box
@@ -237,7 +228,7 @@ const AppointmentBooking = () => {
                   <Text as="span" fontWeight="bold">Name:</Text> {successData.name}
                 </Text>
                 <Text fontSize={{ base: "sm", md: "md" }}>
-                  <Text as="span" fontWeight="bold">Email:</Text> {successData.email}
+                  <Text as="span" fontWeight="bold">Phone:</Text> {successData.phone}
                 </Text>
                 <Text fontSize={{ base: "sm", md: "md" }}>
                   <Text as="span" fontWeight="bold">Date:</Text> {successData.date}
