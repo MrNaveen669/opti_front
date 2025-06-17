@@ -1,0 +1,24 @@
+{
+  "name": "Opticlair Optical Store",
+  "short_name": "Opticlair",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "https://res.cloudinary.com/dl28vjim6/image/upload/v1749190143/favicon_ava6yq.ico",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "https://res.cloudinary.com/dl28vjim6/image/upload/v1749189924/logo5_jrw50m.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "description": "Opticlair is Raipur's best optical store for eyeglasses, sunglasses, and eye checkups. Visit us for premium eyewear in Chhattisgarh.",
+  "lang": "en-IN",
+  "dir": "ltr"
+}
