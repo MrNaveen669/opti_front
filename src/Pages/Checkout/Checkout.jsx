@@ -212,7 +212,7 @@ const Orders = () => {
                   + Hydrophobic Anti-Glare
                 </Box>
                 <Box fontSize="14px" mb="6px" color="gray" fontWeight="500">
-                  Sold by Lenskart Pvt Ltd.
+                  Sold by Opticlair.
                 </Box>
                 <Flex
                   fontWeight={"500"}
