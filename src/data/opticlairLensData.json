@@ -1,100 +1,6 @@
 {
   "lensTypes": [
-    {
-      "id": "basic_single",
-      "name": "Basic color Power",
-      "subtitle": "Customized",
-      "price": 1500,
-      "singlePrice": 750,
-      "index": "1.56 index",
-      "description": "Basic blue light protection with anti-glare coating",
-      "features": ["Any Color"],
-      "missingFeatures": [
-        "Anti-Reflection",
-        "Water & Dust Repellent",
-        "Smudge Resistance",
-        "UV 420 • Sun Protection",
-        "Scratch Resistance"
-      ],
-      "powerRange": "-6.00-2.00",
-      "offer": "",
-      "category": "single_vision",
-      "section": "Opticlair_Special",
-      "popular": false,
-      "stockStatus": "STOCK"
-    },
-    {
-      "id": "opticlair_special",
-      "name": "Premium Color With Power",
-      "subtitle": "Customized",
-      "price": 2500,
-      "singlePrice": 1250,
-      "index": "1.56 index",
-      "description": "Basic blue light protection with anti-glare coating",
-      "features": [
-        "Any Color",
-        "UV 420 • Sun Protection",
-        "Scratch Resistance"
-      ],
-      "missingFeatures": [
-        "Anti-Reflection",
-        "Water & Dust Repellent",
-        "Smudge Resistance"
-      ],
-      "powerRange": "-6.00-2.00",
-      "offer": "",
-      "category": "single_vision",
-      "section": "Opticlair_Special",
-      "popular": false,
-      "stockStatus": "STOCK"
-    },
-    {
-      "id": "opticlair_special",
-      "name": "Customized color with power",
-      "subtitle": "Customized",
-      "price": 3500,
-      "singlePrice": 1750,
-      "index": "1.56 index",
-      "description": "Basic blue light protection with anti-glare coating",
-      "features": [
-        "UV 420 • Sun Protection",
-        "Water & Dust Repellent",
-        "Smudge Resistance",
-        "Scratch Resistance",
-        "Any Color"
-      ],
-      "missingFeatures": ["Anti-Reflection"],
-      "powerRange": "-6.00-2.00",
-      "offer": "",
-      "category": "single_vision",
-      "section": "Opticlair_Special",
-      "popular": false,
-      "stockStatus": "STOCK"
-    },
-    {
-      "id": "opticlair_special",
-      "name": "OptiClair Anti-Glair Customized color with power",
-      "subtitle": "Customized",
-      "price": 4500,
-      "singlePrice": 2250,
-      "index": "1.56 index",
-      "description": "Basic blue light protection with anti-glare coating",
-      "features": [
-        "Anti-Reflection",
-        "UV 420 • Sun Protection",
-        "Water & Dust Repellent",
-        "Smudge Resistance",
-        "Scratch Resistance",
-        "Any Color"
-      ],
-      "missingFeatures": [],
-      "powerRange": "-6.00-2.00",
-      "offer": "",
-      "category": "single_vision",
-      "section": "Opticlair_Special",
-      "popular": false,
-      "stockStatus": "STOCK"
-    },
+    
     {
       "id": "basic_single",
       "name": "OptiClair Basic",
@@ -877,6 +783,101 @@
       "popular": true,
       "stockStatus": "STOCK",
       "highlighted": true
+    },
+    {
+      "id": "basic_single",
+      "name": "Basic color Power",
+      "subtitle": "Customized",
+      "price": 1500,
+      "singlePrice": 750,
+      "index": "1.56 index",
+      "description": "Basic blue light protection with anti-glare coating",
+      "features": ["Any Color"],
+      "missingFeatures": [
+        "Anti-Reflection",
+        "Water & Dust Repellent",
+        "Smudge Resistance",
+        "UV 420 • Sun Protection",
+        "Scratch Resistance"
+      ],
+      "powerRange": "-6.00-2.00",
+      "offer": "",
+      "category": "single_vision",
+      "section": "Opticlair_Special",
+      "popular": false,
+      "stockStatus": "STOCK"
+    },
+    {
+      "id": "opticlair_special",
+      "name": "Premium Color With Power",
+      "subtitle": "Customized",
+      "price": 2500,
+      "singlePrice": 1250,
+      "index": "1.56 index",
+      "description": "Basic blue light protection with anti-glare coating",
+      "features": [
+        "Any Color",
+        "UV 420 • Sun Protection",
+        "Scratch Resistance"
+      ],
+      "missingFeatures": [
+        "Anti-Reflection",
+        "Water & Dust Repellent",
+        "Smudge Resistance"
+      ],
+      "powerRange": "-6.00-2.00",
+      "offer": "",
+      "category": "single_vision",
+      "section": "Opticlair_Special",
+      "popular": false,
+      "stockStatus": "STOCK"
+    },
+    {
+      "id": "opticlair_special",
+      "name": "Customized color with power",
+      "subtitle": "Customized",
+      "price": 3500,
+      "singlePrice": 1750,
+      "index": "1.56 index",
+      "description": "Basic blue light protection with anti-glare coating",
+      "features": [
+        "UV 420 • Sun Protection",
+        "Water & Dust Repellent",
+        "Smudge Resistance",
+        "Scratch Resistance",
+        "Any Color"
+      ],
+      "missingFeatures": ["Anti-Reflection"],
+      "powerRange": "-6.00-2.00",
+      "offer": "",
+      "category": "single_vision",
+      "section": "Opticlair_Special",
+      "popular": false,
+      "stockStatus": "STOCK"
+    },
+    {
+      "id": "opticlair_special",
+      "name": "OptiClair Anti-Glair Customized color with power",
+      "subtitle": "Customized",
+      "price": 4500,
+      "singlePrice": 2250,
+      "index": "1.56 index",
+      "description": "Basic blue light protection with anti-glare coating",
+      "features": [
+        "Anti-Reflection",
+        "UV 420 • Sun Protection",
+        "Water & Dust Repellent",
+        "Smudge Resistance",
+        "Scratch Resistance",
+        "Any Color"
+      ],
+      "missingFeatures": [],
+      "powerRange": "-6.00-2.00",
+      "offer": "",
+      "category": "single_vision",
+      "section": "Opticlair_Special",
+      "popular": false,
+      "stockStatus": "STOCK"
     },
 
     {
