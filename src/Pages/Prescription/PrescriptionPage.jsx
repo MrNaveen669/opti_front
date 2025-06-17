@@ -283,10 +283,10 @@ const PrescriptionPage = () => {
 
                     <Box p={4} bg="gray.100" borderRadius="md" color="gray.700" fontSize="sm" mb={3}>
                       <Text fontWeight="medium" mb={1}>Write Prescription Format:</Text>
-                      <Text>Right Eye (OD): SPH -2.00, CYL -0.75, Axis 180,</Text>
-                      <Text>Left Eye (OS): SPH -1.75, CYL -1.00, Axis 170,</Text>
-                      <Text>PD: 63 mm,</Text>
-                      <Text>ADD: Both Eye ADD +1.50 Near vision</Text>
+                      <Text>Right Eye (OD): SPH -2.00, CYL -0.75, Axis 180*,Right PD 32 MM,</Text>
+                      <Text>Left Eye (OS): SPH -1.75, CYL -1.00, Axis 170*,Left PD 32 MM,</Text>
+                      <Text>ADD:(Near vision) Both Eye ADD +1.50,</Text>
+                      <Text>Total PD: 63 MM,</Text>
                     </Box>
 
                     <Textarea
