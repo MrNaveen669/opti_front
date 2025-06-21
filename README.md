@@ -23,7 +23,7 @@
 
 ---
 
-## 🚀 Live Demo![image](https://github.com/user-attachments/assets/5f34c68b-2a67-494d-8467-50130777a9ae)
+## 🚀 Live Demo
 
 
 🔗 Frontend: [https://www.opticlair.in](https://opticlair.in)  
