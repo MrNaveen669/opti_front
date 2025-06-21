@@ -13,11 +13,18 @@
 
 ## 🖼️ Preview
 
-<img src="https://user-images.githubusercontent.com/your-demo-screenshot.gif" alt="Opticlair Preview" />
+![image](https://github.com/user-attachments/assets/031e95b8-0655-4bbe-ac18-22046fbf9eaa) , ![image](https://github.com/user-attachments/assets/682e6786-6043-4282-ba73-8ec8a821231d) ,![image](https://github.com/user-attachments/assets/c38e2059-5643-4ead-98b3-9317343f7f49), ![image](https://github.com/user-attachments/assets/9bc1bb5e-cd21-459b-bfd3-736d3bb83c99) ,  ![image](https://github.com/user-attachments/assets/00662dbc-6564-4cd5-bdb9-1416293d520c) ,![image](https://github.com/user-attachments/assets/c4e0c552-f89b-4b43-b40c-e69c101254c3)
+
+
+
+
+
+
 
 ---
 
-## 🚀 Live Demo
+## 🚀 Live Demo![image](https://github.com/user-attachments/assets/5f34c68b-2a67-494d-8467-50130777a9ae)
+
 
 🔗 Frontend: [https://www.opticlair.in](https://opticlair.in)  
 🔗 Admin Panel: [https://admin-opticlair.com](https://opticlair-admin.onrender.com)
@@ -57,13 +64,13 @@ opticlair/
 
 ## 📸 Screenshots
 
-| 📱 Homepage | 🧾 Product Page | 🛍️ Cart + Checkout | 🔐 Auth Modal |
-|------------|----------------|--------------------|---------------|
+| 📱 Homepage | 
+|------------|
 | ![Home](https://github.com/user-attachments/assets/01129143-f267-4f59-a3f7-e1e398279599)
- | ![Product](https://github.com/user-attachments/assets/70084466-26fe-4e37-ace4-d54500764187)
- | ![Cart](https://github.com/user-attachments/assets/36debc97-43f9-49a0-a90f-48e3196dcfcb),(https://github.com/user-attachments/assets/01933f06-09d9-47e4-8911-9e8159979eb8)
+  🧾 Product Page | ![Product](https://github.com/user-attachments/assets/70084466-26fe-4e37-ace4-d54500764187)
+ | 🛍️ Cart + Checkout| ![Cart](https://github.com/user-attachments/assets/36debc97-43f9-49a0-a90f-48e3196dcfcb)
 
- | ![Auth](https://github.com/user-attachments/assets/f06cbd42-84cd-4fd6-b550-cf0d6bc7df12)
+ 🔐 Auth Modal || ![Auth](https://github.com/user-attachments/assets/f06cbd42-84cd-4fd6-b550-cf0d6bc7df12)
  |
 
 ---
