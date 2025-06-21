@@ -59,7 +59,12 @@ opticlair/
 
 | 📱 Homepage | 🧾 Product Page | 🛍️ Cart + Checkout | 🔐 Auth Modal |
 |------------|----------------|--------------------|---------------|
-| ![Home](https://via.placeholder.com/200x120) | ![Product](https://via.placeholder.com/200x120) | ![Cart](https://via.placeholder.com/200x120) | ![Auth](https://via.placeholder.com/200x120) |
+| ![Home](https://github.com/user-attachments/assets/01129143-f267-4f59-a3f7-e1e398279599)
+ | ![Product](https://github.com/user-attachments/assets/70084466-26fe-4e37-ace4-d54500764187)
+ | ![Cart](https://github.com/user-attachments/assets/36debc97-43f9-49a0-a90f-48e3196dcfcb),(https://github.com/user-attachments/assets/01933f06-09d9-47e4-8911-9e8159979eb8)
+
+ | ![Auth](https://github.com/user-attachments/assets/f06cbd42-84cd-4fd6-b550-cf0d6bc7df12)
+ |
 
 ---
 
