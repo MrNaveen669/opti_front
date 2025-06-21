@@ -1,70 +1,112 @@
-# Getting Started with Create React App
+<h1 align="center">🛍️ Opticlair – Modern Optical E-Commerce Store</h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<p align="center">
+  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=24&pause=1000&color=4D9EF7&center=true&vCenter=true&width=435&lines=Your+Vision+Our+Mission.;Shop+Smart.+See+Clear.;Fast%2C+Secure+%26+Stylish." alt="Typing SVG" />
+</p>
 
-## Available Scripts
+<p align="center">
+  <strong>🧿 Buy Eyewear with Confidence | 🧾 Verified Lenses | 📦 Easy Checkout</strong><br />
+  Full-stack e-commerce platform built with MERN (MongoDB, Express, React, Node.js) + Razorpay + Admin Panel
+</p>
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## 🖼️ Preview
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+<img src="https://user-images.githubusercontent.com/your-demo-screenshot.gif" alt="Opticlair Preview" />
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## 🚀 Live Demo
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+🔗 Frontend: [https://www.opticlair.in](https://opticlair.in)  
+🔗 Admin Panel: [https://admin-opticlair.com](https://opticlair-admin.onrender.com)
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🧩 Features
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- 🛒 **Product Browsing & Filtering**  
+- 👓 **Lens Customization with Frame Selector**  
+- 📤 **Image Upload after Lens Selection**  
+- 💳 **Secure Payments via Razorpay**  
+- 🧾 **Product Authenticity Verification via QR Code**  
+- 🔐 **Login / Signup with Auth Modal**  
+- 📆 **Appointment Booking (Date & Time Picker)**  
+- 🧑‍💼 **Admin Dashboard with Product & Order Management**
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+## ⚙️ Tech Stack
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+| Frontend | Backend | Database | Payments | Auth | Hosting |
+|----------|---------|----------|----------|------|---------|
+| React + Vite + Chakra UI | Node.js + Express | MongoDB Atlas | Razorpay | JWT Auth | Vercel + Render |
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## 📦 Folder Structure
+opticlair/
+├── frontend/ # React Vite frontend
+├── backend/ # Node + Express server
+├── admin/ # Admin panel
+├── public/ # Static assets
+└── README.md # This file
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+---
 
-## Learn More
+## 📸 Screenshots
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+| 📱 Homepage | 🧾 Product Page | 🛍️ Cart + Checkout | 🔐 Auth Modal |
+|------------|----------------|--------------------|---------------|
+| ![Home](https://via.placeholder.com/200x120) | ![Product](https://via.placeholder.com/200x120) | ![Cart](https://via.placeholder.com/200x120) | ![Auth](https://via.placeholder.com/200x120) |
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+---
 
-### Code Splitting
+📈 Future Enhancements
+📬 Order Email Notifications
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+📱 PWA Support
 
-### Analyzing the Bundle Size
+🧾 GST Invoice Download
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+📊 Advanced Sales Analytics in Admin Panel
 
-### Making a Progressive Web App
+🧑‍💻 Developer
+Made with ❤️ by WebAksh
+📬 Contact: webaksh@gmail.com
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+📄 License
+This project is licensed under the MIT License.
 
-### Advanced Configuration
+---
+## 🔐 Environment Variables
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Create a `.env` file in `/backend` and `/frontend`:
 
-### Deployment
+```env
+# Backend .env
+MONGO_URI=your-mongodb-uri
+JWT_SECRET=your-secret
+RAZORPAY_KEY_ID=your-key
+RAZORPAY_KEY_SECRET=your-secret
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+# 1. Clone the repo
+git clone https://github.com/MrNaveen669/opticlair.git
+cd opticlair
 
-### `npm run build` fails to minify
+# 2. Setup Frontend
+cd frontend
+npm install
+npm run dev
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+# 3. Setup Backend
+cd ../backend
+npm install
+node index.js
+
+# 4. Setup Admin Panel (optional)
+cd ../admin
+npm install
+npm run dev
+
