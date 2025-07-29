@@ -1,16 +1,16 @@
-import React from "react";
+
+// import { NavbarDetail1 } from "./NavbarDetail";
+import React, { useContext, useState, useEffect } from "react";
+import { useNavigate, useLocation, Link, Navigate } from "react-router-dom";
+import { AuthContext } from "../../ContextApi/AuthContext";
 import Login from "../../Pages/Login/Login";
 import Signup from "../../Pages/Signup/Signup";
 import NavbarCard5 from "./NavbarCard5";
 // import { NavbarDetail1 } from "./NavbarDetail";
-import { Link, Navigate } from "react-router-dom";
-import { useContext } from "react";
-import { AuthContext } from "../../ContextApi/AuthContext";
-import { useNavigate } from "react-router-dom";
 import { FiPhoneCall } from "react-icons/fi";
 import { CiHeart } from "react-icons/ci";
 import { CgShoppingCart } from "react-icons/cg";
-import { TriangleDownIcon } from "@chakra-ui/icons";
+import { TriangleDownIcon, SearchIcon } from "@chakra-ui/icons";
 import LogoImage from "../../assets/logo5.png"; // Adjust the path as necessary
 import {
   Box,
@@ -24,29 +24,64 @@ import {
   Popover,
   PopoverTrigger,
   PopoverContent,
-  PopoverBody
+  PopoverBody,
+  Icon
 } from "@chakra-ui/react";
 
-// export const NavbarCard1 = () => {
-//   return (
-//     <Box cursor="pointer">
-//       <Flex gap={2} pl={5} pt={2}>
-//         {NavbarDetail1.map((i, index) => (
-//           <Box key={index}>
-//             <Text fontSize="12px" _hover={{ textDecoration: "underline" }}>
-//               {i.labels}
-//             </Text>
-//             <Spacer />
-//           </Box>
-//         ))}
-//       </Flex>
-//     </Box>
-//   );
-// };
 
 export const NavbarCard2 = () => {
   const { isAuth, setisAuth, Authdata } = useContext(AuthContext);
   const navigate = useNavigate();
+  const location = useLocation();
+  const [searchQuery, setSearchQuery] = useState("");
+
+  // Handle search input changes
+  const handleSearchChange = (e) => {
+    const query = e.target.value;
+    setSearchQuery(query);
+    
+    // Real-time search - call the product search function if it exists
+    if (window.handleProductSearch) {
+      window.handleProductSearch(query);
+    }
+    
+    // Update URL with search query if on product page
+    if (location.pathname === '/sampleproduct' && query.trim()) {
+      const searchParams = new URLSearchParams(location.search);
+      searchParams.set('search', query);
+      navigate(`${location.pathname}?${searchParams.toString()}`, { replace: true });
+    } else if (location.pathname === '/sampleproduct' && !query.trim()) {
+      // Remove search param if query is empty
+      const searchParams = new URLSearchParams(location.search);
+      searchParams.delete('search');
+      const newSearch = searchParams.toString();
+      navigate(`${location.pathname}${newSearch ? `?${newSearch}` : ''}`, { replace: true });
+    }
+  };
+
+  // Handle search on Enter key or when user clicks search icon
+  const handleSearchSubmit = (e) => {
+    if (e.key === 'Enter' || e.type === 'click') {
+      if (searchQuery.trim()) {
+        // Navigate to product page with search query
+        navigate(`/sampleproduct?search=${encodeURIComponent(searchQuery.trim())}`);
+      }
+    }
+  };
+
+  // Clear search when navigating away from product page
+  useEffect(() => {
+    if (location.pathname !== '/sampleproduct') {
+      setSearchQuery("");
+    } else {
+      // Set search query from URL if on product page
+      const searchParams = new URLSearchParams(location.search);
+      const urlSearch = searchParams.get('search');
+      if (urlSearch) {
+        setSearchQuery(urlSearch);
+      }
+    }
+  }, [location.pathname, location.search]);
 
   return (
     <Box cursor="pointer">
@@ -63,14 +98,59 @@ export const NavbarCard2 = () => {
               <Text>9981463336</Text>
             </HStack>
           </Box>
-          <Box w="55%">
+          <Box w="55%" position="relative">
             <Input
               placeholder="What are you looking for"
               border="1px solid black"
               w="95%"
               fontSize="17px"
               h="45px"
+              value={searchQuery}
+              onChange={handleSearchChange}
+              onKeyPress={handleSearchSubmit}
             />
+            {/* Search icon button */}
+            <Box
+              position="absolute"
+              right="5%"
+              top="50%"
+              transform="translateY(-50%)"
+              cursor="pointer"
+              onClick={handleSearchSubmit}
+              p="2"
+              borderRadius="md"
+              _hover={{ bg: "gray.100" }}
+            >
+              <Icon as={SearchIcon} color="gray.500" />
+            </Box>
+            
+            {/* Search suggestions dropdown (optional enhancement) */}
+            {searchQuery.trim() && location.pathname !== '/sampleproduct' && (
+              <Box
+                position="absolute"
+                top="100%"
+                left="0"
+                right="5%"
+                bg="white"
+                border="1px solid"
+                borderColor="gray.200"
+                borderRadius="md"
+                mt="1"
+                zIndex="10"
+                boxShadow="md"
+              >
+                <Box
+                  p="3"
+                  _hover={{ bg: "gray.50" }}
+                  cursor="pointer"
+                  onClick={() => navigate(`/sampleproduct?search=${encodeURIComponent(searchQuery.trim())}`)}
+                >
+                  <Text fontSize="sm">
+                    Search for "{searchQuery}" in products
+                  </Text>
+                </Box>
+              </Box>
+            )}
           </Box>
           <HStack w="35%">
             <Button
@@ -162,7 +242,7 @@ export const NavbarCard4 = () => {
     <Box cursor="pointer" bg="#fbf9f7" p={2.5}>
       <Flex gap={4} pl={5} pt={2} justifyContent="space-between">
         <NavbarCard5 />
-        </Flex>
+      </Flex>
     </Box>
   );
 };
