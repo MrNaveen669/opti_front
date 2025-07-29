@@ -1,9 +1,9 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import Login from "../../Pages/Login/Login";
 import Signup from "../../Pages/Signup/Signup";
 import { AuthContext } from "../../ContextApi/AuthContext";
-import { Link, Navigate } from "react-router-dom";
-import { HamburgerIcon } from "@chakra-ui/icons";
+import { Link, Navigate, useNavigate, useLocation } from "react-router-dom";
+import { HamburgerIcon, SearchIcon } from "@chakra-ui/icons";
 import LogoImage from "../../assets/logo5.png"; // Adjust the path as necessary
 import {
   DrawerCloseButton,
@@ -27,15 +27,73 @@ import {
   AccordionButton,
   AccordionPanel,
   AccordionIcon,
-  Flex
+  Flex,
+  Icon
 } from "@chakra-ui/react";
-import { useNavigate } from "react-router-dom";
 
 function Nav() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const firstField = React.useRef();
   const { isAuth, setisAuth, Authdata } = useContext(AuthContext);
   const navigate = useNavigate();
+  const location = useLocation();
+  const [searchQuery, setSearchQuery] = useState("");
+
+  // Handle search input changes
+  const handleSearchChange = (e) => {
+    const query = e.target.value;
+    setSearchQuery(query);
+    
+    // Real-time search - call the product search function if it exists
+    if (window.handleProductSearch) {
+      window.handleProductSearch(query);
+    }
+    
+    // Update URL with search query if on product page
+    if (location.pathname === '/sampleproduct' && query.trim()) {
+      const searchParams = new URLSearchParams(location.search);
+      searchParams.set('search', query);
+      navigate(`${location.pathname}?${searchParams.toString()}`, { replace: true });
+    } else if (location.pathname === '/sampleproduct' && !query.trim()) {
+      // Remove search param if query is empty
+      const searchParams = new URLSearchParams(location.search);
+      searchParams.delete('search');
+      const newSearch = searchParams.toString();
+      navigate(`${location.pathname}${newSearch ? `?${newSearch}` : ''}`, { replace: true });
+    }
+  };
+
+  // Handle search on Enter key or when user clicks search icon
+  const handleSearchSubmit = (e) => {
+    if (e.key === 'Enter' || e.type === 'click') {
+      if (searchQuery.trim()) {
+        // Navigate to product page with search query
+        navigate(`/sampleproduct?search=${encodeURIComponent(searchQuery.trim())}`);
+      }
+    }
+  };
+
+  // Clear search when navigating away from product page
+  useEffect(() => {
+    if (location.pathname !== '/sampleproduct') {
+      setSearchQuery("");
+    } else {
+      // Set search query from URL if on product page
+      const searchParams = new URLSearchParams(location.search);
+      const urlSearch = searchParams.get('search');
+      if (urlSearch) {
+        setSearchQuery(urlSearch);
+      }
+    }
+  }, [location.pathname, location.search]);
+
+  // Function to handle navigation with filters (same as NavbarCard5)
+  const handleNavigation = (filterParams) => {
+    // Construct the query string from filter parameters
+    const queryString = new URLSearchParams(filterParams).toString();
+    navigate(`/sampleproduct?${queryString}`);
+    onClose(); // Close the drawer after navigation
+  };
 
   return (
     <Box
@@ -50,14 +108,59 @@ function Nav() {
             <Image src={LogoImage} alt="logo" w={{ lg: "75%", md: "100%", sm: "100%", base: "100%" }} />
           </Link>
         </Box>
-        <Box w="70%" display={{ sm: "inherit", base: "none" }}>
+        <Box w="70%" display={{ sm: "inherit", base: "none" }} position="relative">
           <Input
             placeholder="What are you looking for"
             border="1px solid black"
             w="90%"
             fontSize="16px"   
             h="35px"
+            value={searchQuery}
+            onChange={handleSearchChange}
+            onKeyPress={handleSearchSubmit}
           />
+          {/* Search icon button */}
+          <Box
+            position="absolute"
+            right="12%"
+            top="50%"
+            transform="translateY(-50%)"
+            cursor="pointer"
+            onClick={handleSearchSubmit}
+            p="1"
+            borderRadius="md"
+            _hover={{ bg: "gray.100" }}
+          >
+            <Icon as={SearchIcon} color="gray.500" boxSize="4" />
+          </Box>
+          
+          {/* Search suggestions dropdown (optional enhancement) */}
+          {searchQuery.trim() && location.pathname !== '/sampleproduct' && (
+            <Box
+              position="absolute"
+              top="100%"
+              left="0"
+              right="10%"
+              bg="white"
+              border="1px solid"
+              borderColor="gray.200"
+              borderRadius="md"
+              mt="1"
+              zIndex="10"
+              boxShadow="md"
+            >
+              <Box
+                p="2"
+                _hover={{ bg: "gray.50" }}
+                cursor="pointer"
+                onClick={() => navigate(`/sampleproduct?search=${encodeURIComponent(searchQuery.trim())}`)}
+              >
+                <Text fontSize="sm">
+                  Search for "{searchQuery}" in products
+                </Text>
+              </Box>
+            </Box>
+          )}
         </Box>
 
         <Box>
@@ -75,6 +178,65 @@ function Nav() {
             <DrawerContent color="blackAlpha.900">
               <DrawerCloseButton />
               <DrawerHeader bg="whiteAlpha.900">
+                {/* Mobile Search Input - Always visible in drawer */}
+                <Box mb="4" position="relative">
+                  <Input
+                    placeholder="What are you looking for"
+                    border="1px solid black"
+                    w="100%"
+                    fontSize="14px"   
+                    h="35px"
+                    value={searchQuery}
+                    onChange={handleSearchChange}
+                    onKeyPress={handleSearchSubmit}
+                  />
+                  {/* Search icon button for mobile */}
+                  <Box
+                    position="absolute"
+                    right="2"
+                    top="50%"
+                    transform="translateY(-50%)"
+                    cursor="pointer"
+                    onClick={handleSearchSubmit}
+                    p="1"
+                    borderRadius="md"
+                    _hover={{ bg: "gray.100" }}
+                  >
+                    <Icon as={SearchIcon} color="gray.500" boxSize="4" />
+                  </Box>
+                  
+                  {/* Mobile search suggestions */}
+                  {searchQuery.trim() && location.pathname !== '/sampleproduct' && (
+                    <Box
+                      position="absolute"
+                      top="100%"
+                      left="0"
+                      right="0"
+                      bg="white"
+                      border="1px solid"
+                      borderColor="gray.200"
+                      borderRadius="md"
+                      mt="1"
+                      zIndex="10"
+                      boxShadow="md"
+                    >
+                      <Box
+                        p="2"
+                        _hover={{ bg: "gray.50" }}
+                        cursor="pointer"
+                        onClick={() => {
+                          navigate(`/sampleproduct?search=${encodeURIComponent(searchQuery.trim())}`);
+                          onClose(); // Close drawer after search
+                        }}
+                      >
+                        <Text fontSize="sm">
+                          Search for "{searchQuery}" in products
+                        </Text>
+                      </Box>
+                    </Box>
+                  )}
+                </Box>
+
                 {isAuth ? (
                   <Flex
                     borderBottom="2px solid #18CFA8"
@@ -233,22 +395,40 @@ function Nav() {
                         </AccordionButton>
                       </h2>
                       <AccordionPanel pb={4}>
-                        <Link to="/sampleproduct">
-                          <Box>
-                          <Link to="/sampleproduct">
-                            <Text pb="2">EYEGLASSES</Text>
-                          </Link>
-                          <Link to="/sampleproduct">
-                            <Text pb="2">COMPUTER GLASSES</Text>
-                          </Link>
-                          <Link to="/sampleproduct">
-                            <Text pb="2">CONTACT LENSES</Text>
-                          </Link>
-                          <Link to="/sampleproduct">
-                            <Text pb="2">SUN GLASSES</Text>
-                          </Link>
+                        <Box>
+                          <Text 
+                            pb="2" 
+                            cursor="pointer"
+                            _hover={{ fontWeight: "bold", color: "blue.500" }}
+                            onClick={() => handleNavigation({ category: "Eye Glasses", gender: "Male" })}
+                          >
+                            EYEGLASSES
+                          </Text>
+                          <Text 
+                            pb="2" 
+                            cursor="pointer"
+                            _hover={{ fontWeight: "bold", color: "blue.500" }}
+                            onClick={() => handleNavigation({ category: "Computer Glasses", gender: "Male" })}
+                          >
+                            COMPUTER GLASSES
+                          </Text>
+                          <Text 
+                            pb="2" 
+                            cursor="pointer"
+                            _hover={{ fontWeight: "bold", color: "blue.500" }}
+                            onClick={() => handleNavigation({ category: "Contact Lenses", gender: "Male" })}
+                          >
+                            CONTACT LENSES
+                          </Text>
+                          <Text 
+                            pb="2" 
+                            cursor="pointer"
+                            _hover={{ fontWeight: "bold", color: "blue.500" }}
+                            onClick={() => handleNavigation({ category: "Sunglasses", gender: "Male" })}
+                          >
+                            SUN GLASSES
+                          </Text>
                         </Box>
-                        </Link>
                       </AccordionPanel>
                     </AccordionItem>
                     <AccordionItem>
@@ -266,22 +446,40 @@ function Nav() {
                         </AccordionButton>
                       </h2>
                       <AccordionPanel pb={5}>
-                      <Link to="/sampleproduct">
-                         <Box>
-                          <Link to="/sampleproduct">
-                            <Text pb="2">EYEGLASSES</Text>
-                          </Link>
-                          <Link to="/sampleproduct">
-                            <Text pb="2">COMPUTER GLASSES</Text>
-                          </Link>
-                          <Link to="/sampleproduct">
-                            <Text pb="2">CONTACT LENSES</Text>
-                          </Link>
-                          <Link to="/sampleproduct">
-                            <Text pb="2">SUN GLASSES</Text>
-                          </Link>
+                        <Box>
+                          <Text 
+                            pb="2" 
+                            cursor="pointer"
+                            _hover={{ fontWeight: "bold", color: "blue.500" }}
+                            onClick={() => handleNavigation({ category: "Eye Glasses", gender: "Female" })}
+                          >
+                            EYEGLASSES
+                          </Text>
+                          <Text 
+                            pb="2" 
+                            cursor="pointer"
+                            _hover={{ fontWeight: "bold", color: "blue.500" }}
+                            onClick={() => handleNavigation({ category: "Computer Glasses", gender: "Female" })}
+                          >
+                            COMPUTER GLASSES
+                          </Text>
+                          <Text 
+                            pb="2" 
+                            cursor="pointer"
+                            _hover={{ fontWeight: "bold", color: "blue.500" }}
+                            onClick={() => handleNavigation({ category: "Contact Lenses", gender: "Female" })}
+                          >
+                            CONTACT LENSES
+                          </Text>
+                          <Text 
+                            pb="2" 
+                            cursor="pointer"
+                            _hover={{ fontWeight: "bold", color: "blue.500" }}
+                            onClick={() => handleNavigation({ category: "Sunglasses", gender: "Female" })}
+                          >
+                            SUN GLASSES
+                          </Text>
                         </Box>
-                        </Link>
                       </AccordionPanel>
                     </AccordionItem>
                     <AccordionItem>
@@ -299,22 +497,40 @@ function Nav() {
                         </AccordionButton>
                       </h2>
                       <AccordionPanel pb={4}>
-                      <Link to="/sampleproduct">
-                          <Box>
-                          <Link to="/sampleproduct">
-                            <Text pb="2">EYEGLASSES</Text>
-                          </Link>
-                          <Link to="/sampleproduct">
-                            <Text pb="2">COMPUTER GLASSES</Text>
-                          </Link>
-                          <Link to="/sampleproduct/">
-                            <Text pb="2">CONTACT LENSES</Text>
-                          </Link>
-                          <Link to="/sampleproduct/">
-                            <Text pb="2">SUN GLASSES</Text>
-                          </Link>
+                        <Box>
+                          <Text 
+                            pb="2" 
+                            cursor="pointer"
+                            _hover={{ fontWeight: "bold", color: "blue.500" }}
+                            onClick={() => handleNavigation({ category: "Eye Glasses", gender: "Kids" })}
+                          >
+                            EYEGLASSES
+                          </Text>
+                          <Text 
+                            pb="2" 
+                            cursor="pointer"
+                            _hover={{ fontWeight: "bold", color: "blue.500" }}
+                            onClick={() => handleNavigation({ category: "Computer Glasses", gender: "Kids" })}
+                          >
+                            COMPUTER GLASSES
+                          </Text>
+                          <Text 
+                            pb="2" 
+                            cursor="pointer"
+                            _hover={{ fontWeight: "bold", color: "blue.500" }}
+                            onClick={() => handleNavigation({ category: "Contact Lenses", gender: "Kids" })}
+                          >
+                            CONTACT LENSES
+                          </Text>
+                          <Text 
+                            pb="2" 
+                            cursor="pointer"
+                            _hover={{ fontWeight: "bold", color: "blue.500" }}
+                            onClick={() => handleNavigation({ category: "Sunglasses", gender: "Kids" })}
+                          >
+                            SUN GLASSES
+                          </Text>
                         </Box>
-                        </Link>
                       </AccordionPanel>
                     </AccordionItem>
                   </Accordion>
@@ -322,41 +538,7 @@ function Nav() {
                 <Heading mt="15%" color="black" fontSize="15px" mb="5%">
                   Our Services
                 </Heading>
-                {/* <Box display="flex" flexDirection="column" fontSize="16px">
-                  {/* <Link>
-                    <Box
-                      borderBottom="0.1px solid gray"
-                      p="5% 0%"
-                      fontSize="15px"
-                      color="black"
-                      _hover={{ fontWeight: "bold" }}
-                    >
-                      Free Home Trail
-                    </Box>
-                  </Link> */}
-                  {/* <Link>
-                    <Box
-                      borderBottom="0.1px solid gray"
-                      p="5% 0%"
-                      color="black"
-                      _hover={{ fontWeight: "bold" }}
-                      fontSize="15px"
-                    >
-                      Home Eye check-up
-                    </Box>
-                  </Link> */}
-                  {/* <Link>
-                    <Box
-                      borderBottom="0.1px solid gray"
-                      p="5% 0%"
-                      color="black"
-                      _hover={{ fontWeight: "bold" }}
-                      fontSize="15px"
-                    >
-                      Store Locator
-                    </Box>
-                  </Link> */}
-               {/* </Box> */} 
+              
                 
                 <Box display="flex" flexDirection="column" fontSize="16px">
                   <Link>
@@ -382,43 +564,7 @@ function Nav() {
                     </Box>
                   </Link>
                 </Box>
-                {/* <Heading mt="15%" color="black" fontSize="15px" mb="5%">
-                  FAQ's & POLICIES
-                </Heading>
-                <Box display="flex" flexDirection="column" fontSize="16px">
-                  <Link>
-                    <Box
-                      borderBottom="0.1px solid gray"
-                      p="5% 0%"
-                      color="black"
-                      _hover={{ fontWeight: "bold" }}
-                      fontSize="15px"
-                    >
-                      Frequently Asked Questions
-                    </Box>
-                  </Link>
-                  <Link>
-                    <Box
-                      borderBottom="0.1px solid gray"
-                      p="5% 0%"
-                      color="black"
-                      _hover={{ fontWeight: "bold" }}
-                      fontSize="15px"
-                    >
-                      Cancellation & Return Policy
-                    </Box>
-                  </Link>
-                  <Link>
-                    <Box
-                      p="5% 0%"
-                      color="black"
-                      _hover={{ fontWeight: "bold" }}
-                      fontSize="15px"
-                    >
-                      Cobrowsing
-                    </Box>
-                  </Link>
-                </Box> */}
+               
                  <Heading mt="15%" color="black" fontSize="15px" mb="5%">
                   Our Services
                 </Heading>
