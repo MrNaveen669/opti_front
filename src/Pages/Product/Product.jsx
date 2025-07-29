@@ -54,14 +54,16 @@ const standardizeCategory = (category) => {
   // Return the standardized version or the original if not found
   return categoryMap[lowerCategory] || category;
 };
-
 const Product = () => {
   const location = useLocation();
-  const navigate = useNavigate(); // Add this import
+  const navigate = useNavigate();
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  
+  // Add search state
+  const [searchQuery, setSearchQuery] = useState("");
   
   // Add filter visibility state
   const [showFilters, setShowFilters] = useState(false);
@@ -70,6 +72,7 @@ const Product = () => {
   const [filters, setFilters] = useState({
     category: "",
     subCategory: "",
+    frameBrand: "",
     gender: "",
     frameMaterial: "",
     // Contact Lens specific filters
@@ -77,13 +80,14 @@ const Product = () => {
     power: "",
     color: "",
     priceRange: [0, 10000],
-    sort: "priceLowToHigh"  // Changed default sort to low to high
+    sort: "recommended"
   });
 
   // Available filter options (will be populated from products)
   const [filterOptions, setFilterOptions] = useState({
     categories: [],
     subCategories: [],
+    frameBrands: [],
     genders: [],
     frameMaterials: [],
     // Contact Lens specific options
@@ -109,16 +113,35 @@ const Product = () => {
     return standardizeCategory(filters.category) === "Contact Lenses";
   };
 
+  // Search function that can be called from navbar
+  const handleSearch = (query) => {
+    setSearchQuery(query);
+  };
+
+  // Make search function available globally
+  useEffect(() => {
+    window.handleProductSearch = handleSearch;
+    return () => {
+      delete window.handleProductSearch;
+    };
+  }, []);
+
   useEffect(() => {
     // Parse query parameters from URL
     const queryParams = new URLSearchParams(location.search);
     const urlFilters = {};
+    
+    // Check for search query in URL
+    if (queryParams.get("search")) {
+      setSearchQuery(queryParams.get("search"));
+    }
     
     // Update filters based on URL parameters and standardize category
     if (queryParams.get("category")) {
       urlFilters.category = standardizeCategory(queryParams.get("category"));
     }
     if (queryParams.get("subCategory")) urlFilters.subCategory = queryParams.get("subCategory");
+    if (queryParams.get("frameBrand")) urlFilters.frameBrand = queryParams.get("frameBrand");
     if (queryParams.get("gender")) urlFilters.gender = queryParams.get("gender");
     if (queryParams.get("frameMaterial")) urlFilters.frameMaterial = queryParams.get("frameMaterial");
     
@@ -127,15 +150,11 @@ const Product = () => {
     if (queryParams.get("power")) urlFilters.power = queryParams.get("power");
     if (queryParams.get("color")) urlFilters.color = queryParams.get("color");
     
-    // Set sort from URL or default to low to high
-    urlFilters.sort = queryParams.get("sort") || "priceLowToHigh";
+    if (queryParams.get("sort")) urlFilters.sort = queryParams.get("sort");
     
     // Set initial filters from URL
     if (Object.keys(urlFilters).length > 0) {
       setFilters(prev => ({ ...prev, ...urlFilters }));
-    } else {
-      // If no URL parameters, ensure default sort is set
-      setFilters(prev => ({ ...prev, sort: "priceLowToHigh" }));
     }
 
     const fetchProducts = async () => {
@@ -170,6 +189,16 @@ const Product = () => {
         // Extract available filter options from products with standardized categories
         const categories = [...new Set(standardizedData.map(product => product.category))];
         const subCategories = [...new Set(standardizedData.map(product => product.subCategory).filter(Boolean))];
+        
+        // FIXED: Extract frameBrands from non-Contact Lens products only
+        const nonContactLensProducts = standardizedData.filter(product => 
+          standardizeCategory(product.category) !== "Contact Lenses"
+        );
+        const frameBrands = [...new Set(nonContactLensProducts
+          .map(product => product.frameBrand)
+          .filter(Boolean)
+        )];
+        
         const genders = [...new Set(standardizedData.map(product => product.gender).filter(Boolean))];
         const frameMaterials = [...new Set(standardizedData.map(product => product.frameMaterial).filter(Boolean))];
         
@@ -179,6 +208,8 @@ const Product = () => {
         );
         
         console.log("Contact Lens products:", contactLensProducts); // Debug log
+        console.log("Non-Contact Lens products for frameBrand:", nonContactLensProducts); // Debug log
+        console.log("Extracted frameBrands:", frameBrands); // Debug log
         
         const brands = [...new Set(contactLensProducts
           .map(product => product.brand || product.subCategory)
@@ -192,11 +223,12 @@ const Product = () => {
           .map(product => product.color)
           .filter(Boolean))];
         
-        console.log("Filter options - Brands:", brands, "Powers:", powers, "Colors:", colors); // Debug log
+        console.log("Filter options - Brands:", brands, "Powers:", powers, "Colors:", colors, "FrameBrands:", frameBrands); // Debug log
         
         setFilterOptions({
           categories,
           subCategories,
+          frameBrands,
           genders,
           frameMaterials,
           brands,
@@ -213,13 +245,36 @@ const Product = () => {
     fetchProducts();
   }, [location.search]);
 
-  // Apply filters whenever products or filters change - IMPROVED
+  // Apply filters and search whenever products, filters, or search query changes
   useEffect(() => {
     if (products.length > 0) {
       let result = [...products];
       
       console.log("Applying filters:", filters); // Debug log
+      console.log("Search query:", searchQuery); // Debug log
       console.log("Total products before filtering:", result.length);
+      
+      // Apply search filter first
+      if (searchQuery.trim()) {
+        const query = searchQuery.toLowerCase().trim();
+        result = result.filter(product => {
+          const searchableFields = [
+            product.name,
+            product.brand,
+            product.category,
+            product.subCategory,
+            product.color,
+            product.power,
+            product.frameMaterial,
+            product.frameBrand
+          ].filter(Boolean); // Remove null/undefined values
+          
+          return searchableFields.some(field => 
+            field.toLowerCase().includes(query)
+          );
+        });
+        console.log(`After search filter (${searchQuery}):`, result.length);
+      }
       
       // Apply category filter with case-insensitive matching
       if (filters.category) {
@@ -234,6 +289,12 @@ const Product = () => {
       if (filters.subCategory && !isContactLensCategory()) {
         result = result.filter(product => product.subCategory === filters.subCategory);
         console.log("After subCategory filter:", result.length);
+      }
+      
+      // Apply frameBrand filter (for non-Contact Lens products)
+      if (filters.frameBrand && !isContactLensCategory()) {
+        result = result.filter(product => product.frameBrand === filters.frameBrand);
+        console.log("After frameBrand filter:", result.length);
       }
       
       // Apply gender filter (for non-Contact Lens products)
@@ -298,7 +359,7 @@ const Product = () => {
       console.log("Final filtered products:", result.length);
       setFilteredProducts(result);
     }
-  }, [products, filters]);
+  }, [products, filters, searchQuery]);
 
   // Updated handleFilterChange to update URL and close mobile filters
   const handleFilterChange = (field, value) => {
@@ -316,7 +377,8 @@ const Product = () => {
         power: "",
         color: "",
         gender: "",
-        frameMaterial: ""
+        frameMaterial: "",
+        frameBrand: ""
       };
     } else {
       newFilters = { ...newFilters, [field]: value };
@@ -326,6 +388,12 @@ const Product = () => {
     
     // Update URL with new filters (excluding empty values)
     const searchParams = new URLSearchParams();
+    
+    // Add search query to URL if it exists
+    if (searchQuery.trim()) {
+      searchParams.set('search', searchQuery);
+    }
+    
     Object.entries(newFilters).forEach(([key, val]) => {
       if (val && key !== 'sort' && key !== 'priceRange') {
         searchParams.set(key, val);
@@ -351,29 +419,29 @@ const Product = () => {
     const clearedFilters = {
       category: "",
       subCategory: "",
+      frameBrand: "",
       gender: "",
       frameMaterial: "",
       brand: "",
       power: "",
       color: "",
       priceRange: [0, 10000],
-      sort: "priceLowToHigh"  // Keep the low to high sort when clearing filters
+      sort: "recommended"
     };
     
     setFilters(clearedFilters);
+    setSearchQuery(""); // Clear search query
     
-    // Update URL without filters
-    const searchParams = new URLSearchParams();
-    searchParams.set('sort', 'priceLowToHigh'); // Maintain sort in URL
-    navigate({ search: searchParams.toString() });
+    // Clear URL params
+    navigate(location.pathname, { replace: true });
   };
 
-  // Get active filter count
+  // Get active filter count (including search)
   const activeFilterCount = Object.keys(filters).filter(key => 
     key !== 'sort' && 
     key !== 'priceRange' && 
     filters[key]
-  ).length;
+  ).length + (searchQuery.trim() ? 1 : 0);
 
   // Toggle filters visibility
   const toggleFilters = () => {
@@ -387,9 +455,10 @@ const Product = () => {
       <br />
       <Box p="20px" minHeight="635">
         <Heading size="lg" mb="6" textAlign="center">
-          {filters.category || "All Products"}
+          {searchQuery ? `Search Results for "${searchQuery}"` : (filters.category || "All Products")}
           {filters.gender && ` for ${filters.gender}`}
           {filters.brand && ` - ${filters.brand}`}
+          {filters.frameBrand && ` - ${filters.frameBrand}`}
           {filters.power && ` (${filters.power})`}
           {filters.color && ` - ${filters.color}`}
         </Heading>
@@ -544,6 +613,30 @@ const Product = () => {
                           </Select>
                         </FormControl>
                       )}
+
+                      {/* Frame Brand filter for non-Contact Lens */}
+                      <FormControl>
+                        <FormLabel fontWeight="bold">Frame Brand</FormLabel>
+                        <Select 
+                          value={filters.frameBrand} 
+                          onChange={(e) => handleFilterChange("frameBrand", e.target.value)}
+                          placeholder="All Frame Brands"
+                        >
+                          {filterOptions.frameBrands
+                            .filter(brand => {
+                              // Only show frame brands for current category (if selected)
+                              if (!filters.category) return true;
+                              return products.some(product => 
+                                standardizeCategory(product.category) === standardizeCategory(filters.category) && 
+                                product.frameBrand === brand
+                              );
+                            })
+                            .map(brand => (
+                              <option key={brand} value={brand}>{brand}</option>
+                            ))
+                          }
+                        </Select>
+                      </FormControl>
                       
                       {/* Gender filter for non-Contact Lens */}
                       <FormControl>
@@ -627,6 +720,28 @@ const Product = () => {
                 {/* Active filters display */}
                 {activeFilterCount > 0 && (
                   <Flex gap={2} mb={4} flexWrap="wrap">
+                    {/* Show search query as a badge */}
+                    {searchQuery.trim() && (
+                      <Badge 
+                        colorScheme="blue" 
+                        borderRadius="full" 
+                        px={3} 
+                        py={1}
+                        display="flex"
+                        alignItems="center"
+                      >
+                        Search: "{searchQuery}"
+                        <Box 
+                          ml={2} 
+                          cursor="pointer"
+                          onClick={() => setSearchQuery("")}
+                          fontWeight="bold"
+                        >
+                          ×
+                        </Box>
+                      </Badge>
+                    )}
+                    
                     {Object.entries(filters).map(([key, value]) => {
                       if (value && key !== 'sort' && key !== 'priceRange') {
                         return (
@@ -661,11 +776,11 @@ const Product = () => {
                 ) : (
                   <Box textAlign="center" mt="40px">
                     <Text fontSize="18px" color="gray.500" mb={4}>
-                      No products match your current filters
+                      No products match your current {searchQuery ? 'search' : 'filters'}
                     </Text>
                     {/* Debug information */}
                     <Text fontSize="sm" color="gray.400">
-                      Debug: Category={filters.category}, Brand={filters.brand}, Power={filters.power}, Color={filters.color}
+                      Debug: Search="{searchQuery}", Category={filters.category}, FrameBrand={filters.frameBrand}, Brand={filters.brand}, Power={filters.power}, Color={filters.color}
                     </Text>
                   </Box>
                 )}
