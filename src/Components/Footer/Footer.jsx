@@ -1,6 +1,6 @@
 
 import React from "react";
-import { Box, Grid, Center } from "@chakra-ui/react";
+import { Box, Grid, Center,Text } from "@chakra-ui/react";
 import { FooterCard1, FooterCard2, FooterCard } from "./FooterCard";
 import { services, about, Location, Contact } from "./FooterDetails";
 
@@ -44,6 +44,27 @@ const Footer = () => {
       </Grid>
       <hr />
       <FooterCard />
+{/* ✅ Developed by WebAksh line with ⚡ */}
+      <Center mt="6">
+        <Text fontSize="15px" color="whiteAlpha.700">
+          Developed by{" "}
+          <a
+            href="https://webaksh.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              fontWeight: "600",
+              color: "#00bfff",
+              textDecoration: "none",
+              transition: "all 0.3s ease"
+            }}
+            onMouseOver={(e) => (e.currentTarget.style.color = "#1e90ff")}
+            onMouseOut={(e) => (e.currentTarget.style.color = "#00bfff")}
+          >
+            ⚡ WebAksh
+          </a>
+        </Text>
+      </Center>
     </Box>
   );
 };
