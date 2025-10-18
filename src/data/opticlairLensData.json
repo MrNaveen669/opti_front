@@ -1,0 +1,1787 @@
+{
+  "lensTypes": [
+    
+    {
+      "id": "basic_single",
+      "name": "OptiClair Basic",
+      "subtitle": "Blue Protection",
+      "price": 700,
+      "singlePrice": 500,
+      "index": "1.56 index",
+      "description": "Basic blue light protection with anti-glare coating",
+      "features": ["Anti-Reflection", "Blue Light Block"],
+      "missingFeatures": [
+        "UV 420 • Sun Protection",
+        "Water & Dust Repellent",
+        "Smudge Resistance",
+        "Scratch Resistance"
+      ],
+      "powerRange": "-4.00-2.00",
+      "offer": "",
+      "category": "single_vision",
+      "section": "budget_friendly",
+      "popular": false,
+      "stockStatus": "STOCK"
+    },
+    {
+      "id": "essential_single",
+      "name": "OptiClair Essential",
+      "subtitle": "Blue Protection",
+      "price": 1200,
+      "singlePrice": 1000,
+      "index": "1.56 index",
+      "description": "Essential protection with blue light blocking and UV protection",
+      "features": [
+        "Anti-Reflection",
+        "UV 420 • Sun Protection",
+        "Blue Light Block"
+      ],
+      "missingFeatures": [
+        "Water & Dust Repellent",
+        "Smudge Resistance",
+        "Scratch Resistance"
+      ],
+      "powerRange": "-4.00-2.00",
+      "offer": "",
+      "category": "single_vision",
+      "section": "budget_friendly",
+      "popular": true,
+      "stockStatus": "STOCK"
+    },
+    {
+      "id": "premium_single",
+      "name": "OptiClair Premium",
+      "subtitle": "Blue Protection",
+      "price": 1500,
+      "singlePrice": 1200,
+      "index": "1.56 index",
+      "description": "Premium lens with comprehensive protection and scratch resistance",
+      "features": [
+        "Anti-Reflection",
+        "UV 420 • Sun Protection",
+        "Water & Dust Repellent",
+        "Blue Light Block",
+        "Smudge Resistance",
+        "Scratch Resistance"
+      ],
+      "missingFeatures": [],
+      "powerRange": "-4.00-2.00",
+      "offer": "",
+      "category": "single_vision",
+      "section": "budget_friendly",
+      "popular": true,
+      "stockStatus": "STOCK"
+    },
+    {
+      "id": "dual_coating_single",
+      "name": "OptiClair Dual Coating",
+      "subtitle": "1.56 Index",
+      "price": 2000,
+      "singlePrice": 1500,
+      "index": "1.56index",
+      "description": "Advanced dual coating technology with superior protection",
+      "features": [
+        "Anti-Reflection",
+        "UV 420 • Sun Protection",
+        "Water & Dust Repellent",
+        "Blue Light Block",
+        "Smudge Resistance",
+        "Scratch Resistance"
+      ],
+      "missingFeatures": [],
+      "powerRange": "-4.00-2.00",
+      "offer": "",
+      "category": "single_vision",
+      "section": "budget_friendly",
+      "popular": false,
+      "stockStatus": "STOCK",
+      "highlighted": true
+    },
+    {
+      "id": "fully_loaded_single",
+      "name": "OptiClair Fully Loaded",
+      "subtitle": "Blue Protection",
+      "price": 3500,
+      "singlePrice": 2800,
+      "index": "1.56 Index",
+      "description": "Fully loaded lens with all premium features",
+      "features": [
+        "Anti-Reflection",
+        "UV 420 • Sun Protection",
+        "Water & Dust Repellent",
+        "Blue Light Block",
+        "Smudge Resistance",
+        "Scratch Resistance"
+      ],
+      "missingFeatures": [],
+      "powerRange": "-8.0,-6.00-2.00,+4.0",
+      "offer": "",
+      "category": "single_vision",
+      "section": "free_form_design",
+      "popular": false,
+      "stockStatus": "STOCK",
+      "highlighted": true
+    },
+    {
+      "id": "dual_coating_freeform",
+      "name": "OptiClair Dual Coating",
+      "subtitle": "Blue Protection",
+      "price": 4000,
+      "singlePrice": 3200,
+      "index": "1.56 index",
+      "description": "Advanced dual coating with free form technology",
+      "features": [
+        "Anti-Reflection",
+        "UV 420 • Sun Protection",
+        "Water & Dust Repellent",
+        "Blue Light Block",
+        "Smudge Resistance",
+        "Scratch Resistance"
+      ],
+      "missingFeatures": [],
+      "powerRange": "-8.00-2.00,+2.0",
+      "offer": "",
+      "category": "single_vision",
+      "section": "free_form_design",
+      "popular": false,
+      "stockStatus": "STOCK"
+    },
+    {
+      "id": "night_vision_single",
+      "name": "OptiClair Night Vision",
+      "subtitle": "Blue Protection",
+      "price": 3500,
+      "singlePrice": 2800,
+      "index": "1.56 index",
+      "description": "Night vision enhancement with blue light protection",
+      "features": [
+        "Anti-Reflection",
+        "UV 420 • Sun Protection",
+        "Water & Dust Repellent",
+        "Blue Light Block",
+        "Smudge Resistance",
+        "Scratch Resistance"
+      ],
+      "missingFeatures": [],
+      "powerRange": "-6.00-2.00,+4.0-2.0",
+      "offer": "",
+      "category": "single_vision",
+      "section": "free_form_design",
+      "popular": false,
+      "stockStatus": "STOCK"
+    },
+    {
+      "id": "polarized_color",
+      "name": "OptiClair Polarized",
+      "subtitle": "With Color",
+      "price": 6000,
+      "singlePrice": 4800,
+      "index": "1.56 index",
+      "description": "Polarized lens with color options for enhanced vision",
+      "features": [
+        "Anti-Reflection",
+        "UV 420 • Sun Protection",
+        "Water & Dust Repellent",
+        "Blue Light Block - GREY/BROWN/GREEN",
+        "Smudge Resistance",
+        "Scratch Resistance"
+      ],
+      "missingFeatures": [],
+      "powerRange": "-6.00 SPH",
+      "offer": "",
+      "category": "single_vision",
+      "section": "free_form_design",
+      "popular": false,
+      "stockStatus": "STOCK",
+      "highlighted": true
+    },
+    {
+      "id": "photochromatic_essential",
+      "name": "OptiClair Essential",
+      "subtitle": "Photo-Chromatic",
+      "price": 1500,
+      "singlePrice": 1200,
+      "index": "1.56 index",
+      "description": "Photo-chromatic lens with essential protection",
+      "features": [
+        "Anti-Reflection",
+        "UV 420 • Sun Protection",
+        "Tint Color - GREY"
+      ],
+      "missingFeatures": [
+        "Water & Dust Repellent",
+        "Smudge Resistance",
+        "Scratch Resistance"
+      ],
+      "powerRange": "-4.00-2.00",
+      "offer": "",
+      "category": "single_vision",
+      "section": "photochromatic",
+      "tintColor": "Grey",
+      "popular": false,
+      "stockStatus": "STOCK"
+    },
+    {
+      "id": "photochromatic_premium",
+      "name": "OptiClair Premium",
+      "subtitle": "Photo-Chromatic",
+      "price": 2500,
+      "singlePrice": 2000,
+      "index": "1.56 index",
+      "description": "Premium photo-chromatic lens with enhanced protection",
+      "features": [
+        "Anti-Reflection",
+        "UV 420 • Sun Protection",
+        "Water & Dust Repellent",
+        "Smudge Resistance",
+        "Scratch Resistance",
+        "Tint Color - GREY/BROWN"
+      ],
+      "missingFeatures": [],
+      "powerRange": "-4.00-2.00",
+      "offer": "",
+      "category": "single_vision",
+      "section": "photochromatic",
+      "tintColor": "Grey/Brown",
+      "popular": false,
+      "stockStatus": "STOCK"
+    },
+    {
+      "id": "photochromatic_bestseller",
+      "name": "OptiClair Best Seller",
+      "subtitle": "Photo-Chromatic",
+      "price": 4500,
+      "singlePrice": 3600,
+      "index": "1.56 index",
+      "description": "Best selling photo-chromatic lens with all features",
+      "features": [
+        "Anti-Reflection",
+        "UV 420 • Sun Protection",
+        "Water & Dust Repellent",
+        "Smudge Resistance",
+        "Scratch Resistance",
+        "Tint Color - GREY/BROWN"
+      ],
+      "missingFeatures": [],
+      "powerRange": "-4.00-2.00",
+      "offer": "",
+      "category": "single_vision",
+      "section": "photochromatic",
+      "tintColor": "Grey/Brown",
+      "popular": true,
+      "stockStatus": "STOCK",
+      "highlighted": true
+    },
+    {
+      "id": "photochromatic_transition",
+      "name": "OptiClair Transition",
+      "subtitle": "New Generation",
+      "price": 7380,
+      "singlePrice": 5904,
+      "index": "1.56 index",
+      "description": "New generation transition lens technology",
+      "features": [
+        "Anti-Reflection",
+        "UV 420 • Sun Protection",
+        "Water & Dust Repellent",
+        "Blue Light Block",
+        "Smudge Resistance",
+        "Scratch Resistance",
+        "Tint Color - GREY"
+      ],
+      "missingFeatures": [],
+      "powerRange": "-6.0,-4.0-2.0,+4.0",
+      "offer": "",
+      "category": "single_vision",
+      "section": "photochromatic",
+      "tintColor": "Grey",
+      "popular": false,
+      "stockStatus": "STOCK",
+      "highlighted": true
+    },
+    {
+      "id": "polycarbonate_essential",
+      "name": "OptiClair Essential",
+      "subtitle": "Polycarbonate",
+      "price": 2000,
+      "singlePrice": 1600,
+      "index": "1.59 index",
+      "description": "Essential polycarbonate lens with break resistance",
+      "features": [
+        "Anti-Reflection",
+        "UV 420 • Sun Protection",
+        "Blue Light Block"
+      ],
+      "missingFeatures": [
+        "Water & Dust Repellent",
+        "Smudge Resistance",
+        "Scratch Resistance"
+      ],
+      "powerRange": "-6.00-2.00",
+      "offer": "",
+      "category": "single_vision",
+      "section": "break_resistance",
+      "popular": false,
+      "stockStatus": "STOCK"
+    },
+    {
+      "id": "polycarbonate_premium",
+      "name": "OptiClair Premium",
+      "subtitle": "Polycarbonate",
+      "price": 2500,
+      "singlePrice": 2000,
+      "index": "1.59 index",
+      "description": "Premium polycarbonate lens with enhanced durability",
+      "features": [
+        "Anti-Reflection",
+        "UV 420 • Sun Protection",
+        "Blue Light Block",
+        "Water & Dust Repellent",
+        "Smudge Resistance"
+      ],
+      "missingFeatures": ["Scratch Resistance"],
+      "powerRange": "-6.00-2.00",
+      "offer": "",
+      "category": "single_vision",
+      "section": "break_resistance",
+      "popular": false,
+      "stockStatus": "STOCK"
+    },
+    {
+      "id": "essilor_division_basic",
+      "name": "OptiClair Premium",
+      "subtitle": "Essilor Division Blue Protection",
+      "price": 3500,
+      "singlePrice": 2800,
+      "index": "1.60 MR8",
+      "description": "Essilor division lens with premium blue protection",
+      "features": [
+        "Anti-Reflection",
+        "UV 420 • Sun Protection",
+        "Water & Dust Repellent",
+        "Blue Light Block",
+        "Smudge Resistance",
+        "Scratch Resistance"
+      ],
+      "missingFeatures": [],
+      "powerRange": "-8.00-2.00",
+      "offer": "",
+      "category": "single_vision",
+      "section": "break_resistance",
+      "popular": false,
+      "stockStatus": "STOCK",
+      "highlighted": true
+    },
+    {
+      "id": "essilor_division_premium",
+      "name": "OptiClair Premium",
+      "subtitle": "Essilor Division Blue Protection",
+      "price": 5500,
+      "singlePrice": 4400,
+      "index": "1.60 MR8",
+      "description": "Premium Essilor division lens with comprehensive protection",
+      "features": [
+        "Anti-Reflection",
+        "UV 420 • Sun Protection",
+        "Water & Dust Repellent",
+        "Blue Light Block",
+        "Smudge Resistance",
+        "Scratch Resistance"
+      ],
+      "missingFeatures": [],
+      "powerRange": "-10.0,-8.00-2.00,+4.00",
+      "offer": "",
+      "category": "single_vision",
+      "section": "break_resistance",
+      "popular": false,
+      "stockStatus": "STOCK",
+      "highlighted": true
+    },
+    {
+      "id": "super_thin_basic",
+      "name": "OptiClair Super Thin",
+      "subtitle": "Blue Protection",
+      "price": 4500,
+      "singlePrice": 3600,
+      "index": "1.67 Hi-Index",
+      "description": "Super thin lens with blue light protection",
+      "features": [
+        "Anti-Reflection",
+        "UV 420 • Sun Protection",
+        "Water & Dust Repellent",
+        "Blue Light Block",
+        "Smudge Resistance",
+        "Scratch Resistance"
+      ],
+      "missingFeatures": [],
+      "powerRange": "-12.00,-10.0-2.0",
+      "offer": "",
+      "category": "single_vision",
+      "section": "super_thin",
+      "popular": false,
+      "stockStatus": "STOCK"
+    },
+    {
+      "id": "super_thin_premium",
+      "name": "OptiClair Super Thin",
+      "subtitle": "Blue Protection",
+      "price": 6500,
+      "singlePrice": 5200,
+      "index": "1.67 Hi Index",
+      "description": "Premium super thin lens with enhanced features",
+      "features": [
+        "Anti-Reflection",
+        "UV 420 • Sun Protection",
+        "Water & Dust Repellent",
+        "Blue Light Block",
+        "Smudge Resistance",
+        "Scratch Resistance"
+      ],
+      "missingFeatures": [],
+      "powerRange": "-15.00,-10.00-4.00",
+      "offer": "",
+      "category": "single_vision",
+      "section": "super_thin",
+      "popular": false,
+      "stockStatus": "STOCK"
+    },
+    {
+      "id": "super_thin_advanced",
+      "name": "OptiClair Super Thin",
+      "subtitle": "Blue Protection",
+      "price": 11000,
+      "singlePrice": 8800,
+      "index": "1.67 Hi-Index",
+      "description": "Advanced super thin lens with maximum power range",
+      "features": [
+        "Anti-Reflection",
+        "UV 420 • Sun Protection",
+        "Water & Dust Repellent",
+        "Blue Light Block",
+        "Smudge Resistance",
+        "Scratch Resistance"
+      ],
+      "missingFeatures": [],
+      "powerRange": "-18,12.00-4.00",
+      "offer": "",
+      "category": "single_vision",
+      "section": "super_thin",
+      "popular": false,
+      "stockStatus": "STOCK"
+    },
+    {
+      "id": "super_thin_ultra",
+      "name": "OptiClair Super Thin",
+      "subtitle": "Blue Protection",
+      "price": 12500,
+      "singlePrice": 10000,
+      "index": "1.67 Hi-Index",
+      "description": "Ultra super thin lens with maximum protection",
+      "features": [
+        "Anti-Reflection",
+        "UV 420 • Sun Protection",
+        "Water & Dust Repellent",
+        "Blue Light Block",
+        "Smudge Resistance",
+        "Scratch Resistance"
+      ],
+      "missingFeatures": [],
+      "powerRange": "-22.0-2.0,-20.00-4.00",
+      "offer": "",
+      "category": "single_vision",
+      "section": "super_thin",
+      "popular": false,
+      "stockStatus": "STOCK",
+      "highlighted": true
+    },
+    {
+      "id": "ultra_thin_photogrey",
+      "name": "OptiClair Super Thin",
+      "subtitle": "Photo-Grey",
+      "price": 11500,
+      "singlePrice": 9200,
+      "index": "1.67 Hi-Index",
+      "description": "Ultra thin photo-grey lens with transition technology",
+      "features": [
+        "Anti-Reflection",
+        "UV 420 • Sun Protection",
+        "Water & Dust Repellent",
+        "Blue Light Block",
+        "Smudge Resistance",
+        "Scratch Resistance"
+      ],
+      "missingFeatures": [],
+      "powerRange": "-15.00,-10.0-4.0",
+      "offer": "",
+      "category": "single_vision",
+      "section": "ultra_thin",
+      "tintColor": "Photo-Grey",
+      "popular": false,
+      "stockStatus": "STOCK"
+    },
+    {
+      "id": "ultra_thin_advance_basic",
+      "name": "OptiClair Advance",
+      "subtitle": "Ultra Thin",
+      "price": 14500,
+      "singlePrice": 11600,
+      "index": "1.74 Hi Index",
+      "description": "Advanced ultra thin lens technology",
+      "features": [
+        "Anti-Reflection",
+        "UV 420 • Sun Protection",
+        "Water & Dust Repellent",
+        "Blue Light Block",
+        "Smudge Resistance",
+        "Scratch Resistance"
+      ],
+      "missingFeatures": [],
+      "powerRange": "-12.00,-10.00-2.00",
+      "offer": "",
+      "category": "single_vision",
+      "section": "ultra_thin",
+      "popular": false,
+      "stockStatus": "STOCK"
+    },
+    {
+      "id": "ultra_thin_advance_medium",
+      "name": "OptiClair Advance",
+      "subtitle": "Ultra Thin",
+      "price": 15500,
+      "singlePrice": 12400,
+      "index": "1.74 Hi-Index",
+      "description": "Advanced ultra thin lens with extended power range",
+      "features": [
+        "Anti-Reflection",
+        "UV 420 • Sun Protection",
+        "Water & Dust Repellent",
+        "Blue Light Block",
+        "Smudge Resistance",
+        "Scratch Resistance"
+      ],
+      "missingFeatures": [],
+      "powerRange": "-15,10.00-4.00",
+      "offer": "",
+      "category": "single_vision",
+      "section": "ultra_thin",
+      "popular": false,
+      "stockStatus": "STOCK"
+    },
+    {
+      "id": "ultra_thin_advance_premium",
+      "name": "OptiClair Advance",
+      "subtitle": "Ultra Thin",
+      "price": 18000,
+      "singlePrice": 14400,
+      "index": "1.74 Hi-Index",
+      "description": "Premium advanced ultra thin lens with maximum power",
+      "features": [
+        "Anti-Reflection",
+        "UV 420 • Sun Protection",
+        "Water & Dust Repellent",
+        "Blue Light Block",
+        "Smudge Resistance",
+        "Scratch Resistance"
+      ],
+      "missingFeatures": [],
+      "powerRange": "-24,-14.00-4.00",
+      "offer": "",
+      "category": "single_vision",
+      "section": "ultra_thin",
+      "popular": false,
+      "stockStatus": "STOCK"
+    },
+    {
+      "id": "kodak_color_oriented",
+      "name": "KODAK Color Oriented",
+      "subtitle": "International Brand",
+      "price": 3560,
+      "singlePrice": 1780,
+      "index": "1.56 index HMC",
+      "description": "KODAK color oriented lens with enhanced visual clarity",
+      "features": [
+        "Anti-Reflection",
+        "UV 420 • Sun Protection",
+        "Scratch Resistant",
+        "Smudge Resistance",
+        "Water Repellence"
+      ],
+      "missingFeatures": ["Blue Light Block"],
+      "powerRange": "-4.00-2.00/+4.00",
+      "offer": "",
+      "category": "single_vision",
+      "section": "international_brands",
+      "popular": false,
+      "stockStatus": "STOCK"
+    },
+    {
+      "id": "kodak_uv_blue",
+      "name": "KODAK UV BLUE",
+      "subtitle": "International Brand",
+      "price": 4150,
+      "singlePrice": 2075,
+      "index": "1.56 index HMC",
+      "description": "KODAK UV Blue lens with comprehensive protection",
+      "features": [
+        "Anti-Reflection",
+        "UV 420 • Sun Protection",
+        "Scratch Resistant",
+        "Blue Light Block",
+        "Smudge Resistance",
+        "Water Repellence"
+      ],
+      "missingFeatures": [],
+      "powerRange": "-6.0-2.0/+6.0,-6.0CYL",
+      "offer": "",
+      "category": "single_vision",
+      "section": "international_brands",
+      "popular": true,
+      "stockStatus": "STOCK",
+      "highlighted": true
+    },
+    {
+      "id": "kodak_break_resistance_160",
+      "name": "KODAK BREAK RESISTANCE",
+      "subtitle": "International Brand",
+      "price": 4750,
+      "singlePrice": 2375,
+      "index": "1.60 MR8 HMC",
+      "description": "KODAK break resistance lens with superior durability",
+      "features": [
+        "Anti-Reflection",
+        "UV 420 • Sun Protection",
+        "Scratch Resistant",
+        "Smudge Resistance",
+        "Water Repellence"
+      ],
+      "missingFeatures": ["Blue Light Block"],
+      "powerRange": "-8.0-2.0/+4.0,-2CYL",
+      "offer": "",
+      "category": "single_vision",
+      "section": "international_brands",
+      "popular": false,
+      "stockStatus": "STOCK"
+    },
+    {
+      "id": "kodak_break_resistance_blue",
+      "name": "KODAK BREAK RESISTANCE",
+      "subtitle": "International Brand with Blue Protection",
+      "price": 5340,
+      "singlePrice": 2670,
+      "index": "1.60MR8 HMC",
+      "description": "KODAK break resistance lens with blue light protection",
+      "features": [
+        "Anti-Reflection",
+        "UV 420 • Sun Protection",
+        "Scratch Resistant",
+        "Blue Light Block",
+        "Smudge Resistance",
+        "Water Repellence"
+      ],
+      "missingFeatures": [],
+      "powerRange": "-6.0-2.0/+6.0,-4.0CYL",
+      "offer": "",
+      "category": "single_vision",
+      "section": "international_brands",
+      "popular": true,
+      "stockStatus": "STOCK"
+    },
+    {
+      "id": "nova_thinmx_bluemax",
+      "name": "NOVA THINMX BLUEMAX",
+      "subtitle": "Premium International Brand",
+      "price": 2830,
+      "singlePrice": 1415,
+      "index": "1.56 Index HMC",
+      "description": "NOVA ThinMX BlueMax lens with advanced blue light filtering",
+      "features": [
+        "Anti-Reflection",
+        "UV 420 • Sun Protection",
+        "Scratch Resistant",
+        "Blue Light Block",
+        "Smudge Resistance",
+        "Water Repellence"
+      ],
+      "missingFeatures": [],
+      "powerRange": "-6.0-4.0/+4.0-2.0",
+      "offer": " 2nd 50% off",
+      "category": "single_vision",
+      "section": "premium_international_brands",
+      "popular": false,
+      "stockStatus": "STOCK"
+    },
+    {
+      "id": "nova_thinmx_customized",
+      "name": "NOVA THINMX Customized",
+      "subtitle": "Premium International Brand",
+      "price": 5200,
+      "singlePrice": 2600,
+      "index": "1.56 Index HMC",
+      "description": "NOVA ThinMX customized lens with premium features",
+      "features": [
+        "Anti-Reflection",
+        "UV 420 • Sun Protection",
+        "Scratch Resistant",
+        "Blue Light Block",
+        "Smudge Resistance",
+        "Water Repellence"
+      ],
+      "missingFeatures": [],
+      "powerRange": "-11.00/+8.50/+-6.0CYL",
+      "offer": " 2nd 50% off",
+      "category": "single_vision",
+      "section": "premium_international_brands",
+      "popular": true,
+      "stockStatus": "STOCK",
+      "highlighted": true
+    },
+    {
+      "id": "nova_thinmx_bluemax_167",
+      "name": "NOVA THINMX BLUEMAX",
+      "subtitle": "Ultra Premium International Brand",
+      "price": 5860,
+      "singlePrice": 2930,
+      "index": "1.67 HI-INDEX",
+      "description": "NOVA ThinMX BlueMax high index lens for strong prescriptions",
+      "features": [
+        "Anti-Reflection",
+        "UV 420 • Sun Protection",
+        "Scratch Resistant",
+        "Blue Light Block",
+        "Smudge Resistance",
+        "Water Repellence"
+      ],
+      "missingFeatures": [],
+      "powerRange": "-12,-8.0-4.0,+6.0-2.0",
+      "offer": " 2nd 50% off",
+      "category": "single_vision",
+      "section": "premium_international_brands",
+      "popular": false,
+      "stockStatus": "STOCK"
+    },
+    {
+      "id": "nova_thinmx_customized_167",
+      "name": "NOVA THINMX Customized",
+      "subtitle": "Ultra Premium International Brand",
+      "price": 10200,
+      "singlePrice": 5100,
+      "index": "1.67 HI-INDEX",
+      "description": "NOVA ThinMX customized high index lens with ultimate performance",
+      "features": [
+        "Anti-Reflection",
+        "UV 420 • Sun Protection",
+        "Scratch Resistant",
+        "Blue Light Block",
+        "Smudge Resistance",
+        "Water Repellence"
+      ],
+      "missingFeatures": [],
+      "powerRange": "-12/+8.00/+-6.0CYL",
+      "offer": " 2nd 50% off",
+      "category": "single_vision",
+      "section": "premium_international_brands",
+      "popular": true,
+      "stockStatus": "STOCK",
+      "highlighted": true
+    },
+    {
+      "id": "basic_single",
+      "name": "Basic color Power",
+      "subtitle": "Customized",
+      "price": 1500,
+      "singlePrice": 750,
+      "index": "1.56 index",
+      "description": "Basic blue light protection with anti-glare coating",
+      "features": ["Any Color"],
+      "missingFeatures": [
+        "Anti-Reflection",
+        "Water & Dust Repellent",
+        "Smudge Resistance",
+        "UV 420 • Sun Protection",
+        "Scratch Resistance"
+      ],
+      "powerRange": "-6.00-2.00",
+      "offer": "",
+      "category": "single_vision",
+      "section": "Opticlair_Special",
+      "popular": false,
+      "stockStatus": "STOCK"
+    },
+    {
+      "id": "opticlair_special",
+      "name": "Premium Color With Power",
+      "subtitle": "Customized",
+      "price": 2500,
+      "singlePrice": 1250,
+      "index": "1.56 index",
+      "description": "Basic blue light protection with anti-glare coating",
+      "features": [
+        "Any Color",
+        "UV 420 • Sun Protection",
+        "Scratch Resistance"
+      ],
+      "missingFeatures": [
+        "Anti-Reflection",
+        "Water & Dust Repellent",
+        "Smudge Resistance"
+      ],
+      "powerRange": "-6.00-2.00",
+      "offer": "",
+      "category": "single_vision",
+      "section": "Opticlair_Special",
+      "popular": false,
+      "stockStatus": "STOCK"
+    },
+    {
+      "id": "opticlair_special",
+      "name": "Customized color with power",
+      "subtitle": "Customized",
+      "price": 3500,
+      "singlePrice": 1750,
+      "index": "1.56 index",
+      "description": "Basic blue light protection with anti-glare coating",
+      "features": [
+        "UV 420 • Sun Protection",
+        "Water & Dust Repellent",
+        "Smudge Resistance",
+        "Scratch Resistance",
+        "Any Color"
+      ],
+      "missingFeatures": ["Anti-Reflection"],
+      "powerRange": "-6.00-2.00",
+      "offer": "",
+      "category": "single_vision",
+      "section": "Opticlair_Special",
+      "popular": false,
+      "stockStatus": "STOCK"
+    },
+    {
+      "id": "opticlair_special",
+      "name": "OptiClair Anti-Glair Customized color with power",
+      "subtitle": "Customized",
+      "price": 4500,
+      "singlePrice": 2250,
+      "index": "1.56 index",
+      "description": "Basic blue light protection with anti-glare coating",
+      "features": [
+        "Anti-Reflection",
+        "UV 420 • Sun Protection",
+        "Water & Dust Repellent",
+        "Smudge Resistance",
+        "Scratch Resistance",
+        "Any Color"
+      ],
+      "missingFeatures": [],
+      "powerRange": "-6.00-2.00",
+      "offer": "",
+      "category": "single_vision",
+      "section": "Opticlair_Special",
+      "popular": false,
+      "stockStatus": "STOCK"
+    },
+
+    {
+      "id": "progressive_scratch_resistance",
+      "name": "OptiClair Scratch Resistance",
+      "subtitle": "Customized",
+      "price": 3200,
+      "singlePrice": 2560,
+      "index": "1.56 index",
+      "description": "Progressive lens with scratch resistance and customized design",
+      "features": [
+        "Smooth Power Transition",
+        "Water & Dust Repellent",
+        "Scratch Resistant"
+      ],
+      "missingFeatures": [
+        "UV 420 • Sun Protection",
+        "Blue Light Block",
+        "Anti-Reflection"
+      ],
+      "powerRange": "-6.00/+6.00,-4.0 CYL",
+      "offer": "",
+      "category": "progressive",
+      "section": "2_technology_1_lens",
+      "corridor": "Normal",
+      "popular": false,
+      "stockStatus": "STOCK"
+    },
+    {
+      "id": "progressive_anti_glair",
+      "name": "OptiClair Anti-Glair",
+      "subtitle": "Customized",
+      "price": 4400,
+      "singlePrice": 3520,
+      "index": "1.56 index",
+      "description": "Progressive lens with anti-glare coating and customized features",
+      "features": [
+        "Smooth Power Transition",
+        "Water & Dust Repellent",
+        "UV 420 • Sun Protection",
+        "Scratch Resistant",
+        "Anti-Reflection"
+      ],
+      "missingFeatures": ["Blue Light Block"],
+      "powerRange": "-6.00/+6.00,-4.0 CYL",
+      "offer": "",
+      "category": "progressive",
+      "section": "2_technology_1_lens",
+      "corridor": "Normal",
+      "popular": false,
+      "stockStatus": "STOCK"
+    },
+    {
+      "id": "progressive_blue_protection",
+      "name": "OptiClair Blue Protection",
+      "subtitle": "Customized",
+      "price": 5500,
+      "singlePrice": 4400,
+      "index": "1.56 index",
+      "description": "Progressive lens with comprehensive blue light protection",
+      "features": [
+        "Smooth Power Transition",
+        "Water & Dust Repellent",
+        "UV 420 • Sun Protection",
+        "Blue Light Block",
+        "Scratch Resistant",
+        "Anti-Reflection"
+      ],
+      "missingFeatures": [],
+      "powerRange": "-6.00/+6.00,-4.0 CYL",
+      "offer": "",
+      "category": "progressive",
+      "section": "2_technology_1_lens",
+      "corridor": "Normal",
+      "popular": true,
+      "stockStatus": "STOCK",
+      "highlighted": true
+    },
+    {
+      "id": "progressive_photo_grey",
+      "name": "OptiClair Photo-Grey",
+      "subtitle": "Customized",
+      "price": 5500,
+      "singlePrice": 4400,
+      "index": "1.56 index",
+      "description": "Progressive lens with photo-grey transition technology",
+      "features": [
+        "Smooth Power Transition",
+        "Water & Dust Repellent",
+        "UV 420 • Sun Protection",
+        "Scratch Resistant",
+        "Anti-Reflection"
+      ],
+      "missingFeatures": ["Blue Light Block"],
+      "powerRange": "-6.00/+6.00,-4.0 CYL",
+      "offer": "",
+      "category": "progressive",
+      "section": "2_technology_1_lens",
+      "corridor": "Normal",
+      "tintColor": "Photo-Grey",
+      "popular": false,
+      "stockStatus": "STOCK"
+    },
+    {
+      "id": "progressive_3_tech_scratch",
+      "name": "OptiClair Scratch Resistance",
+      "subtitle": "Customized",
+      "price": 4000,
+      "singlePrice": 3200,
+      "index": "1.56 index",
+      "description": "3 Technology progressive lens with scratch resistance",
+      "features": [
+        "Smooth Power Transition",
+        "Water & Dust Repellent",
+        "Scratch Resistant"
+      ],
+      "missingFeatures": [
+        "UV 420 • Sun Protection",
+        "Blue Light Block",
+        "Anti-glare"
+      ],
+      "powerRange": "-6.00/+6.00,-4.0 CYL",
+      "offer": "",
+      "category": "progressive",
+      "section": "3_technology_1_lens",
+      "corridor": "Wide",
+      "popular": false,
+      "stockStatus": "STOCK"
+    },
+    {
+      "id": "progressive_3_tech_anti_glair",
+      "name": "OptiClair Anti-Glair",
+      "subtitle": "Customized",
+      "price": 5000,
+      "singlePrice": 4000,
+      "index": "1.56 index",
+      "description": "3 Technology progressive lens with anti-glare features",
+      "features": [
+        "Smooth Power Transition",
+        "Water & Dust Repellent",
+        "UV 420 • Sun Protection",
+        "Scratch Resistant",
+        "Anti-glare"
+      ],
+      "missingFeatures": ["Blue Light Block"],
+      "powerRange": "-6.00/+6.00,-4.0 CYL",
+      "offer": "",
+      "category": "progressive",
+      "section": "3_technology_1_lens",
+      "corridor": "Wide",
+      "popular": false,
+      "stockStatus": "STOCK"
+    },
+    {
+      "id": "progressive_3_tech_blue_protection",
+      "name": "OptiClair Blue Protection",
+      "subtitle": "Customized",
+      "price": 7500,
+      "singlePrice": 6000,
+      "index": "1.56 index",
+      "description": "3 Technology progressive lens with blue light protection",
+      "features": [
+        "Smooth Power Transition",
+        "Water & Dust Repellent",
+        "UV 420 • Sun Protection",
+        "Blue Light Block",
+        "Scratch Resistant",
+        "Anti-glare"
+      ],
+      "missingFeatures": [],
+      "powerRange": "-6.00/+6.00,-4.0 CYL",
+      "offer": "",
+      "category": "progressive",
+      "section": "3_technology_1_lens",
+      "corridor": "Wide",
+      "popular": true,
+      "stockStatus": "STOCK",
+      "highlighted": true
+    },
+    {
+      "id": "progressive_3_tech_photo_grey",
+      "name": "OptiClair Photo-Grey",
+      "subtitle": "Customized",
+      "price": 7500,
+      "singlePrice": 6000,
+      "index": "1.56 index",
+      "description": "3 Technology progressive lens with photo-grey transition",
+      "features": [
+        "Smooth Power Transition",
+        "Water & Dust Repellent",
+        "UV 420 • Sun Protection",
+        "Scratch Resistant",
+        "Anti-glare"
+      ],
+      "missingFeatures": ["Blue Light Block"],
+      "powerRange": "-6.00/+6.00,-4.0 CYL",
+      "offer": "",
+      "category": "progressive",
+      "section": "3_technology_1_lens",
+      "corridor": "Wide",
+      "tintColor": "Photo-Grey",
+      "popular": false,
+      "stockStatus": "STOCK"
+    },
+    {
+      "id": "progressive_3_tech_photo_grey",
+      "name": "NITRO Customized Corridor",
+      "subtitle": "Customized",
+      "price": 6690,
+      "singlePrice": 3345,
+      "index": "1.56 Index",
+      "description": "3 Technology progressive lens with NITRO ",
+      "features": [
+        "Smooth Power Transition",
+        "Water & Dust Repellent",
+        "UV 420 • Sun Protection",
+        "Scratch Resistant",
+        "Anti-Reflection",
+        "Blue Light Block"
+      ],
+      "missingFeatures": [],
+      "powerRange": "-6.00/+6.00,-4.0 CYL",
+      "offer": "",
+      "category": "progressive",
+      "section": "3_technology_1_lens",
+      "corridor": "Wide",
+      "tintColor": "Photo-Grey",
+      "popular": false,
+      "stockStatus": "STOCK"
+    },
+    {
+      "id": "progressive_3_tech_photo_grey",
+      "name": "NITRO Wide Customized PG/BR Or BlueCut",
+      "subtitle": "Customized",
+      "price": 8690,
+      "singlePrice": 4345,
+      "index": "1.56 Index",
+      "description": "3 Technology progressive lens with NITRO ",
+      "features": [
+        "Smooth Power Transition",
+        "Water & Dust Repellent",
+        "UV 420 • Sun Protection",
+        "Scratch Resistant",
+        "Anti-Reflection"
+      ],
+      "missingFeatures": ["Blue Light Block"],
+      "powerRange": "-6.00/+6.00,-4.0 CYL",
+      "offer": "",
+      "category": "progressive",
+      "section": "3_technology_1_lens",
+      "corridor": "Wide",
+      "tintColor": "Photo-Grey",
+      "popular": false,
+      "stockStatus": "STOCK"
+    },
+    {
+      "id": "progressive_3_tech_photo_grey",
+      "name": "Precise Wide Customized DIGITAL",
+      "subtitle": "Customized",
+      "price": 9770,
+      "singlePrice": 4885,
+      "index": "1.56 Index",
+      "description": "3 Technology progressive lens with Precise ",
+      "features": [
+        "Smooth Power Transition",
+        "Water & Dust Repellent",
+        "UV 420 • Sun Protection",
+        "Scratch Resistant",
+        "Anti-Reflection",
+        "Blue Light Block"
+      ],
+      "missingFeatures": [],
+      "powerRange": "-6.00/+6.00,-4.0 CYL",
+      "offer": "",
+      "category": "progressive",
+      "section": "3_technology_1_lens",
+      "corridor": "Wide",
+      "tintColor": "Photo-Grey",
+      "popular": false,
+      "stockStatus": "STOCK"
+    },
+    {
+      "id": "progressive_3_tech_photo_grey",
+      "name": "Precise Wide Customized PG/BR Or BlueCut",
+      "subtitle": "Customized",
+      "price": 11660,
+      "singlePrice": 5830,
+      "index": "1.60 MR8",
+      "description": "3 Technology progressive lens with Precise ",
+      "features": [
+        "Smooth Power Transition",
+        "Water & Dust Repellent",
+        "UV 420 • Sun Protection",
+        "Scratch Resistant",
+        "Anti-Reflection",
+        "Blue Light Block"
+      ],
+      "missingFeatures": [],
+      "powerRange": "-6.00/+6.00,-4.0 CYL",
+      "offer": "",
+      "category": "progressive",
+      "section": "3_technology_1_lens",
+      "corridor": "Wide",
+      "tintColor": "Photo-Grey",
+      "popular": false,
+      "stockStatus": "STOCK"
+    },
+    {
+      "id": "progressive_4_tech_anti_glair",
+      "name": "OptiClair Anti-Glair",
+      "subtitle": "Customized",
+      "price": 11500,
+      "singlePrice": 9200,
+      "index": "1.60 MR8",
+      "description": "4 Technology progressive lens with anti-glare and wider corridor",
+      "features": [
+        "Smooth Power Transition",
+        "Water & Dust Repellent",
+        "UV 420 • Sun Protection",
+        "Scratch Resistant",
+        "Anti-Reflection"
+      ],
+      "missingFeatures": ["Blue Light Block"],
+      "powerRange": "-6.00/+6.00,-4.0 CYL",
+      "offer": "",
+      "category": "progressive",
+      "section": "4_technology_1_lens",
+      "corridor": "Wider",
+      "popular": false,
+      "stockStatus": "STOCK"
+    },
+    {
+      "id": "progressive_4_tech_blue_protection",
+      "name": "OptiClair Blue Protection",
+      "subtitle": "Customized",
+      "price": 13500,
+      "singlePrice": 10800,
+      "index": "1.60 MR8",
+      "description": "4 Technology progressive lens with comprehensive blue protection",
+      "features": [
+        "Smooth Power Transition",
+        "Water & Dust Repellent",
+        "UV 420 • Sun Protection",
+        "Blue Light Block",
+        "Scratch Resistant",
+        "Anti-Reflection"
+      ],
+      "missingFeatures": [],
+      "powerRange": "-6.00/+6.00,-4.0 CYL",
+      "offer": "",
+      "category": "progressive",
+      "section": "4_technology_1_lens",
+      "corridor": "Wider",
+      "popular": true,
+      "stockStatus": "STOCK",
+      "highlighted": true
+    },
+    {
+      "id": "progressive_4_tech_photo_chromatic",
+      "name": "OptiClair Photo-Chromatic",
+      "subtitle": "Grey/Brown Customized",
+      "price": 14500,
+      "singlePrice": 11600,
+      "index": "1.56 MR8",
+      "description": "4 Technology progressive lens with photo-chromatic transition",
+      "features": [
+        "Smooth Power Transition",
+        "Water & Dust Repellent",
+        "UV 420 • Sun Protection",
+        "Scratch Resistant",
+        "Anti-Reflection"
+      ],
+      "missingFeatures": ["Blue Light Block"],
+      "powerRange": "-6.00/+6.00,-4.0 CYL",
+      "offer": "",
+      "category": "progressive",
+      "section": "4_technology_1_lens",
+      "corridor": "Wider",
+      "tintColor": "Grey/Brown",
+      "popular": false,
+      "stockStatus": "STOCK"
+    },
+
+    {
+      "id": "progressive_4_tech_transition",
+      "name": "OptiClair Transition",
+      "subtitle": "Classic Grey-Brown Customized",
+      "price": 18300,
+      "singlePrice": 14640,
+      "index": "1.56 index",
+      "description": "4 Technology progressive lens with classic transition technology",
+      "features": [
+        "Smooth Power Transition",
+        "Water & Dust Repellent",
+        "UV 420 • Sun Protection",
+        "Scratch Resistant",
+        "Anti-Reflection"
+      ],
+      "missingFeatures": ["Blue Light Block"],
+      "powerRange": "-6.00/+6.00,-4.0 CYL",
+      "offer": "",
+      "category": "progressive",
+      "section": "4_technology_1_lens",
+      "corridor": "Wider",
+      "tintColor": "Classic Grey-Brown",
+      "popular": false,
+      "stockStatus": "STOCK"
+    },
+    {
+      "id": "progressive_6_tech_scratch",
+      "name": "Unique HD ",
+      "subtitle": "Wider Customized FreeForm",
+      "price": 17060,
+      "singlePrice": 10285,
+      "index": "1.56 index",
+      "description": "6 Technology progressive lens with classic transition technology",
+      "features": [
+        "Smooth Power Transition",
+        "Water & Dust Repellent",
+        "UV 420 • Sun Protection",
+        "Scratch Resistant",
+        "Anti-Reflection",
+        "Blue Light Block"
+      ],
+      "missingFeatures": [],
+      "powerRange": "-6.00/+6.00,-4.0 CYL",
+      "offer": "",
+      "category": "progressive",
+      "section": "6_technology_1_lens",
+      "corridor": "Wider",
+      "tintColor": "Classic Grey-Brown",
+      "popular": false,
+      "stockStatus": "STOCK"
+    },
+    {
+      "id": "progressive_6_tech_transition",
+      "name": "Unique HD ",
+      "subtitle": "Wider Customized Photo GR/BR",
+      "price": 18680,
+      "singlePrice": 10285,
+      "index": "1.56 index",
+      "description": "6 Technology progressive lens with classic transition technology",
+      "features": [
+        "Smooth Power Transition",
+        "Water & Dust Repellent",
+        "UV 420 • Sun Protection",
+        "Scratch Resistant",
+        "Anti-Reflection"
+      ],
+      "missingFeatures": ["Blue Light Block"],
+      "powerRange": "-6.00/+6.00,-4.0 CYL",
+      "offer": "",
+      "category": "progressive",
+      "section": "6_technology_1_lens",
+      "corridor": "Wider",
+      "tintColor": "Classic Grey-Brown",
+      "popular": false,
+      "stockStatus": "STOCK"
+    },
+    {
+      "id": "progressive_6_tech_transition",
+      "name": "Unique HD ",
+      "subtitle": "Wider Customized Break Resistance",
+      "price": 18680,
+      "singlePrice": 10285,
+      "index": "1.56 index",
+      "description": "6 Technology progressive lens with classic transition technology",
+      "features": [
+        "Smooth Power Transition",
+        "Water & Dust Repellent",
+        "UV 420 • Sun Protection",
+        "Scratch Resistant",
+        "Anti-Reflection",
+        "Blue Light Block"
+      ],
+      "missingFeatures": [],
+      "powerRange": "-6.00/+6.00,-4.0 CYL",
+      "offer": "",
+      "category": "progressive",
+      "section": "6_technology_1_lens",
+      "corridor": "Wider",
+      "tintColor": "Classic Grey-Brown",
+      "popular": false,
+      "stockStatus": "STOCK"
+    },
+    {
+      "id": "progressive_6_tech_transition",
+      "name": "Unique HD ",
+      "subtitle": "Wider Customized Break Resistance",
+      "price": 20570,
+      "singlePrice": 10285,
+      "index": "1.56 index",
+      "description": "6 Technology progressive lens with classic transition technology",
+      "features": [
+        "Smooth Power Transition",
+        "Water & Dust Repellent",
+        "UV 420 • Sun Protection",
+        "Scratch Resistant",
+        "Anti-Reflection",
+        "GREY/BROWN"
+      ],
+      "missingFeatures": [],
+      "powerRange": "-6.00/+6.00,-4.0 CYL",
+      "offer": "",
+      "category": "progressive",
+      "section": "6_technology_1_lens",
+      "corridor": "Wider",
+      "tintColor": "Classic Grey-Brown",
+      "popular": false,
+      "stockStatus": "STOCK"
+    },
+
+    {
+      "id": "bifocal_blue_protection_essential",
+      "name": "OptiClair Blue Protection",
+      "subtitle": "Essential",
+      "price": 2000,
+      "singlePrice": 1000,
+      "index": "1.56 index",
+      "description": "Essential bifocal lens with basic blue light protection",
+      "features": [
+        "Anti-Reflection",
+        "UV 420 • Sun Protection",
+        "Scratch Resistant"
+      ],
+      "missingFeatures": [
+        "Smudge Resistant",
+        "Blue Light Block",
+        "Water Repellence"
+      ],
+      "powerRange": "(+-) 6.00 UPTO 4 CYL",
+      "offer": "",
+      "category": "bifocal",
+      "section": "customized_bifocal",
+      "popular": false,
+      "stockStatus": "STOCK"
+    },
+    {
+      "id": "bifocal_blue_protection_premium",
+      "name": "OptiClair Blue Protection",
+      "subtitle": "Premium",
+      "price": 2500,
+      "singlePrice": 1250,
+      "index": "1.56 index",
+      "description": "Premium bifocal lens with enhanced blue light protection",
+      "features": [
+        "Anti-Reflection",
+        "UV 420 • Sun Protection",
+        "Blue Light Block",
+        "Scratch Resistant"
+      ],
+      "missingFeatures": ["Smudge Resistant", "Water Repellence"],
+      "powerRange": "(+-) 6.00 UPTO 4 CYL",
+      "offer": "",
+      "category": "bifocal",
+      "section": "customized_bifocal",
+      "popular": false,
+      "stockStatus": "STOCK"
+    },
+    {
+      "id": "bifocal_blue_protection_dual_coating",
+      "name": "OptiClair Blue Protection",
+      "subtitle": "Dual Coating",
+      "price": 3000,
+      "singlePrice": 1500,
+      "index": "1.56 index",
+      "description": "Dual coating bifocal lens with comprehensive protection",
+      "features": [
+        "Anti-Reflection",
+        "UV 420 • Sun Protection",
+        "Smudge Resistant",
+        "Blue Light Block",
+        "Scratch Resistant",
+        "Water Repellence"
+      ],
+      "missingFeatures": [],
+      "powerRange": "(+-) 6.00 UPTO 4 CYL",
+      "offer": "",
+      "category": "bifocal",
+      "section": "customized_bifocal",
+      "popular": true,
+      "stockStatus": "STOCK",
+      "highlighted": true,
+      "badge": "BEST SELLER"
+    },
+    {
+      "id": "bifocal_photo_chromatic",
+      "name": "OptiClair Photo-Chromatic",
+      "subtitle": "BIFOCAL",
+      "price": 3500,
+      "singlePrice": 1750,
+      "index": "1.56 thinner index",
+      "description": "Photo-chromatic bifocal lens with adaptive tinting",
+      "features": [
+        "Anti-Reflection",
+        "UV 420 • Sun Protection",
+        "Smudge Resistant",
+        "Scratch Resistant",
+        "Water Repellence",
+        "GREY/BROWN"
+      ],
+      "missingFeatures": [],
+      "powerRange": "(+-) 6.00 UPTO 4 CYL",
+      "offer": "",
+      "category": "bifocal",
+      "section": "customized_bifocal",
+      "tintColor": "Grey or Brown",
+      "popular": false,
+      "stockStatus": "STOCK"
+    }
+  ],
+  "sectionHeaders": [
+    {
+      "id": "budget_friendly",
+      "title": "Budget Friendly Lenses",
+      "subtitle": "Affordable protection for everyday use",
+      "category": "single_vision"
+    },
+    {
+      "id": "opticlair_special",
+      "title": "Opticlair Special",
+      "subtitle": "Special Purpose",
+      "category": "single_vision"
+    },
+    {
+      "id": "free_form_design",
+      "title": "Free Form Design lenses",
+      "subtitle": "Advanced technology for superior vision optimization",
+      "category": "single_vision"
+    },
+    {
+      "id": "photochromatic",
+      "title": "Photo-chromatic & Transition Lenses",
+      "subtitle": "Adaptive lenses that darken in sunlight",
+      "category": "single_vision"
+    },
+    {
+      "id": "break_resistance",
+      "title": "Break resistance Lenses",
+      "subtitle": "Durable polycarbonate and Essilor division lenses",
+      "category": "single_vision"
+    },
+    {
+      "id": "super_thin",
+      "title": "Super Thin Lenses",
+      "subtitle": "Lightweight and thin for high prescriptions",
+      "category": "single_vision"
+    },
+    {
+      "id": "ultra_thin",
+      "title": "Ultra Thin Lenses",
+      "subtitle": "Ultra-lightweight for the highest prescriptions",
+      "category": "single_vision"
+    },
+
+    {
+      "id": "international_brands",
+      "title": "International Brands BUY1 GET1",
+      "subtitle": "Free Form Vision Optimization with Exclusive Benefits Offer",
+      "category": "single_vision",
+      "technologies": [
+        "Free Form Technology: Advanced digital surfacing for precise prescription accuracy",
+        "Vision Optimization: Enhanced visual clarity across all viewing zones",
+        "International Quality Standards: Premium materials and manufacturing processes"
+      ]
+    },
+    {
+      "id": "premium_international_brands",
+      "title": "International Brands BUY1 2nd 50% off",
+      "subtitle": "Premium Free Form Vision Optimization",
+      "category": "single_vision",
+      "technologies": [
+        "Advanced Free Form Technology: Next-generation digital processing",
+        "Premium Vision Optimization: Superior optical performance",
+        "Enhanced Durability: Long-lasting lens construction"
+      ]
+    },
+    {
+      "id": "ultra_premium_international_brands",
+      "title": "Ultra Premium International Brands",
+      "subtitle": "Ultimate Free Form Vision Optimization",
+      "category": "single_vision",
+      "technologies": [
+        "Ultra-Premium Free Form Technology: State-of-the-art digital manufacturing",
+        "Maximum Vision Optimization: Unparalleled optical clarity",
+        "High-Index Materials: Thinner, lighter lenses for strong prescriptions"
+      ]
+    },
+    {
+      "id": "2_technology_1_lens",
+      "title": "2 Technology 1 Lens-Progressive",
+      "subtitle": "Vision Optimization with Digital Freeform and Variable Geometry",
+      "category": "progressive",
+      "technologies": [
+        "Digital Freeform: Digital manufacturing for more accurate prescription alignment",
+        "Variable Geometry: Places the design within the blank to optimize lens thickness and create better balanced lens aesthetically"
+      ]
+    },
+    {
+      "id": "3_technology_1_lens",
+      "title": "3 Technology 1 Lens-Progressive",
+      "subtitle": "Enhanced Vision Optimization with Vision First Design",
+      "category": "progressive",
+      "technologies": [
+        "Digital Freeform: Digital manufacturing for more accurate prescription alignment",
+        "Variable Geometry: Places the design within the blank to optimize lens thickness and create better balanced lens aesthetically",
+        "Vision First Design: Creates smoother transition and improved binocular balance"
+      ]
+    },
+    {
+      "id": "4_technology_1_lens",
+      "title": "4 Technology 1 Lens-Progressive XT",
+      "subtitle": "Ultimate Vision Optimization with Dynamic Reading Technology",
+      "category": "progressive",
+      "technologies": [
+        "Digital Freeform: Digital manufacturing for more accurate prescription alignment",
+        "Variable Geometry: Places the design within the blank to optimize lens thickness and create better balanced lens aesthetically",
+        "Vision First Design: Creates smoother transition and improved binocular balance",
+        "Dynamic Reading Optimization Technology: Correct oblique astigmatism in the reading zones to create a dynamic reading edge"
+      ]
+    },
+    {
+      "id": "6_technology_1_lens",
+      "title": "6 Technology 1 Lens-Progressive XT",
+      "subtitle": "Ultimate Vision Optimization with Dynamic Reading Technology",
+      "category": "progressive",
+      "technologies": [
+        "Digital Freeform: Digital manufacturing for more accurate prescription alignment",
+        "Variable Geometry: Places the design within the blank to optimize lens thickness and create better balanced lens aesthetically",
+        "Vision First Design: Creates smoother transition and improved binocular balance",
+        "Dynamic Reading Optimization Technology: Correct oblique astigmatism in the reading zones to create a dynamic reading edge"
+      ]
+    },
+    {
+      "id": "customized_bifocal",
+      "title": "Customized Highly Transparent Bifocal",
+      "subtitle": "Vision Optimization with Exclusive Benefits Offer",
+      "category": "bifocal",
+      "technologies": [
+        "Highly Transparent Design: Superior clarity with minimal visual distortion",
+        "Customized Fitting: Tailored to individual prescription and lifestyle needs",
+        "Dual Vision Zones: Seamless transition between distance and reading vision"
+      ]
+    }
+  ],
+  "powerOptions": [
+    {
+      "value": "zero",
+      "label": "Zero Power (No prescription)",
+      "price": 0,
+      "description": "For fashion or blue light protection only"
+    },
+    {
+      "value": "reading_low",
+      "label": "Reading Glasses (+0.25 to +2.00)",
+      "price": 200,
+      "description": "For close-up work and reading"
+    },
+    {
+      "value": "reading_high",
+      "label": "Reading Glasses (+2.25 to +4.00)",
+      "price": 300,
+      "description": "For stronger reading prescriptions"
+    },
+    {
+      "value": "distance_low",
+      "label": "Distance Vision (-0.25 to -4.00)",
+      "price": 300,
+      "description": "For mild to moderate myopia"
+    },
+    {
+      "value": "distance_medium",
+      "label": "Distance Vision (-4.25 to -6.00)",
+      "price": 400,
+      "description": "For moderate to high myopia"
+    },
+    {
+      "value": "distance_high",
+      "label": "Distance Vision (-6.25 to -8.00)",
+      "price": 500,
+      "description": "For high myopia (Premium lenses only)"
+    },
+    {
+      "value": "distance_very_high",
+      "label": "Distance Vision (-8.25 to -10.00)",
+      "price": 700,
+      "description": "For very high myopia (Essilor Premium only)"
+    },
+    {
+      "value": "distance_ultra_high",
+      "label": "Distance Vision (-10.25 to -15.00)",
+      "price": 1000,
+      "description": "For ultra high myopia (Super/Ultra thin only)"
+    },
+    {
+      "value": "distance_extreme",
+      "label": "Distance Vision (-15.25 to -24.00)",
+      "price": 1500,
+      "description": "For extreme myopia (Ultra thin only)"
+    },
+    {
+      "value": "single_vision_low",
+      "label": "Single Vision Low Power (-2.00 to +2.00)",
+      "price": 0,
+      "description": "For mild refractive errors"
+    },
+    {
+      "value": "single_vision_medium",
+      "label": "Single Vision Medium Power (-4.00 to +4.00)",
+      "price": 200,
+      "description": "For moderate refractive errors"
+    },
+    {
+      "value": "single_vision_high",
+      "label": "Single Vision High Power (-6.00 to +6.00)",
+      "price": 400,
+      "description": "For strong refractive errors"
+    },
+    {
+      "value": "single_vision_ultra_high",
+      "label": "Single Vision Ultra High Power (Above ±6.00)",
+      "price": 600,
+      "description": "For very strong refractive errors requiring high-index materials"
+    },
+    {
+      "value": "bifocal_low",
+      "label": "Bifocal Low ADD (+1.00 to +1.50)",
+      "price": 300,
+      "description": "For early presbyopia with low addition power"
+    },
+    {
+      "value": "bifocal_medium",
+      "label": "Bifocal Medium ADD (+1.75 to +2.25)",
+      "price": 400,
+      "description": "For moderate presbyopia with medium addition power"
+    },
+    {
+      "value": "bifocal_high",
+      "label": "Bifocal High ADD (+2.50 to +3.00)",
+      "price": 500,
+      "description": "For advanced presbyopia with high addition power"
+    },
+    {
+      "value": "progressive",
+      "label": "Progressive Lenses",
+      "price": 1000,
+      "description": "Seamless transition from distance to reading"
+    },
+    {
+      "value": "progressive_low",
+      "label": "Progressive Low ADD (+0.75 to +1.50)",
+      "price": 500,
+      "description": "For early presbyopia with low addition power"
+    },
+    {
+      "value": "progressive_medium",
+      "label": "Progressive Medium ADD (+1.75 to +2.25)",
+      "price": 700,
+      "description": "For moderate presbyopia with medium addition power"
+    },
+    {
+      "value": "progressive_high",
+      "label": "Progressive High ADD (+2.50 to +3.00)",
+      "price": 900,
+      "description": "For advanced presbyopia with high addition power"
+    }
+  ],
+  "categories": [
+    {
+      "id": "single_vision",
+      "name": "Single Vision",
+      "description": "For distance or reading vision correction",
+      "available": true
+    },
+
+    {
+      "id": "progressive",
+      "name": "Progressive",
+      "description": "Seamless transition from distance to reading vision",
+      "available": true
+    },
+    {
+      "id": "bifocal",
+      "name": "Bifocal",
+      "description": "Distinct zones for distance and reading vision",
+      "available": true
+    },
+    {
+      "id": "computer",
+      "name": "Computer",
+      "description": "Optimized for digital screen use and blue light protection",
+      "available": false,
+      "comingSoon": true
+    }
+  ],
+  "brandInfo": {
+    "name": "OptiClair",
+    "logo": "/assets/logo5.png",
+    "tagline": "Choose Lens Package",
+    "benefits": [
+      "Buy 1 Get 1 offer on all lenses",
+      "Comprehensive eye protection",
+      "Multiple power range options",
+      "Premium coating technology"
+    ]
+  }
+}

@@ -1,0 +1,121 @@
+{
+  "contactLensMenu": {
+    "brands": [
+    
+      {
+        "name": "Bausch & Lomb",
+        "image": "https://res.cloudinary.com/dhbayskwh/image/upload/v1749193154/bausch-and-lomb_f2fpbc.jpg",
+        "filterParams": { "category": "Contact Lens", "brand": "Bausch & Lomb" }
+      },
+      {
+        "name": "Soflens",
+        "image": "https://res.cloudinary.com/dhbayskwh/image/upload/v1749193154/bausch-and-lomb_f2fpbc.jpg",
+        "filterParams": { "category": "Contact Lens", "brand": "Soflens" }
+      },
+      {
+        "name": "johnson & johnson",
+        "image": "https://res.cloudinary.com/dhbayskwh/image/upload/v1749192639/johnson_yqgard.jpg",
+        "filterParams": { "category": "Contact Lens", "brand": "johnson & johnson" }
+      },
+      {
+        "name": "Iconnect",
+        "image": "https://res.cloudinary.com/dhbayskwh/image/upload/v1749192655/iconnect_n17ds4.jpg",
+        "filterParams": { "category": "Contact Lens", "brand": "Iconnect" }
+      },
+      {
+        "name": "Alcon",
+        "image": "https://res.cloudinary.com/dhbayskwh/image/upload/v1749192666/alcon-cl-b_hmdoxt.jpg",
+        "filterParams": { "category": "Contact Lens", "brand": "Alcon" }
+      },
+      {
+        "name": "Acuvue",
+        "image": "https://res.cloudinary.com/dhbayskwh/image/upload/v1749192864/Acuvue_ohriux.jpg",
+        "filterParams": { "category": "Contact Lens", "brand": "Acuvue" }
+      },
+      {
+        "name": "Optix",
+        "image": "https://res.cloudinary.com/dhbayskwh/image/upload/v1749192844/optix_krbqyf.jpg",
+        "filterParams": { "category": "Contact Lens", "brand": "Optix" }
+      },
+      {
+        "name": "Focus",
+        "image": "https://res.cloudinary.com/dhbayskwh/image/upload/v1749192698/focus_qmq81q.jpg  ",
+        "filterParams": { "category": "Contact Lens", "brand": "Focus" }
+      },
+      {
+        "name": "Purevision",
+        "image": "https://res.cloudinary.com/dhbayskwh/image/upload/v1749192722/pure_fynfqq.jpg",
+        "filterParams": { "category": "Contact Lens", "brand": "Purevision" }
+      },
+      {
+        "name": "Freshlook",
+        "image": "https://res.cloudinary.com/dhbayskwh/image/upload/v1749192775/freshlook_rixwat.jpg",
+        "filterParams": { "category": "Contact Lens", "brand": "Freshlook" }
+      },
+      {
+        "name": "Dailies",
+        "image": "https://res.cloudinary.com/dhbayskwh/image/upload/v1749192804/dailies_mqpv9p.jpg",
+        "filterParams": { "category": "Contact Lens", "brand": "Dailies" }
+      } 
+    ],
+    "power": [
+      {
+        "name": "[-] SPH Power (CYL <0.5)",
+        "displayName": "[-] SPH Power (CYL <0.5)",
+        "image": "https://res.cloudinary.com/dhbayskwh/image/upload/v1749192916/plus-sph_baq92q.jpg",
+        "filterParams": { "category": "Contact Lens", "power": "[-] SPH Power (CYL <0.5)" }
+      },
+      {
+        "name": "[+] SPH Power (CYL <0.5)",
+        "displayName": "[+] SPH Power (CYL <0.5)",
+        "image": "https://res.cloudinary.com/dhbayskwh/image/upload/v1749192916/plus-sph_baq92q.jpg",
+        "filterParams": { "category": "Contact Lens", "power": "[+] SPH Power (CYL <0.5)" }
+      },
+      {
+        "name": "CYL Power (CYL>0.75)",
+        "displayName": "CYL Power (CYL>0.75)",
+        "image": "https://res.cloudinary.com/dhbayskwh/image/upload/v1749192916/plus-sph_baq92q.jpg",
+        "filterParams": { "category": "Contact Lens", "power": "CYL Power (CYL>0.75)" }
+      },
+      {
+        "name": "Toric Power",
+        "displayName": "Toric Power",
+        "image": "https://res.cloudinary.com/dhbayskwh/image/upload/v1749192916/plus-sph_baq92q.jpg",
+        "filterParams": { "category": "Contact Lens", "power": "Toric Power" }
+      }
+
+    ],
+    "color": [
+      {
+        "name": "Aquacolor Premium",
+        "image": "https://res.cloudinary.com/dhbayskwh/image/upload/v1749192601/99x53Reviss_synh8i.png",
+        "filterParams": { "category": "Contact Lens", "color": "Aquacolor Premium" }
+      },
+      {
+        "name": "Aquacolor",
+        "image": "https://res.cloudinary.com/dhbayskwh/image/upload/v1749193000/aqua1234_hxnk0j.jpg",
+        "filterParams": { "category": "Contact Lens", "color": "Aquacolor" }
+      },
+      {
+        "name": "Freshlook",
+        "image": "https://res.cloudinary.com/dhbayskwh/image/upload/v1749193020/freshlook_color_blend_dus4zt.jpg",
+        "filterParams": { "category": "Contact Lens", "color": "Freshlook" }
+      },
+      {
+        "name": "Clalen",
+        "image": "https://res.cloudinary.com/dhbayskwh/image/upload/v1749193031/FinalLilyBlue_kavib1.jpg",
+        "filterParams": { "category": "Contact Lens", "color": "Clalen" }
+      },
+      {
+        "name": "Color with no Power",
+        "image": "https://res.cloudinary.com/dhbayskwh/image/upload/v1749192888/yearly_cl0iuc.jpg",
+        "filterParams": { "category": "Contact Lens", "color": "Color with no Power" }
+      },
+      {
+        "name": "Color with no CYL Power",
+        "image": "https://res.cloudinary.com/dhbayskwh/image/upload/v1749192894/biweekly_vr7qdf.jpg",
+        "filterParams": { "category": "Contact Lens", "color": "Color with no CYL Power" }
+      }
+    ]
+  }
+}
