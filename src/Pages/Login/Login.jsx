@@ -8,7 +8,7 @@ import { cartReset } from "../../redux/CartPage/action";
 import { USERS_URL, LOGIN_URL, CART_URL } from "../../config/api";
 import { REGISTER_URL } from "../../config/api";
 
-import { loadWishlistItems } from "../../redux/wishlist/wishlist.actions";
+import { loadWishlistItems } from "../../redux/wishlist/wishlist.actions"; // Import the action to load wishlist items
 import axios from "axios";
 import {
   Checkbox,
@@ -24,15 +24,16 @@ import {
   Box,
   Text,
   InputLeftAddon,
+
   Heading,
   Input,
   HStack,
   Flex,
   Center,
   InputGroup,
-  InputRightElement,
-  useToast
+  InputRightElement
 } from "@chakra-ui/react";
+
 
 // Modified to accept isOpen, onOpen, onClose props
 const Login = ({ isOpen: externalIsOpen, onOpen: externalOnOpen, onClose: externalOnClose }) => {
@@ -51,25 +52,11 @@ const Login = ({ isOpen: externalIsOpen, onOpen: externalOnOpen, onClose: extern
   // Signup modal state
   const { isOpen: isSignupOpen, onOpen: onSignupOpen, onClose: onSignupClose } = useDisclosure();
   
-  // Forgot Password modal state
-  const { isOpen: isForgotPasswordOpen, onOpen: onForgotPasswordOpen, onClose: onForgotPasswordClose } = useDisclosure();
-  
   const { setisAuth, setAuthData } = useContext(AuthContext);
   const [incorrect, setinCorrect] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const toast = useToast();
   let res1 = [];
-
-  // Forgot Password states
-  const [forgotPasswordEmail, setForgotPasswordEmail] = useState("");
-  const [forgotPasswordLoading, setForgotPasswordLoading] = useState(false);
-  const [resetCode, setResetCode] = useState("");
-  const [newPassword, setNewPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [resetStep, setResetStep] = useState(1); // 1: Email input, 2: Code verification, 3: New password
-  const [showNewPassword, setShowNewPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   // Signup states
   const init = {
@@ -122,170 +109,6 @@ const Login = ({ isOpen: externalIsOpen, onOpen: externalOnOpen, onClose: extern
       </Box>
     );
     setbtn(buton);
-  };
-
-  // Forgot Password Functions
-  const handleForgotPasswordClick = () => {
-    onClose(); // Close login modal
-    onForgotPasswordOpen(); // Open forgot password modal
-    setResetStep(1); // Reset to first step
-    setForgotPasswordEmail("");
-    setResetCode("");
-    setNewPassword("");
-    setConfirmPassword("");
-  };
-
-  const handleSendResetCode = async () => {
-    if (!forgotPasswordEmail || !forgotPasswordEmail.includes("@")) {
-      toast({
-        title: "Invalid Email",
-        description: "Please enter a valid email address",
-        status: "error",
-        duration: 3000,
-        isClosable: true,
-      });
-      return;
-    }
-
-    setForgotPasswordLoading(true);
-    
-    try {
-      // Check if user exists
-      const response = await fetch(USERS_URL);
-      const users = await response.json();
-      const userExists = users.find(u => u.email === forgotPasswordEmail);
-      
-      if (!userExists) {
-        toast({
-          title: "User Not Found",
-          description: "No account found with this email address",
-          status: "error",
-          duration: 3000,
-          isClosable: true,
-        });
-        setForgotPasswordLoading(false);
-        return;
-      }
-
-      // In a real application, you would send an API request to your backend
-      // to send a password reset email. For demo purposes, we'll simulate this
-      
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      
-      // Generate a mock reset code (in real app, this would be sent to email)
-      const mockResetCode = Math.floor(100000 + Math.random() * 900000).toString();
-      console.log("Reset code (for demo):", mockResetCode); // In real app, remove this
-      
-      toast({
-        title: "Reset Code Sent",
-        description: `A password reset code has been sent to ${forgotPasswordEmail}. For demo: ${mockResetCode}`,
-        status: "success",
-        duration: 8000,
-        isClosable: true,
-      });
-      
-      setResetStep(2);
-      setForgotPasswordLoading(false);
-      
-    } catch (error) {
-      console.error("Error sending reset code:", error);
-      toast({
-        title: "Error",
-        description: "Failed to send reset code. Please try again.",
-        status: "error",
-        duration: 3000,
-        isClosable: true,
-      });
-      setForgotPasswordLoading(false);
-    }
-  };
-
-  const handleVerifyResetCode = () => {
-    if (!resetCode || resetCode.length !== 6) {
-      toast({
-        title: "Invalid Code",
-        description: "Please enter a valid 6-digit reset code",
-        status: "error",
-        duration: 3000,
-        isClosable: true,
-      });
-      return;
-    }
-
-    // In a real application, you would verify the code with your backend
-    // For demo purposes, we'll accept any 6-digit code
-    setResetStep(3);
-    
-    toast({
-      title: "Code Verified",
-      description: "Reset code verified successfully. Please enter your new password.",
-      status: "success",
-      duration: 3000,
-      isClosable: true,
-    });
-  };
-
-  const handleResetPassword = async () => {
-    if (!newPassword || newPassword.length < 6) {
-      toast({
-        title: "Invalid Password",
-        description: "Password must be at least 6 characters long",
-        status: "error",
-        duration: 3000,
-        isClosable: true,
-      });
-      return;
-    }
-
-    if (newPassword !== confirmPassword) {
-      toast({
-        title: "Password Mismatch",
-        description: "Passwords do not match",
-        status: "error",
-        duration: 3000,
-        isClosable: true,
-      });
-      return;
-    }
-
-    setForgotPasswordLoading(true);
-    
-    try {
-      // In a real application, you would make an API call to update the password
-      // For demo purposes, we'll simulate this
-      
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      
-      toast({
-        title: "Password Reset Successful",
-        description: "Your password has been reset successfully. Please login with your new password.",
-        status: "success",
-        duration: 5000,
-        isClosable: true,
-      });
-      
-      // Close forgot password modal and open login modal
-      onForgotPasswordClose();
-      onOpen();
-      setForgotPasswordLoading(false);
-      
-    } catch (error) {
-      console.error("Error resetting password:", error);
-      toast({
-        title: "Error",
-        description: "Failed to reset password. Please try again.",
-        status: "error",
-        duration: 3000,
-        isClosable: true,
-      });
-      setForgotPasswordLoading(false);
-    }
-  };
-
-  const handleBackToLogin = () => {
-    onForgotPasswordClose();
-    onOpen();
   };
 
   // Signup handleChange
@@ -513,7 +336,7 @@ const Login = ({ isOpen: externalIsOpen, onOpen: externalOnOpen, onClose: extern
 
           <ModalBody p={"0px 0px "} borderRadius={"15px 15px 15px 15px "}>
             <Image
-              src="/assets/login.png"
+              src="https://static1.lenskart.com/media/desktop/img/DesignStudioIcons/DesktopLoginImage.svg"
               alt="pic"
               borderRadius={"10px 10px 0px 0px "}
             />
@@ -609,15 +432,23 @@ const Login = ({ isOpen: externalIsOpen, onOpen: externalOnOpen, onClose: extern
                 m="15px 0px 0px 0px"
                 color="#000042"
                 fontSize="15px"
-                cursor="pointer"
-                onClick={handleForgotPasswordClick}
               >
                 Forget Password
               </Box>
               {loginData.email.includes("@") && loginData.email.includes(".com")
                 ? ""
                 : btn}
-              <br />
+
+              <HStack fontSize="16px">
+                <Checkbox mb={"20px"} mt="20px" size="sm">
+                  Get Update on whatsapp
+                </Checkbox>
+                <Image
+                  src="https://static.lenskart.com/media/desktop/img/25-July-19/whatsapp.png"
+                  w={"22px"}
+                  h="22px"
+                />
+              </HStack>
               {loginData.email.includes("@") &&
               loginData.email.includes(".com") ? (
                 <Button
@@ -658,198 +489,6 @@ const Login = ({ isOpen: externalIsOpen, onOpen: externalOnOpen, onClose: extern
                 </Link>
               </HStack>
             </Box>
-          </ModalBody>
-        </ModalContent>
-      </Modal>
-
-      {/* Forgot Password Modal */}
-      <Modal isOpen={isForgotPasswordOpen} onClose={onForgotPasswordClose} isCentered size="md">
-        <ModalOverlay />
-        <ModalContent rounded="3xl">
-          <ModalCloseButton />
-          <ModalBody p="40px">
-            <Heading
-              fontFamily="Times, serif"
-              fontWeight="100"
-              fontSize="24px"
-              mb="20px"
-              color="#333368"
-            >
-              {resetStep === 1 && "Reset Password"}
-              {resetStep === 2 && "Verify Code"}
-              {resetStep === 3 && "Set New Password"}
-            </Heading>
-
-            {/* Step 1: Email Input */}
-            {resetStep === 1 && (
-              <Box>
-                <Text mb="15px" fontSize="14px" color="#66668e">
-                  Enter your email address and we'll send you a code to reset your password.
-                </Text>
-                <Input
-                  type="email"
-                  placeholder="Enter your email"
-                  value={forgotPasswordEmail}
-                  onChange={(e) => setForgotPasswordEmail(e.target.value)}
-                  h="50px"
-                  fontSize="16px"
-                  focusBorderColor="rgb(206, 206, 223)"
-                  borderColor="rgb(206, 206, 223)"
-                  rounded="2xl"
-                  mb="20px"
-                />
-                <Button
-                  onClick={handleSendResetCode}
-                  isLoading={forgotPasswordLoading}
-                  bgColor="#11daac"
-                  width="100%"
-                  borderRadius="35px"
-                  h="50px"
-                  fontSize="16px"
-                  _hover={{ backgroundColor: "#11daac" }}
-                  mb="15px"
-                >
-                  Send Reset Code
-                </Button>
-                <Center>
-                  <Link
-                    fontSize="14px"
-                    textDecoration="underline"
-                    onClick={handleBackToLogin}
-                    cursor="pointer"
-                  >
-                    Back to Sign In
-                  </Link>
-                </Center>
-              </Box>
-            )}
-
-            {/* Step 2: Code Verification */}
-            {resetStep === 2 && (
-              <Box>
-                <Text mb="15px" fontSize="14px" color="#66668e">
-                  Enter the 6-digit code sent to {forgotPasswordEmail}
-                </Text>
-                <Input
-                  type="text"
-                  placeholder="Enter 6-digit code"
-                  value={resetCode}
-                  onChange={(e) => setResetCode(e.target.value)}
-                  h="50px"
-                  fontSize="16px"
-                  focusBorderColor="rgb(206, 206, 223)"
-                  borderColor="rgb(206, 206, 223)"
-                  rounded="2xl"
-                  mb="20px"
-                  maxLength={6}
-                />
-                <Button
-                  onClick={handleVerifyResetCode}
-                  bgColor="#11daac"
-                  width="100%"
-                  borderRadius="35px"
-                  h="50px"
-                  fontSize="16px"
-                  _hover={{ backgroundColor: "#11daac" }}
-                  mb="15px"
-                >
-                  Verify Code
-                </Button>
-                <Center>
-                  <Link
-                    fontSize="14px"
-                    textDecoration="underline"
-                    onClick={() => setResetStep(1)}
-                    cursor="pointer"
-                  >
-                    Resend Code
-                  </Link>
-                </Center>
-              </Box>
-            )}
-
-            {/* Step 3: New Password */}
-            {resetStep === 3 && (
-              <Box>
-                <Text mb="15px" fontSize="14px" color="#66668e">
-                  Enter your new password
-                </Text>
-                
-                <InputGroup mb="15px">
-                  <Input
-                    type={showNewPassword ? "text" : "password"}
-                    placeholder="New Password"
-                    value={newPassword}
-                    onChange={(e) => setNewPassword(e.target.value)}
-                    h="50px"
-                    fontSize="16px"
-                    focusBorderColor="rgb(206, 206, 223)"
-                    borderColor="rgb(206, 206, 223)"
-                    rounded="2xl"
-                  />
-                  <InputRightElement width="6.5rem" size="lg">
-                    <Button
-                      size="md"
-                      borderRadius="3xl"
-                      mt="10%"
-                      onClick={() => setShowNewPassword(!showNewPassword)}
-                      bg="white"
-                    >
-                      {showNewPassword ? <ViewOffIcon /> : <ViewIcon />}
-                    </Button>
-                  </InputRightElement>
-                </InputGroup>
-
-                <InputGroup mb="20px">
-                  <Input
-                    type={showConfirmPassword ? "text" : "password"}
-                    placeholder="Confirm New Password"
-                    value={confirmPassword}
-                    onChange={(e) => setConfirmPassword(e.target.value)}
-                    h="50px"
-                    fontSize="16px"
-                    focusBorderColor="rgb(206, 206, 223)"
-                    borderColor="rgb(206, 206, 223)"
-                    rounded="2xl"
-                  />
-                  <InputRightElement width="6.5rem" size="lg">
-                    <Button
-                      size="md"
-                      borderRadius="3xl"
-                      mt="10%"
-                      onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                      bg="white"
-                    >
-                      {showConfirmPassword ? <ViewOffIcon /> : <ViewIcon />}
-                    </Button>
-                  </InputRightElement>
-                </InputGroup>
-
-                <Button
-                  onClick={handleResetPassword}
-                  isLoading={forgotPasswordLoading}
-                  bgColor="#11daac"
-                  width="100%"
-                  borderRadius="35px"
-                  h="50px"
-                  fontSize="16px"
-                  _hover={{ backgroundColor: "#11daac" }}
-                  mb="15px"
-                >
-                  Reset Password
-                </Button>
-                <Center>
-                  <Link
-                    fontSize="14px"
-                    textDecoration="underline"
-                    onClick={handleBackToLogin}
-                    cursor="pointer"
-                  >
-                    Back to Sign In
-                  </Link>
-                </Center>
-              </Box>
-            )}
           </ModalBody>
         </ModalContent>
       </Modal>
@@ -982,6 +621,36 @@ const Login = ({ isOpen: externalIsOpen, onOpen: externalOnOpen, onClose: extern
               </InputGroup>
               {userData.password.length >= 6 ? "" : passSignup}
 
+              <HStack>
+                <Box
+                  textDecoration={"underline"}
+                  fontFamily={" sans-serif"}
+                  color={"#333368"}
+                  fontSize="14px"
+                >
+                  Got a Referral code?
+                </Box>
+
+                <Box fontFamily={" sans-serif"} color={"#333368"}>
+                  (Optional)
+                </Box>
+              </HStack>
+
+              <HStack>
+                <Checkbox
+                  mb={"20px"}
+                  mt="20px"
+                  size="sm"
+                  fontFamily={" sans-serif"}
+                >
+                  Get Update on whatsapp
+                </Checkbox>
+                <Image
+                  src="https://static.lenskart.com/media/desktop/img/25-July-19/whatsapp.png"
+                  w={"22px"}
+                  h="22px"
+                />
+              </HStack>
               {exist === true ? (
                 <Required info="Email Id already exists" />
               ) : (
