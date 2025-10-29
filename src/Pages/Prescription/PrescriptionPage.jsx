@@ -21,7 +21,7 @@ import {
   Divider,
   Tooltip,
 } from '@chakra-ui/react';
-import { Upload, FileText, ArrowRight, SkipForward, Phone } from 'lucide-react';
+import { ArrowRight, SkipForward, Phone, Eye } from 'lucide-react';
 import { InfoIcon } from '@chakra-ui/icons';
 import { PRESCRIPTIONS_URL } from '../../config/api';
 
@@ -31,15 +31,20 @@ const PrescriptionPage = () => {
   const [formData, setFormData] = useState({
     name: '',
     phoneNumber: '',
-    prescription: {
-      rightEye: { sph: '', cyl: '', axis: '', pd: '' },
-      leftEye: { sph: '', cyl: '', axis: '', pd: '' },
-      add: '',
-      totalPd: '',
-    },
-    prescriptionFile: null,
+    // Right Eye (OD)
+    rightSph: '',
+    rightCyl: '',
+    rightAxis: '',
+    rightPd: '',
+    // Left Eye (OS)
+    leftSph: '',
+    leftCyl: '',
+    leftAxis: '',
+    leftPd: '',
+    // Additional measurements
+    addPower: '',
+    totalPd: '',
   });
-  const [inputMethod, setInputMethod] = useState('manual');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState({});
 
@@ -50,35 +55,17 @@ const PrescriptionPage = () => {
       [name]: value,
     }));
     if (errors[name]) {
-      setErrors((prev) => ({ ...prev, [name]: '' }));
+      setErrors((prev) => ({
+        ...prev,
+        [name]: '',
+      }));
     }
-  };
-
-  const handlePrescriptionChange = (section, field, value) => {
-    setFormData((prev) => ({
-      ...prev,
-      prescription: {
-        ...prev.prescription,
-        [section]: {
-          ...prev.prescription[section],
-          [field]: value,
-        },
-      },
-    }));
-  };
-
-  const handleExtraChange = (field, value) => {
-    setFormData((prev) => ({
-      ...prev,
-      prescription: {
-        ...prev.prescription,
-        [field]: value,
-      },
-    }));
   };
 
   const validateForm = () => {
     const newErrors = {};
+    
+    // Personal info validation
     if (!formData.name.trim()) newErrors.name = 'Name is required';
     if (!formData.phoneNumber.trim()) {
       newErrors.phoneNumber = 'Phone number is required';
@@ -86,11 +73,17 @@ const PrescriptionPage = () => {
       newErrors.phoneNumber = 'Please enter a valid phone number';
     }
 
-    if (inputMethod === 'manual') {
-      const { rightEye, leftEye } = formData.prescription;
-      if (!rightEye.sph && !leftEye.sph) {
-        newErrors.prescription = 'Please fill in prescription details';
-      }
+    // Check if at least one prescription field is filled
+    const prescriptionFields = [
+      'rightSph', 'rightCyl', 'rightAxis', 'rightPd',
+      'leftSph', 'leftCyl', 'leftAxis', 'leftPd',
+      'addPower', 'totalPd'
+    ];
+    
+    const hasAnyPrescription = prescriptionFields.some(field => formData[field].trim());
+    
+    if (!hasAnyPrescription) {
+      newErrors.prescription = 'Please fill at least one prescription field';
     }
 
     setErrors(newErrors);
@@ -99,36 +92,50 @@ const PrescriptionPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!validateForm()) return;
+    if (!validateForm()) {
+      toast({
+        title: 'Validation Error',
+        description: 'Please fill all required fields',
+        status: 'error',
+        duration: 3000,
+        isClosable: true,
+      });
+      return;
+    }
 
     setIsSubmitting(true);
     try {
-      let prescriptionData = {
-        name: formData.name,
-        phoneNumber: formData.phoneNumber,
-        inputMethod: inputMethod,
+      // Structure prescription data as JSON
+      const prescriptionData = {
+        name: formData.name.trim(),
+        phoneNumber: formData.phoneNumber.trim(),
+        inputMethod: 'manual',
+        prescriptionDetails: {
+          rightEye: {
+            sph: formData.rightSph.trim(),
+            cyl: formData.rightCyl.trim(),
+            axis: formData.rightAxis.trim(),
+            pd: formData.rightPd.trim(),
+          },
+          leftEye: {
+            sph: formData.leftSph.trim(),
+            cyl: formData.leftCyl.trim(),
+            axis: formData.leftAxis.trim(),
+            pd: formData.leftPd.trim(),
+          },
+          additional: {
+            addPower: formData.addPower.trim(),
+            totalPd: formData.totalPd.trim(),
+          }
+        }
       };
-
-      let bodyData;
-      let headers = {};
-
-      if (inputMethod === 'manual') {
-        prescriptionData.prescription = formData.prescription;
-        bodyData = JSON.stringify(prescriptionData);
-        headers['Content-Type'] = 'application/json';
-      } else {
-        const fileData = new FormData();
-        fileData.append('prescriptionFile', formData.prescriptionFile);
-        Object.keys(prescriptionData).forEach((key) => {
-          fileData.append(key, prescriptionData[key]);
-        });
-        bodyData = fileData;
-      }
 
       const response = await fetch(`${PRESCRIPTIONS_URL}`, {
         method: 'POST',
-        headers,
-        body: bodyData,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(prescriptionData),
       });
 
       if (response.ok) {
@@ -169,15 +176,16 @@ const PrescriptionPage = () => {
 
   return (
     <Box bg="gray.50" minH="100vh" py={8}>
-      <Container maxW="2xl">
+      <Container maxW="4xl">
         <Card shadow="lg">
           <CardBody p={8}>
             <VStack spacing={8} align="stretch">
+              {/* Header */}
               <Box textAlign="center">
-                <Heading size="xl" mb={2} color="gray.800">
+                <Heading size="xl" mb={4} color="gray.800">
                   Prescription Details
                 </Heading>
-
+                
                 <Card bg="blue.50" borderColor="blue.200" borderWidth="1px">
                   <CardBody py={4}>
                     <HStack justify="center" spacing={3}>
@@ -200,179 +208,218 @@ const PrescriptionPage = () => {
                 </Card>
               </Box>
 
-              {/* Personal Info */}
+              {/* Personal Information */}
               <VStack spacing={4} align="stretch">
-                <Heading size="lg" color="gray.800">
-                  Personal Information
-                </Heading>
-                <FormControl isInvalid={errors.name}>
-                  <FormLabel>Full Name</FormLabel>
-                  <Input
-                    name="name"
-                    value={formData.name}
-                    onChange={handleInputChange}
-                    placeholder="Enter your full name"
-                    focusBorderColor="blue.500"
-                  />
-                  <FormErrorMessage>{errors.name}</FormErrorMessage>
-                </FormControl>
+                <Heading size="lg" color="gray.800">Personal Information</Heading>
+                <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4}>
+                  <FormControl isInvalid={errors.name}>
+                    <FormLabel>Full Name *</FormLabel>
+                    <Input
+                      name="name"
+                      value={formData.name}
+                      onChange={handleInputChange}
+                      placeholder="Enter your full name"
+                      focusBorderColor="blue.500"
+                    />
+                    <FormErrorMessage>{errors.name}</FormErrorMessage>
+                  </FormControl>
 
-                <FormControl isInvalid={errors.phoneNumber}>
-                  <FormLabel>Phone Number</FormLabel>
-                  <Input
-                    name="phoneNumber"
-                    type="tel"
-                    value={formData.phoneNumber}
-                    onChange={handleInputChange}
-                    placeholder="Enter your phone number"
-                    focusBorderColor="blue.500"
-                  />
-                  <FormErrorMessage>{errors.phoneNumber}</FormErrorMessage>
-                </FormControl>
+                  <FormControl isInvalid={errors.phoneNumber}>
+                    <FormLabel>Phone Number *</FormLabel>
+                    <Input
+                      name="phoneNumber"
+                      type="tel"
+                      value={formData.phoneNumber}
+                      onChange={handleInputChange}
+                      placeholder="Enter your phone number"
+                      focusBorderColor="blue.500"
+                    />
+                    <FormErrorMessage>{errors.phoneNumber}</FormErrorMessage>
+                  </FormControl>
+                </SimpleGrid>
               </VStack>
 
               <Divider />
 
               {/* Prescription Details */}
-              <VStack spacing={4} align="stretch">
-                <Heading size="lg" color="gray.800">
-                  Prescription Details
-                </Heading>
-
-                <SimpleGrid columns={2} spacing={4}>
-                  <Card
-                    variant={inputMethod === 'manual' ? 'filled' : 'outline'}
-                    bg={inputMethod === 'manual' ? 'blue.50' : 'white'}
-                    borderColor={inputMethod === 'manual' ? 'blue.500' : 'gray.200'}
-                    borderWidth={inputMethod === 'manual' ? '2px' : '1px'}
-                    cursor="pointer"
-                    onClick={() => setInputMethod('manual')}
-                    _hover={{ borderColor: 'blue.300' }}
+              <VStack spacing={6} align="stretch">
+                <HStack justify="space-between" align="center">
+                  <Heading size="lg" color="gray.800">Prescription Measurements</Heading>
+                  <Tooltip
+                    label="SPH: Sphere (nearsighted/farsighted), CYL: Cylinder (astigmatism), Axis: Angle (1-180), PD: Pupillary Distance"
+                    aria-label="Prescription help"
+                    placement="left"
                   >
-                    <CardBody textAlign="center" py={6}>
-                      <Icon as={FileText} boxSize={6} mb={2} color="blue.600" />
-                      <Text fontWeight="medium" color="blue.700">
-                        Enter Manually
-                      </Text>
-                    </CardBody>
-                  </Card>
-
-                  <Card>
-                    <CardBody textAlign="center" py={6}>
-                      <Icon as={Upload} boxSize={6} mb={2} color="gray.500" />
-                      <Text fontWeight="medium" color="gray.700">
-                        Upload File (Coming Soon)
-                      </Text>
-                    </CardBody>
-                  </Card>
-                </SimpleGrid>
-
-                {inputMethod === 'manual' && (
-                  <>
-                    <Tooltip
-                      label="Include SPH, CYL, Axis for each eye, and PD (Pupillary Distance)."
-                      aria-label="Prescription format help"
-                      placement="right"
-                    >
-                      <HStack>
-                        <Icon as={InfoIcon} color="gray.500" boxSize={4} />
-                        <Text fontSize="sm" color="gray.600">
-                          Fill in values for both eyes below
-                        </Text>
-                      </HStack>
-                    </Tooltip>
-
-                    {/* Right Eye */}
-                    <Box bg="gray.100" p={4} borderRadius="md">
-                      <Heading size="md" color="blue.700" mb={3}>
-                        Right Eye (OD)
-                      </Heading>
-                      <SimpleGrid columns={2} spacing={4}>
-                        <Input
-                          placeholder="SPH"
-                          value={formData.prescription.rightEye.sph}
-                          onChange={(e) =>
-                            handlePrescriptionChange('rightEye', 'sph', e.target.value)
-                          }
-                        />
-                        <Input
-                          placeholder="CYL"
-                          value={formData.prescription.rightEye.cyl}
-                          onChange={(e) =>
-                            handlePrescriptionChange('rightEye', 'cyl', e.target.value)
-                          }
-                        />
-                        <Input
-                          placeholder="Axis"
-                          value={formData.prescription.rightEye.axis}
-                          onChange={(e) =>
-                            handlePrescriptionChange('rightEye', 'axis', e.target.value)
-                          }
-                        />
-                        <Input
-                          placeholder="PD (mm)"
-                          value={formData.prescription.rightEye.pd}
-                          onChange={(e) =>
-                            handlePrescriptionChange('rightEye', 'pd', e.target.value)
-                          }
-                        />
-                      </SimpleGrid>
+                    <Box>
+                      <Icon as={InfoIcon} color="blue.500" boxSize={5} cursor="pointer" />
                     </Box>
+                  </Tooltip>
+                </HStack>
 
-                    {/* Left Eye */}
-                    <Box bg="gray.100" p={4} borderRadius="md">
-                      <Heading size="md" color="blue.700" mb={3}>
-                        Left Eye (OS)
-                      </Heading>
-                      <SimpleGrid columns={2} spacing={4}>
-                        <Input
-                          placeholder="SPH"
-                          value={formData.prescription.leftEye.sph}
-                          onChange={(e) =>
-                            handlePrescriptionChange('leftEye', 'sph', e.target.value)
-                          }
-                        />
-                        <Input
-                          placeholder="CYL"
-                          value={formData.prescription.leftEye.cyl}
-                          onChange={(e) =>
-                            handlePrescriptionChange('leftEye', 'cyl', e.target.value)
-                          }
-                        />
-                        <Input
-                          placeholder="Axis"
-                          value={formData.prescription.leftEye.axis}
-                          onChange={(e) =>
-                            handlePrescriptionChange('leftEye', 'axis', e.target.value)
-                          }
-                        />
-                        <Input
-                          placeholder="PD (mm)"
-                          value={formData.prescription.leftEye.pd}
-                          onChange={(e) =>
-                            handlePrescriptionChange('leftEye', 'pd', e.target.value)
-                          }
-                        />
-                      </SimpleGrid>
-                    </Box>
-
-                    {/* ADD & Total PD */}
-                    <SimpleGrid columns={2} spacing={4}>
-                      <Input
-                        placeholder="ADD (Near Vision)"
-                        value={formData.prescription.add}
-                        onChange={(e) => handleExtraChange('add', e.target.value)}
-                      />
-                      <Input
-                        placeholder="Total PD"
-                        value={formData.prescription.totalPd}
-                        onChange={(e) => handleExtraChange('totalPd', e.target.value)}
-                      />
-                    </SimpleGrid>
-                  </>
+                {errors.prescription && (
+                  <Text color="red.500" fontSize="sm">{errors.prescription}</Text>
                 )}
+
+                {/* Right Eye (OD) */}
+                <Box>
+                  <HStack spacing={2} mb={3}>
+                    <Icon as={Eye} color="blue.600" />
+                    <Heading size="md" color="gray.700">Right Eye (OD)</Heading>
+                  </HStack>
+                  <SimpleGrid columns={{ base: 1, md: 4 }} spacing={4}>
+                    <FormControl>
+                      <FormLabel fontSize="sm">SPH (Sphere)</FormLabel>
+                      <Input
+                        name="rightSph"
+                        value={formData.rightSph}
+                        onChange={handleInputChange}
+                        placeholder="e.g., -2.00"
+                        focusBorderColor="blue.500"
+                      />
+                    </FormControl>
+
+                    <FormControl>
+                      <FormLabel fontSize="sm">CYL (Cylinder)</FormLabel>
+                      <Input
+                        name="rightCyl"
+                        value={formData.rightCyl}
+                        onChange={handleInputChange}
+                        placeholder="e.g., -0.75"
+                        focusBorderColor="blue.500"
+                      />
+                    </FormControl>
+
+                    <FormControl>
+                      <FormLabel fontSize="sm">Axis (°)</FormLabel>
+                      <Input
+                        name="rightAxis"
+                        value={formData.rightAxis}
+                        onChange={handleInputChange}
+                        placeholder="e.g., 180"
+                        focusBorderColor="blue.500"
+                      />
+                    </FormControl>
+
+                    <FormControl>
+                      <FormLabel fontSize="sm">PD (mm)</FormLabel>
+                      <Input
+                        name="rightPd"
+                        value={formData.rightPd}
+                        onChange={handleInputChange}
+                        placeholder="e.g., 32"
+                        focusBorderColor="blue.500"
+                      />
+                    </FormControl>
+                  </SimpleGrid>
+                </Box>
+
+                {/* Left Eye (OS) */}
+                <Box>
+                  <HStack spacing={2} mb={3}>
+                    <Icon as={Eye} color="blue.600" />
+                    <Heading size="md" color="gray.700">Left Eye (OS)</Heading>
+                  </HStack>
+                  <SimpleGrid columns={{ base: 1, md: 4 }} spacing={4}>
+                    <FormControl>
+                      <FormLabel fontSize="sm">SPH (Sphere)</FormLabel>
+                      <Input
+                        name="leftSph"
+                        value={formData.leftSph}
+                        onChange={handleInputChange}
+                        placeholder="e.g., -1.75"
+                        focusBorderColor="blue.500"
+                      />
+                    </FormControl>
+
+                    <FormControl>
+                      <FormLabel fontSize="sm">CYL (Cylinder)</FormLabel>
+                      <Input
+                        name="leftCyl"
+                        value={formData.leftCyl}
+                        onChange={handleInputChange}
+                        placeholder="e.g., -1.00"
+                        focusBorderColor="blue.500"
+                      />
+                    </FormControl>
+
+                    <FormControl>
+                      <FormLabel fontSize="sm">Axis (°)</FormLabel>
+                      <Input
+                        name="leftAxis"
+                        value={formData.leftAxis}
+                        onChange={handleInputChange}
+                        placeholder="e.g., 170"
+                        focusBorderColor="blue.500"
+                      />
+                    </FormControl>
+
+                    <FormControl>
+                      <FormLabel fontSize="sm">PD (mm)</FormLabel>
+                      <Input
+                        name="leftPd"
+                        value={formData.leftPd}
+                        onChange={handleInputChange}
+                        placeholder="e.g., 32"
+                        focusBorderColor="blue.500"
+                      />
+                    </FormControl>
+                  </SimpleGrid>
+                </Box>
+
+                {/* Additional Measurements */}
+                <Box>
+                  <Heading size="md" color="gray.700" mb={3}>Additional Measurements</Heading>
+                  <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4}>
+                    <FormControl>
+                      <FormLabel fontSize="sm">
+                        ADD Power (Near Vision)
+                        <Tooltip label="For reading or bifocal lenses" placement="right">
+                          <Box as="span" ml={1}>
+                            <Icon as={InfoIcon} color="gray.400" boxSize={3} />
+                          </Box>
+                        </Tooltip>
+                      </FormLabel>
+                      <Input
+                        name="addPower"
+                        value={formData.addPower}
+                        onChange={handleInputChange}
+                        placeholder="e.g., +1.50"
+                        focusBorderColor="blue.500"
+                      />
+                    </FormControl>
+
+                    <FormControl>
+                      <FormLabel fontSize="sm">
+                        Total PD (mm)
+                        <Tooltip label="Distance between pupils (both eyes)" placement="right">
+                          <Box as="span" ml={1}>
+                            <Icon as={InfoIcon} color="gray.400" boxSize={3} />
+                          </Box>
+                        </Tooltip>
+                      </FormLabel>
+                      <Input
+                        name="totalPd"
+                        value={formData.totalPd}
+                        onChange={handleInputChange}
+                        placeholder="e.g., 63"
+                        focusBorderColor="blue.500"
+                      />
+                    </FormControl>
+                  </SimpleGrid>
+                </Box>
+
+                {/* Info Box */}
+                <Card bg="gray.50" borderColor="gray.200" borderWidth="1px">
+                  <CardBody>
+                    <Text fontSize="sm" color="gray.600">
+                      <strong>💡 Tip:</strong> You can find these values on your prescription paper from your eye doctor. 
+                      If you're unsure about any values, you can skip them or call us for assistance.
+                    </Text>
+                  </CardBody>
+                </Card>
               </VStack>
 
+              {/* Action Buttons */}
               <HStack spacing={4} pt={6}>
                 <Button
                   flex={1}
@@ -391,6 +438,8 @@ const PrescriptionPage = () => {
                   onClick={handleSubmit}
                   isLoading={isSubmitting}
                   loadingText="Saving..."
+
+                  
                   size="lg"
                 >
                   Save & Continue
