@@ -655,7 +655,7 @@ const Product = () => {
                       </FormControl>
                       
                       {/* Frame Material filter for non-Contact Lens */}
-                      {filterOptions.frameMaterials.length > 0 && (
+                      {/*filterOptions.frameMaterials.length > 0 && (
                         <FormControl>
                           <FormLabel fontWeight="bold">Frame Material</FormLabel>
                           <Stack>
@@ -670,7 +670,7 @@ const Product = () => {
                             ))}
                           </Stack>
                         </FormControl>
-                      )}
+                      )*/}
                     </>
                   )}
                   
