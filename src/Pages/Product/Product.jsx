@@ -14,7 +14,7 @@ import { PRODUCT_ALL_URL } from "../../config/api";
 import { ChevronDownIcon, ChevronUpIcon, CloseIcon } from "@chakra-ui/icons";
 import { useNavigate } from "react-router-dom";
 
-// Helper function to standardize category names
+// Helper function to standardize category names (GLOBAL)
 const standardizeCategory = (category) => {
   if (!category) return "";
   
@@ -54,6 +54,7 @@ const standardizeCategory = (category) => {
   // Return the standardized version or the original if not found
   return categoryMap[lowerCategory] || category;
 };
+
 const Product = () => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -96,19 +97,7 @@ const Product = () => {
     colors: []
   });
 
-  // Helper function to standardize category names - FIXED
-  const standardizeCategory = (category) => {
-    if (!category) return "";
-    const categoryMap = {
-      "contact lens": "Contact Lenses",
-      "contact lenses": "Contact Lenses",
-      "contactlens": "Contact Lenses",
-      "contactlenses": "Contact Lenses"
-    };
-    return categoryMap[category.toLowerCase()] || category;
-  };
-
-  // Check if current category is Contact Lens - FIXED
+  // Check if current category is Contact Lens
   const isContactLensCategory = () => {
     return standardizeCategory(filters.category) === "Contact Lenses";
   };
@@ -179,10 +168,37 @@ const Product = () => {
             }
           }
           
+          // AUTOMATIC FRAME BRAND EXTRACTION for non-Contact Lens products
+          if (standardizedProduct.category !== "Contact Lenses") {
+            if (!standardizedProduct.frameBrand) {
+              // Priority 1: Use existing brand field if available
+              if (standardizedProduct.brand) {
+                standardizedProduct.frameBrand = standardizedProduct.brand;
+              }
+              // Priority 2: Extract brand from product name (first word before space or number)
+              else if (standardizedProduct.name) {
+                // Extract brand from name like "MG 1944" -> "MG", "Ray-Ban Classic" -> "Ray-Ban"
+                const nameMatch = standardizedProduct.name.match(/^([A-Za-z\-]+)/);
+                if (nameMatch) {
+                  standardizedProduct.frameBrand = nameMatch[1];
+                } else {
+                  // Fallback: use first word of name
+                  standardizedProduct.frameBrand = standardizedProduct.name.split(' ')[0] || "Generic";
+                }
+              }
+              // Priority 3: Use subCategory if available
+              else if (standardizedProduct.subCategory) {
+                standardizedProduct.frameBrand = standardizedProduct.subCategory;
+              }
+              // Priority 4: Default to "Generic"
+              else {
+                standardizedProduct.frameBrand = "Generic";
+              }
+            }
+          }
+          
           return standardizedProduct;
         });
-        
-        console.log("Standardized products:", standardizedData); // Debug log
         
         setProducts(standardizedData);
         
@@ -190,40 +206,48 @@ const Product = () => {
         const categories = [...new Set(standardizedData.map(product => product.category))];
         const subCategories = [...new Set(standardizedData.map(product => product.subCategory).filter(Boolean))];
         
-        // FIXED: Extract frameBrands from non-Contact Lens products only
+        // Extract frameBrands from non-Contact Lens products only
         const nonContactLensProducts = standardizedData.filter(product => 
           standardizeCategory(product.category) !== "Contact Lenses"
         );
-        const frameBrands = [...new Set(nonContactLensProducts
+        
+        let frameBrands = [...new Set(nonContactLensProducts
           .map(product => product.frameBrand)
           .filter(Boolean)
-        )];
+        )].sort();
+        
+        // If no frameBrands found, create default ones based on brands
+        if (frameBrands.length === 0) {
+          frameBrands = [...new Set(nonContactLensProducts
+            .map(product => product.brand)
+            .filter(Boolean)
+          )].sort();
+          
+          // If still no brands, add some default popular brands
+          if (frameBrands.length === 0) {
+            frameBrands = ["Ray-Ban", "Oakley", "Prada", "Gucci", "Versace", "Tom Ford", "Armani", "Calvin Klein"].sort();
+          }
+        }
         
         const genders = [...new Set(standardizedData.map(product => product.gender).filter(Boolean))];
-        const frameMaterials = [...new Set(standardizedData.map(product => product.frameMaterial).filter(Boolean))];
+        const frameMaterials = [...new Set(standardizedData.map(product => product.frameMaterial).filter(Boolean))].sort();
         
-        // Contact Lens specific filter options - IMPROVED
+        // Contact Lens specific filter options
         const contactLensProducts = standardizedData.filter(product => 
           standardizeCategory(product.category) === "Contact Lenses"
         );
         
-        console.log("Contact Lens products:", contactLensProducts); // Debug log
-        console.log("Non-Contact Lens products for frameBrand:", nonContactLensProducts); // Debug log
-        console.log("Extracted frameBrands:", frameBrands); // Debug log
-        
         const brands = [...new Set(contactLensProducts
           .map(product => product.brand || product.subCategory)
-          .filter(Boolean))];
+          .filter(Boolean))].sort();
         
         const powers = [...new Set(contactLensProducts
           .map(product => product.power)
-          .filter(Boolean))];
+          .filter(Boolean))].sort();
         
         const colors = [...new Set(contactLensProducts
           .map(product => product.color)
-          .filter(Boolean))];
-        
-        console.log("Filter options - Brands:", brands, "Powers:", powers, "Colors:", colors, "FrameBrands:", frameBrands); // Debug log
+          .filter(Boolean))].sort();
         
         setFilterOptions({
           categories,
@@ -250,10 +274,6 @@ const Product = () => {
     if (products.length > 0) {
       let result = [...products];
       
-      console.log("Applying filters:", filters); // Debug log
-      console.log("Search query:", searchQuery); // Debug log
-      console.log("Total products before filtering:", result.length);
-      
       // Apply search filter first
       if (searchQuery.trim()) {
         const query = searchQuery.toLowerCase().trim();
@@ -273,7 +293,6 @@ const Product = () => {
             field.toLowerCase().includes(query)
           );
         });
-        console.log(`After search filter (${searchQuery}):`, result.length);
       }
       
       // Apply category filter with case-insensitive matching
@@ -282,25 +301,21 @@ const Product = () => {
         result = result.filter(product => 
           standardizeCategory(product.category) === standardizedCategory
         );
-        console.log(`After category filter (${standardizedCategory}):`, result.length);
       }
       
       // Apply subCategory filter (for non-Contact Lens products)
       if (filters.subCategory && !isContactLensCategory()) {
         result = result.filter(product => product.subCategory === filters.subCategory);
-        console.log("After subCategory filter:", result.length);
       }
       
       // Apply frameBrand filter (for non-Contact Lens products)
       if (filters.frameBrand && !isContactLensCategory()) {
         result = result.filter(product => product.frameBrand === filters.frameBrand);
-        console.log("After frameBrand filter:", result.length);
       }
       
       // Apply gender filter (for non-Contact Lens products)
       if (filters.gender && !isContactLensCategory()) {
         result = result.filter(product => product.gender === filters.gender);
-        console.log("After gender filter:", result.length);
       }
       
       // Apply frameMaterial filter (for non-Contact Lens products)
@@ -308,31 +323,25 @@ const Product = () => {
         result = result.filter(product => 
           product.frameMaterial && product.frameMaterial.includes(filters.frameMaterial)
         );
-        console.log("After frameMaterial filter:", result.length);
       }
       
-      // Contact Lens specific filters - IMPROVED
+      // Contact Lens specific filters
       if (isContactLensCategory()) {
-        console.log("Applying Contact Lens filters...");
-        
         // Apply brand filter - check both brand and subCategory fields
         if (filters.brand) {
           result = result.filter(product => 
             product.brand === filters.brand || product.subCategory === filters.brand
           );
-          console.log(`After brand filter (${filters.brand}):`, result.length);
         }
         
         // Apply power filter
         if (filters.power) {
           result = result.filter(product => product.power === filters.power);
-          console.log(`After power filter (${filters.power}):`, result.length);
         }
         
         // Apply color filter
         if (filters.color) {
           result = result.filter(product => product.color === filters.color);
-          console.log(`After color filter (${filters.color}):`, result.length);
         }
       }
       
@@ -341,7 +350,6 @@ const Product = () => {
         const price = parseFloat(product.price);
         return price >= filters.priceRange[0] && price <= filters.priceRange[1];
       });
-      console.log("After price filter:", result.length);
       
       // Apply sorting
       if (filters.sort === "priceLowToHigh") {
@@ -356,15 +364,12 @@ const Product = () => {
         result.sort(() => Math.random() - 0.5);
       }
       
-      console.log("Final filtered products:", result.length);
       setFilteredProducts(result);
     }
   }, [products, filters, searchQuery]);
 
   // Updated handleFilterChange to update URL and close mobile filters
   const handleFilterChange = (field, value) => {
-    console.log(`Filter change: ${field} = ${value}`); // Debug log
-    
     let newFilters = { ...filters };
     
     if (field === "category") {
@@ -614,7 +619,7 @@ const Product = () => {
                         </FormControl>
                       )}
 
-                      {/* Frame Brand filter for non-Contact Lens */}
+                      {/* Frame Brand filter - SHOWS ALL BRANDS ALWAYS */}
                       <FormControl>
                         <FormLabel fontWeight="bold">Frame Brand</FormLabel>
                         <Select 
@@ -622,20 +627,15 @@ const Product = () => {
                           onChange={(e) => handleFilterChange("frameBrand", e.target.value)}
                           placeholder="All Frame Brands"
                         >
-                          {filterOptions.frameBrands
-                            .filter(brand => {
-                              // Only show frame brands for current category (if selected)
-                              if (!filters.category) return true;
-                              return products.some(product => 
-                                standardizeCategory(product.category) === standardizeCategory(filters.category) && 
-                                product.frameBrand === brand
-                              );
-                            })
-                            .map(brand => (
-                              <option key={brand} value={brand}>{brand}</option>
-                            ))
-                          }
+                          {filterOptions.frameBrands.map(brand => (
+                            <option key={brand} value={brand}>{brand}</option>
+                          ))}
                         </Select>
+                        {filterOptions.frameBrands.length === 0 && (
+                          <Text fontSize="xs" color="gray.500" mt={1}>
+                            No frame brands available
+                          </Text>
+                        )}
                       </FormControl>
                       
                       {/* Gender filter for non-Contact Lens */}
@@ -655,7 +655,7 @@ const Product = () => {
                       </FormControl>
                       
                       {/* Frame Material filter for non-Contact Lens */}
-                      {/*filterOptions.frameMaterials.length > 0 && (
+                      {/* {filterOptions.frameMaterials.length > 0 && (
                         <FormControl>
                           <FormLabel fontWeight="bold">Frame Material</FormLabel>
                           <Stack>
@@ -670,7 +670,7 @@ const Product = () => {
                             ))}
                           </Stack>
                         </FormControl>
-                      )*/}
+                      )} */}
                     </>
                   )}
                   
@@ -777,10 +777,6 @@ const Product = () => {
                   <Box textAlign="center" mt="40px">
                     <Text fontSize="18px" color="gray.500" mb={4}>
                       No products match your current {searchQuery ? 'search' : 'filters'}
-                    </Text>
-                    {/* Debug information */}
-                    <Text fontSize="sm" color="gray.400">
-                      Debug: Search="{searchQuery}", Category={filters.category}, FrameBrand={filters.frameBrand}, Brand={filters.brand}, Power={filters.power}, Color={filters.color}
                     </Text>
                   </Box>
                 )}
