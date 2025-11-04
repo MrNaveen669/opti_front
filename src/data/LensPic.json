@@ -1,7 +1,6 @@
 {
   "contactLensMenu": {
     "brands": [
-    
       {
         "name": "Bausch & Lomb",
         "image": "https://res.cloudinary.com/dhbayskwh/image/upload/v1749193154/bausch-and-lomb_f2fpbc.jpg",
@@ -18,21 +17,20 @@
         "filterParams": { "category": "Contact Lens", "brand": "Freshlook" }
       },
       {
-        "name": "Aceme55",
+        "name": "Acme55",
         "image": "https://res.cloudinary.com/dhbayskwh/image/upload/v1749193154/bausch-and-lomb_f2fpbc.jpg",
-        "filterParams": { "category": "Contact Lens", "brand": "Aceme55" }
+        "filterParams": { "category": "Contact Lens", "brand": "Acme55" }
       },
       {
-        "name": "johnson & johnson",
+        "name": "Johnson & Johnson",
         "image": "https://res.cloudinary.com/dhbayskwh/image/upload/v1749192639/johnson_yqgard.jpg",
-        "filterParams": { "category": "Contact Lens", "brand": "johnson & johnson" }
+        "filterParams": { "category": "Contact Lens", "brand": "Johnson & Johnson" }
       },
       {
-        "name": "comfort",
+        "name": "Comfort",
         "image": "https://res.cloudinary.com/dhbayskwh/image/upload/v1749192655/iconnect_n17ds4.jpg",
-        "filterParams": { "category": "Contact Lens", "brand": "comfort" }
+        "filterParams": { "category": "Contact Lens", "brand": "Comfort" }
       },
-      
       {
         "name": "Acuvue",
         "image": "https://res.cloudinary.com/dhbayskwh/image/upload/v1749192864/Acuvue_ohriux.jpg",
@@ -42,36 +40,42 @@
         "name": "Aqualens",
         "image": "https://res.cloudinary.com/dhbayskwh/image/upload/v1749192844/optix_krbqyf.jpg",
         "filterParams": { "category": "Contact Lens", "brand": "Aqualens" }
-      },
-      ],
+      }
+    ],
+
     "power": [
       {
-        "name": "[-] SPH Power (CYL <0.5)",
+        "name": "SPH (-) Power",
         "displayName": "[-] SPH Power (CYL <0.5)",
         "image": "https://res.cloudinary.com/dhbayskwh/image/upload/v1749192916/plus-sph_baq92q.jpg",
-        "filterParams": { "category": "Contact Lens", "power": "[-] SPH Power (CYL <0.5)" }
+        "filterParams": { "category": "Contact Lens", "power": "SPH (-) Power" }
       },
       {
-        "name": "[+] SPH Power (CYL <0.5)",
+        "name": "SPH (+) Power",
         "displayName": "[+] SPH Power (CYL <0.5)",
         "image": "https://res.cloudinary.com/dhbayskwh/image/upload/v1749192916/plus-sph_baq92q.jpg",
-        "filterParams": { "category": "Contact Lens", "power": "[+] SPH Power (CYL <0.5)" }
+        "filterParams": { "category": "Contact Lens", "power": "SPH (+) Power" }
       },
       {
-        "name": "CYL Power (CYL>0.75)",
+        "name": "CYL Power (>0.75)",
         "displayName": "CYL Power (CYL>0.75)",
         "image": "https://res.cloudinary.com/dhbayskwh/image/upload/v1749192916/plus-sph_baq92q.jpg",
-        "filterParams": { "category": "Contact Lens", "power": "CYL Power (CYL>0.75)" }
+        "filterParams": { "category": "Contact Lens", "power": "CYL Power (>0.75)" }
       },
       {
-        "name": "Toric Power",
-        "displayName": "Toric Power",
+        "name": "Toric Lenses",
+        "displayName": "Toric Lenses",
         "image": "https://res.cloudinary.com/dhbayskwh/image/upload/v1749192916/plus-sph_baq92q.jpg",
-        "filterParams": { "category": "Contact Lens", "power": "Toric Power" }
+        "filterParams": { "category": "Contact Lens", "power": "Toric Lenses" }
       }
-
     ],
+
     "color": [
+      {
+        "name": "Color Contact Lens",
+        "image": "https://res.cloudinary.com/dhbayskwh/image/upload/v1749192601/99x53Reviss_synh8i.png",
+        "filterParams": { "category": "Contact Lens", "color": "Color Contact Lens" }
+      },
       {
         "name": "Aquacolor Premium",
         "image": "https://res.cloudinary.com/dhbayskwh/image/upload/v1749192601/99x53Reviss_synh8i.png",
@@ -91,16 +95,21 @@
         "name": "Clalen",
         "image": "https://res.cloudinary.com/dhbayskwh/image/upload/v1749193031/FinalLilyBlue_kavib1.jpg",
         "filterParams": { "category": "Contact Lens", "color": "Clalen" }
+      }
+    ],
+
+    "duration": [
+      {
+        "name": "Monthly Contact Lens",
+        "filterParams": { "category": "Contact Lens", "duration": "Monthly" }
       },
       {
-        "name": "Color with no Power",
-        "image": "https://res.cloudinary.com/dhbayskwh/image/upload/v1749192888/yearly_cl0iuc.jpg",
-        "filterParams": { "category": "Contact Lens", "color": "Color with no Power" }
+        "name": "Yearly Contact Lens",
+        "filterParams": { "category": "Contact Lens", "duration": "Yearly" }
       },
       {
-        "name": "Color with no CYL Power",
-        "image": "https://res.cloudinary.com/dhbayskwh/image/upload/v1749192894/biweekly_vr7qdf.jpg",
-        "filterParams": { "category": "Contact Lens", "color": "Color with no CYL Power" }
+        "name": "One Day Lens",
+        "filterParams": { "category": "Contact Lens", "duration": "One Day" }
       }
     ]
   }
