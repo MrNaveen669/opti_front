@@ -8,44 +8,9 @@
         "filterParams": { "category": "Contact Lens", "brand": "Bausch & Lomb" }
       },
       {
-        "name": "Soflens",
-        "image": "https://res.cloudinary.com/dhbayskwh/image/upload/v1749193154/bausch-and-lomb_f2fpbc.jpg",
-        "filterParams": { "category": "Contact Lens", "brand": "Soflens" }
-      },
-      {
-        "name": "johnson & johnson",
-        "image": "https://res.cloudinary.com/dhbayskwh/image/upload/v1749192639/johnson_yqgard.jpg",
-        "filterParams": { "category": "Contact Lens", "brand": "johnson & johnson" }
-      },
-      {
-        "name": "Iconnect",
-        "image": "https://res.cloudinary.com/dhbayskwh/image/upload/v1749192655/iconnect_n17ds4.jpg",
-        "filterParams": { "category": "Contact Lens", "brand": "Iconnect" }
-      },
-      {
         "name": "Alcon",
         "image": "https://res.cloudinary.com/dhbayskwh/image/upload/v1749192666/alcon-cl-b_hmdoxt.jpg",
         "filterParams": { "category": "Contact Lens", "brand": "Alcon" }
-      },
-      {
-        "name": "Acuvue",
-        "image": "https://res.cloudinary.com/dhbayskwh/image/upload/v1749192864/Acuvue_ohriux.jpg",
-        "filterParams": { "category": "Contact Lens", "brand": "Acuvue" }
-      },
-      {
-        "name": "Optix",
-        "image": "https://res.cloudinary.com/dhbayskwh/image/upload/v1749192844/optix_krbqyf.jpg",
-        "filterParams": { "category": "Contact Lens", "brand": "Optix" }
-      },
-      {
-        "name": "Focus",
-        "image": "https://res.cloudinary.com/dhbayskwh/image/upload/v1749192698/focus_qmq81q.jpg  ",
-        "filterParams": { "category": "Contact Lens", "brand": "Focus" }
-      },
-      {
-        "name": "Purevision",
-        "image": "https://res.cloudinary.com/dhbayskwh/image/upload/v1749192722/pure_fynfqq.jpg",
-        "filterParams": { "category": "Contact Lens", "brand": "Purevision" }
       },
       {
         "name": "Freshlook",
@@ -53,11 +18,32 @@
         "filterParams": { "category": "Contact Lens", "brand": "Freshlook" }
       },
       {
-        "name": "Dailies",
-        "image": "https://res.cloudinary.com/dhbayskwh/image/upload/v1749192804/dailies_mqpv9p.jpg",
-        "filterParams": { "category": "Contact Lens", "brand": "Dailies" }
-      } 
-    ],
+        "name": "Aceme55",
+        "image": "https://res.cloudinary.com/dhbayskwh/image/upload/v1749193154/bausch-and-lomb_f2fpbc.jpg",
+        "filterParams": { "category": "Contact Lens", "brand": "Aceme55" }
+      },
+      {
+        "name": "johnson & johnson",
+        "image": "https://res.cloudinary.com/dhbayskwh/image/upload/v1749192639/johnson_yqgard.jpg",
+        "filterParams": { "category": "Contact Lens", "brand": "johnson & johnson" }
+      },
+      {
+        "name": "comfort",
+        "image": "https://res.cloudinary.com/dhbayskwh/image/upload/v1749192655/iconnect_n17ds4.jpg",
+        "filterParams": { "category": "Contact Lens", "brand": "comfort" }
+      },
+      
+      {
+        "name": "Acuvue",
+        "image": "https://res.cloudinary.com/dhbayskwh/image/upload/v1749192864/Acuvue_ohriux.jpg",
+        "filterParams": { "category": "Contact Lens", "brand": "Acuvue" }
+      },
+      {
+        "name": "Aqualens",
+        "image": "https://res.cloudinary.com/dhbayskwh/image/upload/v1749192844/optix_krbqyf.jpg",
+        "filterParams": { "category": "Contact Lens", "brand": "Aqualens" }
+      },
+      ],
     "power": [
       {
         "name": "[-] SPH Power (CYL <0.5)",
