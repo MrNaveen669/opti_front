@@ -82,7 +82,9 @@ const Home = () => {
 
       {/* Home Page UI Components */}
       <HomeCard type={HomeDetails} />
-      <HomeCard1 type={HomeDetails1} />
+      <Link to="/sampleproduct">
+        <HomeCard1 type={HomeDetails1} />
+      </Link>
       <Link to="/book-appointment">
         <Box textAlign="center" my={10}>
           <Image src={book} alt="Book Appointment with Opticlair" mt="10" />
