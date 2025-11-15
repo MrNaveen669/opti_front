@@ -18,7 +18,7 @@
       },
       {
         "name": "Acme55",
-        "image": "https://res.cloudinary.com/dhbayskwh/image/upload/v1749193154/bausch-and-lomb_f2fpbc.jpg",
+        "image": "https://res.cloudinary.com/dl28vjim6/image/upload/v1763221353/IMG-20251115-WA0004_gcddy8.jpg",
         "filterParams": { "category": "Contact Lens", "brand": "Acme55" }
       },
       {
@@ -38,65 +38,24 @@
       },
       {
         "name": "Aqualens",
-        "image": "https://res.cloudinary.com/dhbayskwh/image/upload/v1749192844/optix_krbqyf.jpg",
+        "image": "https://res.cloudinary.com/dl28vjim6/image/upload/v1763222293/IMG-20251115-WA0006_yb8rab.jpg",
         "filterParams": { "category": "Contact Lens", "brand": "Aqualens" }
       }
     ],
 
-    "power": [
-      {
-        "name": "SPH (-) Power",
-        "displayName": "[-] SPH Power (CYL <0.5)",
-        "image": "https://res.cloudinary.com/dhbayskwh/image/upload/v1749192916/plus-sph_baq92q.jpg",
-        "filterParams": { "category": "Contact Lens", "power": "SPH (-) Power" }
-      },
-      {
-        "name": "SPH (+) Power",
-        "displayName": "[+] SPH Power (CYL <0.5)",
-        "image": "https://res.cloudinary.com/dhbayskwh/image/upload/v1749192916/plus-sph_baq92q.jpg",
-        "filterParams": { "category": "Contact Lens", "power": "SPH (+) Power" }
-      },
-      {
-        "name": "CYL Power (>0.75)",
-        "displayName": "CYL Power (CYL>0.75)",
-        "image": "https://res.cloudinary.com/dhbayskwh/image/upload/v1749192916/plus-sph_baq92q.jpg",
-        "filterParams": { "category": "Contact Lens", "power": "CYL Power (>0.75)" }
-      },
+   "color contact lenses":[
       {
         "name": "Toric Lenses",
         "displayName": "Toric Lenses",
-        "image": "https://res.cloudinary.com/dhbayskwh/image/upload/v1749192916/plus-sph_baq92q.jpg",
+        "image": "https://res.cloudinary.com/dl28vjim6/image/upload/v1763221353/IMG-20251115-WA0004_gcddy8.jpg",
         "filterParams": { "category": "Contact Lens", "power": "Toric Lenses" }
-      }
-    ],
-
-    "color": [
-      {
-        "name": "Color Contact Lens",
-        "image": "https://res.cloudinary.com/dhbayskwh/image/upload/v1749192601/99x53Reviss_synh8i.png",
-        "filterParams": { "category": "Contact Lens", "color": "Color Contact Lens" }
       },
-      {
-        "name": "Aquacolor Premium",
-        "image": "https://res.cloudinary.com/dhbayskwh/image/upload/v1749192601/99x53Reviss_synh8i.png",
-        "filterParams": { "category": "Contact Lens", "color": "Aquacolor Premium" }
-      },
-      {
-        "name": "Aquacolor",
-        "image": "https://res.cloudinary.com/dhbayskwh/image/upload/v1749193000/aqua1234_hxnk0j.jpg",
-        "filterParams": { "category": "Contact Lens", "color": "Aquacolor" }
-      },
-      {
-        "name": "Freshlook",
-        "image": "https://res.cloudinary.com/dhbayskwh/image/upload/v1749193020/freshlook_color_blend_dus4zt.jpg",
-        "filterParams": { "category": "Contact Lens", "color": "Freshlook" }
-      },
-      {
-        "name": "Clalen",
-        "image": "https://res.cloudinary.com/dhbayskwh/image/upload/v1749193031/FinalLilyBlue_kavib1.jpg",
-        "filterParams": { "category": "Contact Lens", "color": "Clalen" }
-      }
-    ],
+    {
+        "name": "Spheric lenses",
+        "displayName": "Toric Lenses",
+        "image": "https://res.cloudinary.com/dl28vjim6/image/upload/v1763222970/IMG-20251115-WA0005_wgfiio.jpg",
+        "filterParams": { "category": "Contact Lens", "power": "Toric Lenses" }
+      }],
 
     "duration": [
       {
