@@ -42,13 +42,10 @@
       {
         "name": "Acuvue",
         "image": "https://res.cloudinary.com/dhbayskwh/image/upload/v1749192864/Acuvue_ohriux.jpg",
-@@ -42,36 +40,42 @@
         "name": "Aqualens",
         "image": "https://res.cloudinary.com/dhbayskwh/image/upload/v1749192844/optix_krbqyf.jpg",
         "filterParams": { "category": "Contact Lens", "brand": "Aqualens" }
       },
-      ],
-      }
     ],
 
     "power": [
