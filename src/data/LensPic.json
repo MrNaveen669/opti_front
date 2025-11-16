@@ -53,9 +53,7 @@
       }
     ],
 
-    "color": [],
-
-    "duration": [
+    "color": [ 
       {
         "name": "Monthly Contact Lens",
         "filterParams": { "category": "Contact Lens", "duration": "Monthly" }
@@ -69,7 +67,10 @@
         "name": "One Day Lens",
         "image": "https://res.cloudinary.com/dhbayskwh/image/upload/v1749192894/biweekly_vr7qdf.jpg",
         "filterParams": { "category": "Contact Lens", "duration": "One Day" }
-      }
+      }],
+
+    "duration": [
+    
     ]
   }
 }
