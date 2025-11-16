@@ -43,8 +43,8 @@
       }
     ],
 
-   "color contact lenses":[
-      {
+     "color": [
+     {
         "name": "Toric Lenses",
         "displayName": "Toric Lenses",
         "image": "https://res.cloudinary.com/dl28vjim6/image/upload/v1763221353/IMG-20251115-WA0004_gcddy8.jpg",
@@ -55,7 +55,8 @@
         "displayName": "Toric Lenses",
         "image": "https://res.cloudinary.com/dl28vjim6/image/upload/v1763222970/IMG-20251115-WA0005_wgfiio.jpg",
         "filterParams": { "category": "Contact Lens", "power": "Toric Lenses" }
-      }],
+      }
+    ],
 
     "duration": [
       {
