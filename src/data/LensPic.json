@@ -18,7 +18,7 @@
       },
       {
         "name": "Acme55",
-        "image": "https://res.cloudinary.com/dhbayskwh/image/upload/v1749193154/bausch-and-lomb_f2fpbc.jpg",
+        "image": "https://res.cloudinary.com/dl28vjim6/image/upload/v1763222970/IMG-20251115-WA0005_wgfiio.jpg",
         "filterParams": { "category": "Contact Lens", "brand": "Acme55" }
       },
       {
@@ -28,13 +28,18 @@
       },
       {
         "name": "Comfort",
-        "image": "https://res.cloudinary.com/dhbayskwh/image/upload/v1749192655/iconnect_n17ds4.jpg",
+        "image": "https://res.cloudinary.com/dl28vjim6/image/upload/v1763360465/IMG-20251117-WA0002_hibnhv.jpg",
         "filterParams": { "category": "Contact Lens", "brand": "Comfort" }
       },
       {
         "name": "Aqualens",
-        "image": "https://res.cloudinary.com/dhbayskwh/image/upload/v1749192844/optix_krbqyf.jpg",
+        "image": "https://res.cloudinary.com/dl28vjim6/image/upload/v1763222293/IMG-20251115-WA0006_yb8rab.jpg",
         "filterParams": { "category": "Contact Lens", "brand": "Aqualens" }
+      },
+      {
+        "name": "Acuvue",
+        "image": "https://res.cloudinary.com/dl28vjim6/image/upload/v1749192118/Acuvue_wnt6rg.jpg",
+        "filterParams": { "category": "Contact Lens", "brand": "Acuvue" }
       }
     ],
 
@@ -42,7 +47,7 @@
       {
         "name": "Spheric Lenses",
         "displayName": "Spheric Lenses",
-        "image": "https://res.cloudinary.com/dhbayskwh/image/upload/v1749192916/plus-sph_baq92q.jpg",
+        "image": "https://res.cloudinary.com/dl28vjim6/image/upload/v1763360689/IMG-20251117-WA0007_dpwgjl.jpg",
         "filterParams": { "category": "Contact Lens", "power": "CYL Power (>0.75)" }
       },
       {
@@ -56,17 +61,23 @@
     "color": [ 
       {
         "name": "Monthly Contact Lens",
+        "image": "https://res.cloudinary.com/dl28vjim6/image/upload/v1763360465/IMG-20251117-WA0003_tbop3g.jpg",
         "filterParams": { "category": "Contact Lens", "duration": "Monthly" }
       },
       {
         "name": "Yearly Contact Lens",
-        "image": "https://res.cloudinary.com/dhbayskwh/image/upload/v1749192888/yearly_cl0iuc.jpg",
+        "image": "https://res.cloudinary.com/dl28vjim6/image/upload/v1763360689/IMG-20251117-WA0005_yaerca.jpg",
         "filterParams": { "category": "Contact Lens", "duration": "Yearly" }
       },
       {
         "name": "One Day Lens",
-        "image": "https://res.cloudinary.com/dhbayskwh/image/upload/v1749192894/biweekly_vr7qdf.jpg",
+        "image": "https://res.cloudinary.com/dl28vjim6/image/upload/v1763360689/IMG-20251117-WA0006_irbmuu.jpg",
         "filterParams": { "category": "Contact Lens", "duration": "One Day" }
+      },
+      {
+        "name": "Color Contact Lens",
+        "image": "https://res.cloudinary.com/dl28vjim6/image/upload/v1763360689/IMG-20251117-WA0004_mxy7xp.jpg",
+        "filterParams": { "category": "Contact Lens", "duration": "Color Contact lens" }
       }],
 
     "duration": [
