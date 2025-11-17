@@ -33,7 +33,7 @@
       },
       {
         "name": "Aqualens",
-        "image": "https://res.cloudinary.com/dl28vjim6/image/upload/v1763222293/IMG-20251115-WA0006_yb8rab.jpg",
+        "image": "https://res.cloudinary.com/dl28vjim6/image/upload/v1763362056/IMG-20251117-WA0010_lf3hkx.jpg",
         "filterParams": { "category": "Contact Lens", "brand": "Aqualens" }
       },
       {
@@ -53,7 +53,7 @@
       {
         "name": "Toric Lenses",
         "displayName": "Toric Lenses",
-        "image": "https://res.cloudinary.com/dhbayskwh/image/upload/v1749192916/plus-sph_baq92q.jpg",
+        "image": "https://res.cloudinary.com/dl28vjim6/image/upload/v1763362056/IMG-20251117-WA0011_pmzhl3.jpg",
         "filterParams": { "category": "Contact Lens", "power": "Toric Lenses" }
       }
     ],
